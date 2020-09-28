@@ -1,0 +1,263 @@
+/* ----------------------------------------------------------------------------
+ * Base
+ * ------------------------------------------------------------------------- */
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+input,
+button,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  font-style: normal;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 700px;
+}
+
+body {
+  font-size: 14px;
+  font-weight: 500;
+  color: $c-text-normal;
+  text-align: left;
+  line-height: 1.4;
+  word-break: break-word;
+  background-color: $c-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+li {
+  list-style: none;
+}
+
+strong {
+  font-weight: normal;
+  color: #a10;
+}
+
+// table {
+//   border-collapse: collapse;
+// }
+table{
+  border-collapse: separate;
+}
+
+th,
+td {
+  vertical-align: middle;
+  border-collapse: collapse;
+}
+
+a,
+button {
+  cursor: pointer;
+  transition: 0.3s all ease;
+}
+
+button:focus {
+  outline:0;
+}
+
+input,
+textarea {
+  outline: none;
+  color: $c-text-normal;
+  &::-webkit-input-placeholder {
+    font-size: 14px;
+    color: $c-text-disable;
+  }
+  &::-moz-placeholder {
+    font-size: 14px;
+    color: $c-text-disable;
+  }
+  &[disabled] {
+    color: $c-text-normal;
+    background: #ddd;
+  }
+}
+
+a {
+  color: $c-text-link-normal;
+  text-decoration: none !important;
+
+  &:hover {
+    color: $c-text-link-normal;
+    text-decoration: none !important;
+  }
+  &:active {
+    color: $c-text-link-press;
+  }
+
+  // 非活性
+  &.is-disabled {
+    i {
+      // color: $c-text-disable;
+    }
+    &:before {
+      // color: $c-text-disable;
+    }
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+// カレント、非活性
+.is-current,
+.is-disabled {
+  &:hover {
+    cursor: default;
+  }
+}
+
+// ウィンドウ固定
+.is-fixed {
+  overflow: hidden !important;
+}
+
+.g-clearfix::after {
+  display: block;
+  clear: both;
+  content: "";
+}
+
+.g-ffRoboto {
+  font-family: "Roboto Condensed";
+}
+
+//ブラウザのfocusを打ち消す
+input[type="text"],
+input[type="password"],
+a,
+textarea,
+select,
+button[type="submit"] {
+  outline: none;
+}
+
+// text align
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+
+/* iOSでのデフォルトスタイルをリセット */
+input[type="submit"],
+input[type="button"] {
+  border-radius: 0;
+  -webkit-box-sizing: content-box;
+  -webkit-appearance: button;
+  appearance: button;
+  border: none;
+  border-radius: 0;
+  box-sizing: border-box;
+    &::-webkit-search-decoration {
+      display: none;
+    }
+    &::focus {
+      outline-offset: -2px;
+    }
+}
+
+
+@include max-screen($breakpoint-mobile) {
+
+  input[type=text] {
+    font-size: 16px;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
+    // transform: scale(0.8);
+  }
+
+
+}

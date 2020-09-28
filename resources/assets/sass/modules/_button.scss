@@ -1,0 +1,140 @@
+/* ----------------------------------------------------------------------------
+ * Button
+ * ------------------------------------------------------------------------- */
+.m-btn,
+.m-btnS,
+.m-btnM,
+.m-btnL {
+  font-size: 14px;
+  color: $c-white;
+  line-height: 1;
+  transition: 0.3s all ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: none;
+  background: $c-text-link-normal;
+  a {
+    color: $c-white;
+  }
+   &:hover {
+    color: $c-white;
+  }
+   &:active {
+    color: $c-white;
+  }
+
+  // プライマリー
+  &[btn-type="primary"] {
+    background: $c-btn-primary-normal;
+     &:hover {
+      background: #5e5ad6;
+    }
+     &:active {
+      background: $c-btn-primary-press;
+    }
+  }
+
+  // セカンダリー
+  &[btn-type="secondly"] {
+    background: $c-text-link-normal;
+     &:hover {
+      background: $c-btn-secondly-hover;
+    }
+     &:active {
+      background: $c-btn-secondly-press;
+    }
+  }
+
+  // ネガティブ
+  &[btn-type="negative"] {
+    background: $c-btn-negative-normal;
+     &:hover {
+      background: $c-btn-negative-hover;
+    }
+     &:active {
+      background: $c-btn-negative-press;
+    }
+  }
+
+  // facebook
+  &[btn-type="facebook"] {
+    border-color: $facebook_color;
+    color: $c-white;
+    background: $facebook_color;
+    &:hover {
+      border-color: $facebook_color;
+      background: $facebook_color;
+    }
+  }
+
+  // twitter
+  &[btn-type="twitter"] {
+    border-color: $twitter_color;
+    color: $c-white;
+    background: $twitter_color;
+    &:hover {
+      border-color: $twitter_color;
+      background: $twitter_color;
+    }
+  }
+
+  // 非活性
+  &[disabled],
+  &.is-disabled {
+    cursor: default;
+    color: $c-text-disable;
+    background: #ddd;
+    outline: none;
+     &:hover {
+      color: $c-text-disable;
+      background: #ddd;
+    }
+     &:active {
+      color: $c-text-disable;
+      background: #ddd;
+    }
+  }
+}
+
+/* Size */
+.m-btn {
+  min-width: 145px;
+  min-height: 40px;
+  padding: 10px;
+}
+
+a.m-btn {
+  min-height: 20px;
+  min-width: 125px;
+}
+
+
+/* SizeS */
+.m-btnS {
+  min-width: 80px;
+  min-height: 24px;
+  //  padding: 5px;
+  background: #293160;
+}
+
+.m-btnM {
+  min-width: 145px;
+  min-height: 50px;
+  padding: 10px;
+}
+
+a.m-btn {
+  min-height: 20px;
+  min-width: 125px;
+}
+
+
+/* SizeL */
+.m-btnL {
+  min-width: 195px;
+  min-height: 64px;
+  padding: 20px;
+}
+

@@ -1,0 +1,256 @@
+/* ----------------------------------------------------------------------------
+ * icon from fontawesome
+ * ------------------------------------------------------------------------- */
+.fa {
+
+  &-location{
+    color: #666666;
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-map-marker-alt;
+      font-weight: 600;
+      color: #666666;
+    }
+    span {
+      font-size: 12px;
+    }
+  }
+
+  &-clock {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-clock;
+      font-weight: 600;
+    }
+  }
+
+  &-credit-card {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-credit-card;
+      font-weight: 600;
+    }
+  }
+
+  &-sleep {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-sleep;
+      font-weight: 600;
+    }
+  }
+
+  &-train {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-train;
+      font-weight: 600;
+    }
+  }
+
+  &-eat {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-utensils;
+      font-weight: 600;
+    }
+  }
+
+  &-restaurant {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-store;
+      font-weight: 600;
+    }
+  }
+
+  &-lunch {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-sun;
+      font-weight: 600;
+    }
+  }
+
+  &-dinner {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-moon;
+      font-weight: 600;
+    }
+  }
+  &-star-yellow {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-star;
+      font-weight: 600;
+      color: $c-yellow;
+    }
+  }
+  &-star-gray {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-star;
+      font-weight: 600;
+      color: $c-gray;
+    }
+  }
+  &-heart-red {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-heart;
+      font-weight: 600;
+      color: #ff9393;
+    }
+  }
+  &-heart-gray {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-heart;
+      font-weight: 600;
+      color: $c-gray;
+    }
+  }
+
+  &-heart {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-heart;
+      font-weight: 600;
+    }
+  }
+
+
+  &-yen {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-yen-sign;
+      font-weight: 600;
+    }
+  }
+  &-key {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-key;
+      font-weight: 600;
+    }
+  }
+  &-signout {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-sign-out-alt;
+      font-weight: 600;
+    }
+  }
+  &-search {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-search;
+      font-weight: 600;
+    }
+  }
+
+  &-question {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-question-circle;
+      font-weight: 600;
+    }
+  }
+
+  &-map {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-map-marker-alt;
+      font-weight: 600;
+    }
+  }
+
+  &-friends {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-user-friends;
+      font-weight: 600;
+    }
+  }
+
+  &-wink {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-smile-win;
+      font-weight: 600;
+    }
+  }
+
+  &-twitter {
+    &::before {
+      font-family: $_fontawesome-brand;
+      content: $_fa-twitter;
+      font-weight: 600;
+    }
+  }
+
+  &-facebook {
+    &::before {
+      font-family: $_fontawesome-brand;
+      content: $_fa-facebook;
+      font-weight: 600;
+    }
+  }
+
+  &-line {
+    &::before {
+      font-family: $_fontawesome-brand;
+      content: $_fa-line;
+      font-weight: 600;
+    }
+  }
+
+  &-copy {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-copy;
+      font-weight: 600;
+    }
+  }
+
+  &-lightbulb {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-lightbulb;
+      font-weight: 600;
+    }
+  }
+
+  &-thumbs-up {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-thumbs-up;
+      font-weight: 400;
+    }
+  }
+
+  &-home {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-home;
+      font-weight: 600;
+    }
+  }
+
+  &-plus {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-plus;
+      font-weight: 600;
+    }
+  }
+
+  &-user {
+    &::before {
+      font-family: $_fontawesome;
+      content: $_fa-user;
+      font-weight: 600;
+    }
+  }
+}

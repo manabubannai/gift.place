@@ -1,0 +1,151 @@
+<?php
+
+namespace App\Console\Commands;
+
+use Illuminate\Console\Command;
+
+/**
+ * https://qiita.com/hironeko/items/1a2df88f7857d02a38a1
+ * CreateExternalApiFileCommand class
+ */
+class CreateExternalApiFileCommand extends Command
+{
+    /**
+     * @const string ExternalApi dir path
+     */
+    const EXTERNALAPI_PATH = 'app/ExternalApi/';
+
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'make:externalApi {externalApiName : The name of externalApi}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Create ExternalApi files';
+
+    /**
+     * @var string
+     */
+    private $fileName;
+
+    /**
+     * @var string
+     */
+    private $dirName;
+
+    /**
+     * @var string
+     */
+    private $externalApiFileName;
+
+    /**
+     * @var string
+     */
+    private $interfaceFileName;
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+        $this->fileName = $this->argument('externalApiName');
+        $this->dirName  = $this->fileName;
+
+        if (is_null($this->fileName)) {
+            $this->error('ExternalApi Name invalid');
+        }
+        // $this->dirName = $this->ask('new directory name. or use directory name');
+
+        if (is_null($this->dirName)) {
+            $this->error('Directory required!');
+        }
+
+        if (!$this->isExistDirectory()) {
+            $this->createDirectory();
+        }
+
+        $this->ExternalApiFileName = self::EXTERNALAPI_PATH . $this->dirName . '/' . $this->fileName . 'ExternalApi.php';
+        $this->interfaceFileName = self::EXTERNALAPI_PATH . $this->dirName . '/' . $this->fileName . 'ExternalApiInterface.php';
+        if ($this->isExistFiles()) {
+            $this->error('already exist');
+            return;
+        }
+
+        $this->creatExternalApiFile();
+        $this->createInterFaceFile();
+        $this->info('create successfully');
+        $this->line('');
+        $this->comment('Add the following route to app/Providers/ExternalApiServiceProvider.php:');
+        $this->line('');
+        $this->info("    \$this->app->bind(
+            \\App\\ExternalApi\\$this->dirName\\$this->dirName". "ExternalApiInterface::class,
+            \\App\\ExternalApi\\$this->dirName\\$this->dirName". "ExternalApi::class
+        );");
+        $this->line('');
+    }
+
+    /**
+     * ExternalApiのfileを作成する
+     * @return void
+     */
+    private function creatExternalApiFile(): void
+    {
+        $content = "<?php\n\nnamespace App\\ExternalApi\\$this->dirName;\n\nclass $this->fileName" . "ExternalApi implements $this->fileName" . "ExternalApiInterface\n{\n}\n";
+        file_put_contents($this->ExternalApiFileName, $content);
+    }
+
+    /**
+     * Interfaceのfileを作成する
+     * @return void
+     */
+    private function createInterFaceFile(): void
+    {
+        $content = "<?php\n\nnamespace App\\ExternalApi\\$this->dirName;\n\ninterface $this->fileName" . "ExternalApiInterface\n{\n}\n";
+        file_put_contents($this->interfaceFileName, $content);
+    }
+
+    /**
+     * 同名fileの確認
+     * @return bool
+     */
+    private function isExistFiles(): bool
+    {
+        return file_exists($this->ExternalApiFileName) && file_exists($this->interfaceFileName);
+    }
+
+    /**
+     * directoryの存在確認
+     * @return bool
+     */
+    private function isExistDirectory(): bool
+    {
+        return file_exists(self::EXTERNALAPI_PATH . $this->dirName);
+    }
+
+    /**
+     * 指定名でdirectoryの作成
+     * @return void
+     */
+    private function createDirectory(): void
+    {
+        mkdir(self::EXTERNALAPI_PATH . $this->dirName, 0755, true);
+    }
+} 

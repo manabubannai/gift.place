@@ -1,0 +1,78 @@
+/* ----------------------------------------------------------------------------
+ * page  index
+ * ------------------------------------------------------------------------- */
+ @include max-screen($breakpoint-mobile) {
+  .p-index {
+    &--new, &--spot--new {
+      margin-bottom: 16px;
+    }
+
+    &--header {
+      position: relative;
+      &__primary {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 1rem;
+        padding: 16px 16px 8px 16px;
+        width: 100%;
+        background: #ffffff;
+        color: #555555;
+        font-weight: 600;
+      }
+      &__medium-text {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        font-size: 0.5rem;
+        padding: 0 16px 0 16px;
+        width: 100%;
+        background: #ffffff;
+        color: #555555;
+        font-weight: 600;
+      }
+    }
+
+    &__image {
+      height: 450px;
+      position: relative;
+      background-image: url(https://res.cloudinary.com/frip/image/upload/c_scale,h_1000,q_100/v1579349266/frip/images/main_img_sp.jpg);
+      object-fit: cover;
+      background-size: cover;
+      background-position: center;
+      padding-top: 96px;
+      padding-bottom: 40px;
+      width: 100%;
+      z-index: 0;
+      overflow: hidden;
+    }
+
+    &--copy {
+      position: relative;
+      padding-top: 18px;
+      color: #fff;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      text-align: center;
+      text-shadow: 0 2px 2px rgba(0,0,0,.5);
+      margin-bottom: 48px;
+    }
+
+    &__getting-started {
+      padding-top: 18px;
+
+      a:link {
+        color: #fff;
+        text-decoration: underline;
+      }
+  
+      &__text {
+        font-size: 16px;
+        color: #fff;
+        font-weight: 600;
+        text-decoration: underline;
+      }
+    }
+  }
+}

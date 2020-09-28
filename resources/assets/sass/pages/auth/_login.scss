@@ -1,0 +1,56 @@
+/* ----------------------------------------------------------------------------
+ * auth login
+ * ------------------------------------------------------------------------- */
+.auth {
+  &-login , &-register , &-reset-password {
+
+    a {
+      color: $c-point-light;
+    }
+
+    .gray {
+      color: $c-text-normal;
+    }
+
+    label {
+      margin-left: 16px;
+      font-size: 14px;
+    }
+
+    input {
+      border-radius: 8rem !important;
+      height: 42px;
+
+      &::placeholder {
+        font-size: 14px;
+      }
+    }
+    .invalid-feedback {
+      font-size: 8px;
+      color: $c-text-error;
+    }
+
+    // .or {
+    //   display: flex;
+    //   color: $gray;
+    //   margin: 24px 0;
+    //   width: 40%;
+    //   margin: 40px auto;
+    //   text-align: center;
+    //   &__block {
+    //     width: 32%;
+    //     span {
+    //       text-align: center;
+    //     }
+
+    //     &--left , &--right{
+    //       border-top: 1px solid rgba(0, 0, 0, 0.125);
+    //     }
+    //     &--center {
+    //       position: relative;
+    //       top: -8px;
+    //     }
+    //   }
+    // }
+  }
+}

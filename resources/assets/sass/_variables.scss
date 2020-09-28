@@ -1,0 +1,73 @@
+// Body
+$body-bg: #fff;
+
+// Typography
+$font-family-sans-serif: 'Nunito', sans-serif;
+$font-size-base: 0.9rem;
+$line-height-base: 1.6;
+
+
+/* ============================================================================
+ * color code
+ * ========================================================================= */
+$c-point: #C0DFF0;
+$c-point-light: #BF4040;
+
+$facebook_color: #3b5998;
+$facebook_color_hover: #3B61B4;
+$twitter_color: #1da1f2;
+$twitter_color_hover: #1a91da;
+$line_color: #00c300;
+$line_color_hover: #00E000;
+
+// カラー
+$c-border-light: #ebebeb;
+// $c-buttonHover: #e8e7f5;
+// $c-buttonActive: #cbcfeb;
+$c-white: #fff;
+$c-yellow: #FFD20B;
+$c-gray: #DEDEDE;
+
+// $blue: #3490dc;
+// $indigo: #6574cd;
+// $purple: #9561e2;
+// $pink: #f66d9b;
+// $red: #e3342f;
+// $orange: #f6993f;
+// $yellow: #ffed4a;
+// $green: #38c172;
+// $teal: #4dc0b5;
+// $cyan: #6cb2eb;
+
+$c-text-normal: #504643;
+$c-text-headliner: #000000;
+$c-text-link-normal: #293162;
+$c-text-link-hover: #44509e;
+$c-text-link-press: #071c9f;
+// ★secondlyのボタンと同じ色なので、全置換で対応しない様注意してください
+$c-bg-light: #f2f7fc;
+$c-text-dark: #262831;
+$c-text-white: #ffffff;
+
+// 状態の意味をもつテキスト
+$c-text-disable: #bcbcbc;
+$c-bg-disable: #dddddd;
+$c-text-info: #25b89d;
+$c-bg-info: #e8f4f9;
+$c-text-warning: #b0442c;
+$c-bg-warning: #f9f2e2;
+$c-text-error: #a10000;
+$c-bg-error: #f9e2e2;
+
+// button
+$c-btn-secondly-normal: #293163;
+$c-btn-secondly-hover: #44509f;
+$c-btn-secondly-press: #071c9f;
+// ★テキストリンクと同じ色なので全置換で対応しない様注意してください
+$c-btn-primary-normal: #3b37af;
+$c-btn-primary-hover: #5a56d2;
+$c-btn-primary-press: #0a02e8;
+
+$c-btn-negative-normal: #505050;
+$c-btn-negative-hover: #747474;
+$c-btn-negative-press: #232323;
