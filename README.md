@@ -41,19 +41,19 @@ https://xtech.nikkei.com/it/atclncf/service/00033/031400001/
 
 [デプロイフロー]
 1. 必要な権限を付与した、IAMユーザーを作成する
-2. プロジェクト配下で、`aws configure --profile directone` を実行する。
+2. プロジェクト配下で、`aws configure --profile gift-place` を実行する。
 AWS Access Key ID、AWS Secret Access Key、リージョンを聞かれるので、以下の ように入力する。
 -AWS Access Key ID: 上記で作成したIAMユーザーのAWS Access Key ID
 -AWS Secret Access Key: 上記で作成したIAMユーザーのAWS Secret Access Key -Default region name:ap-northeast-1
 -Default output format: Enterを押す
 
-3. `eb init --profile directone` を実行する。これでElastic Beanstalk 環境とソー スコードのローカルリポジトリが紐づく。
+3. `eb init --profile gift-place` を実行する。これでElastic Beanstalk 環境とソー スコードのローカルリポジトリが紐づく。
 4. `eb list` を実行してみると、Elastic Beanstalk環境の環境ごとのアプリケーションを確認できる。
 5. git commit した後、 `eb deploy` を実行することで、デプロイを実行できます。Elastic Beanstalkでは、 ローカルのソースコードがアップロードされます。
 
 
 [SSH接続フロー]
-1. キーペア directone.pem をローカルに落とし、~/.ssh/ に配置し`chmod 600 directone.pem` を実行する
+1. キーペア gift_place.pem をローカルに落とし、~/.ssh/ に配置し`chmod 600 gift_place.pem` を実行する
 2. プロジェクト配下で、eb ssh を実行する
 3. `cd /var/app/current/` にアプリケーションが設置されています
 
