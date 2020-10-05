@@ -7,7 +7,7 @@
         <div class="col-12 mb-2">
             <a class="m-btn" btn-type="twitter" href="{{ url('login/twitter')}}" style="text-decoration: none;">
                 <div class="col-1"><i class="fab fa-twitter-square"></i></div>
-                <div class="col-11 text-left"><p>Facebookで登録・ログイン</p></div>
+                <div class="col-11 text-left"><p>Twitterで登録・ログイン</p></div>
             </a>
         </div>
     </div>

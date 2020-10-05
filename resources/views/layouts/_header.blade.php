@@ -16,21 +16,21 @@
               <a href="/getting-started" class="mr-2">はじめての方へ</a>
               <a href="/login" class="mr-2">無料会員登録/ログイン</a>
           @else
-              <a href="{{ route('web.messages.create', null, false) }}" class="mr-2 m-btn" style="color: #fff;">スポットを投稿する</a>
+              <a href="{{ route('user.messages.create', null, false) }}" class="mr-2 m-btn" style="color: #fff;">スポットを投稿する</a>
                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a href="{{ route('web.users.me') }}" class="dropdown-item">マイページ</a>
+                    <a href="{{ route('user.users.me') }}" class="dropdown-item">マイページ</a>
                     <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
-                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    <a class="dropdown-item" href="{{ route('user.logout') }}"
                        onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
                         <small>ログアウト</small>
                     </a>
 
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </div>
