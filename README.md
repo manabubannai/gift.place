@@ -28,6 +28,21 @@ npm run dev
 npm run watch
 ```
 
+## How To Set Up TWITTER Login locally In This App
+1. run `ngrok http 8000`
+2. copy https url in your terminal by runnning ngrok
+3. fix APP_URL in .env like this
+`APP_URL=http://localhost:8000/`
+→
+`APP_URL=https://114eb67a1340.ngrok.io`
+4. fix TWITTER_CALLBACK_URL ` domain url in .env` and Callback Url in TWITTER Developer
+5. open terminal in another tab and run
+`
+composer dump-autoload && php artisan clear-compiled && php artisan optimize && php artisan config:cache
+`
+6. run `php artisan serve`
+
+
 ## elastic beanstalk
 
 アプリケーションをアップロードするだけで、ロードバランサ(ELB)、実行環境(EC2)、設定(環境変数など)、可用性やスケールアウト(Auto Scaling)、監視(CloudWatch, SNS)、といった一般的なアプリケーションが動作するために必要な要素を一通り揃えた環境が作成され、その環境に対するデプロイや運用の支援ツールが提供されます。
