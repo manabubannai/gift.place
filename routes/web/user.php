@@ -1,6 +1,6 @@
 <?php
-Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
 
+Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('/login', 'SocialAccountController@showLoginForm')->name('login');
         Route::get('login/{provider}', 'SocialAccountController@redirectToProvider')->name('redirect.provider');
@@ -15,7 +15,6 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
             Route::post('local/register', 'LocalLoginController@postLocalRegister')->name('post.localRegister');
         }
     });
-
 
     // loginずみのみ
     Route::group(['middleware' => ['auth:user']], function () {

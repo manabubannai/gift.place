@@ -1,8 +1,8 @@
 <?php
 namespace App\Services\Message;
 
-use PascalDeVink\ShortUuid\ShortUuid;
 use App\Repositories\Message\MessageRepositoryInterface;
+use PascalDeVink\ShortUuid\ShortUuid;
 
 class MessageService implements MessageServiceInterface
 {
@@ -28,9 +28,8 @@ class MessageService implements MessageServiceInterface
             abort(400);
         }
 
-        // FIXME short uuid
         if (!isset($input['uuid'])) {
-            $uuid = \Illuminate\Support\Str::uuid();
+            $uuid      = \Illuminate\Support\Str::uuid();
             $shortUuid = new ShortUuid();
             \Arr::set($input, 'uuid', $shortUuid->encode($uuid));
         }
@@ -40,5 +39,33 @@ class MessageService implements MessageServiceInterface
         }
 
         $message = $this->messageRepository->create($input);
+    }
+
+    /**
+     * @param string $uuId
+     *
+     * @return
+     */
+    public function userFindMessageByUuId(string $uuId): \App\Models\Message
+    {
+        $message = $this->messageRepository->findByUuId($uuId);
+
+        if (empty($message)) {
+            abort(404);
+        }
+
+        return $message;
+    }
+
+    /**
+     * @return
+     */
+    public function paginateOrderByDesc()
+    {
+        // FIXME
+        return $this->messageRepository
+                    ->getBlankModel()
+                    ->latest()
+                    ->paginate();
     }
 }

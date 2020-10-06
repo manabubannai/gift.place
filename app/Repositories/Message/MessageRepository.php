@@ -20,6 +20,16 @@ class MessageRepository extends BaseRepository implements MessageRepositoryInter
     }
 
     /**
+     * @param string $uuId
+     *
+     * @return \App\Models\Message
+     */
+    public function findByUuId(string $uuId): ?\App\Models\Message
+    {
+        return $this->message->where('uuid', $uuId)->first();
+    }
+
+    /**
      * 投稿は一日一回に制限している
      * DBに一日前に投稿がないか確認する.
      *

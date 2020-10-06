@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
+use App\Services\Message\MessageServiceInterface;
 
 class DashboardController extends Controller
 {
@@ -10,13 +11,18 @@ class DashboardController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(
+        MessageServiceInterface $messageService
+    ) {
+        $this->messageService = $messageService;
     }
 
     public function dashboard()
     {
+        $messages = $this->messageService->paginateOrderByDesc();
         // \SeoHelper::setIndexSeo();
-        return view('pages.user.dashboard');
+        return view('pages.user.dashboard', [
+            'messages' => $messages,
+        ]);
     }
 }
