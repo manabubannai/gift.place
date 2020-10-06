@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Message;
 
+use PascalDeVink\ShortUuid\ShortUuid;
 use App\Repositories\Message\MessageRepositoryInterface;
 
 class MessageService implements MessageServiceInterface
@@ -29,7 +30,9 @@ class MessageService implements MessageServiceInterface
 
         // FIXME short uuid
         if (!isset($input['uuid'])) {
-            \Arr::set($input, 'uuid', \Illuminate\Support\Str::uuid());
+            $uuid = \Illuminate\Support\Str::uuid();
+            $shortUuid = new ShortUuid();
+            \Arr::set($input, 'uuid', $shortUuid->encode($uuid));
         }
 
         if (!isset($input['user_id'])) {
