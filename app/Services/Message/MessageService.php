@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Message;
 
+use PascalDeVink\ShortUuid\ShortUuid;
 use App\Repositories\Message\MessageRepositoryInterface;
 
 class MessageService implements MessageServiceInterface
@@ -21,8 +22,6 @@ class MessageService implements MessageServiceInterface
      */
     public function userStoreMessage(int $userId, array $input)
     {
-        $input = $request->only($this->messageRepository->getBlankModel()->getFillable());
-
         // すでに投稿があるか
         if ($this->messageRepository->isUserAlreadyStoreByOneday($userId)) {
             // FIXME error messageの出し方や例外の扱い
@@ -31,7 +30,13 @@ class MessageService implements MessageServiceInterface
 
         // FIXME short uuid
         if (!isset($input['uuid'])) {
-            \Arr::set($input, 'uuid', \Illuminate\Support\Str::uuid());
+            $uuid = \Illuminate\Support\Str::uuid();
+            $shortUuid = new ShortUuid();
+            \Arr::set($input, 'uuid', $shortUuid->encode($uuid));
+        }
+
+        if (!isset($input['user_id'])) {
+            \Arr::set($input, 'user_id', $userId);
         }
 
         $message = $this->messageRepository->create($input);

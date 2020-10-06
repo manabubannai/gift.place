@@ -1,7 +1,5 @@
 <?php
-Route::group(['as' => 'user.'], function () {
-
-    Route::get('/', 'HomeController@index')->name('home');
+Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
 
     Route::group(['namespace' => 'Auth'], function () {
         Route::get('/login', 'SocialAccountController@showLoginForm')->name('login');
@@ -21,12 +19,12 @@ Route::group(['as' => 'user.'], function () {
 
     // loginずみのみ
     Route::group(['middleware' => ['auth:user']], function () {
-        Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
+        Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
 
         Route::group(['middleware' => []], function () {
             Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
-                Route::get('/{id}', 'MessageController@show')->name('show');
                 Route::get('/create', 'MessageController@create')->name('create');
+                Route::get('/{id}', 'MessageController@show')->name('show');
 
                 Route::post('/', 'MessageController@store')->name('store');
             });

@@ -1,9 +1,9 @@
 <?php
-namespace App\Http\Controllers\Web;
+namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
 
-class HomeController extends Controller
+class DashboardController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -14,9 +14,9 @@ class HomeController extends Controller
     {
     }
 
-    public function index()
+    public function dashboard()
     {
         // \SeoHelper::setIndexSeo();
-        return view('pages.index');
+        return view('pages.user.dashboard');
     }
 }
