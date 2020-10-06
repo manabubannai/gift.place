@@ -8,6 +8,13 @@ interface MessageRepositoryInterface extends BaseRepositoryInterface
     public function getBlankModel();
 
     /**
+     * @param string $uuId
+     *
+     * @return \App\Models\Message
+     */
+    public function findByUuId(string $uuId): ?\App\Models\Message;
+
+    /**
      * 投稿は一日一回に制限している
      * DBに一日前に投稿がないか確認する.
      *

@@ -20,6 +20,11 @@ class MessageController extends Controller
 
     public function show(string $uuId)
     {
+        $message = $this->messageService->userFindMessageByUuId($uuId);
+
+        return view('pages.user.messages.show', [
+            'message' => $message,
+        ]);
     }
 
     public function create()

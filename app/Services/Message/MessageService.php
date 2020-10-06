@@ -42,6 +42,22 @@ class MessageService implements MessageServiceInterface
     }
 
     /**
+     * @param string $uuId
+     *
+     * @return
+     */
+    public function userFindMessageByUuId(string $uuId): \App\Models\Message
+    {
+        $message = $this->messageRepository->findByUuId($uuId);
+
+        if (empty($message)) {
+            abort(404);
+        }
+
+        return $message;
+    }
+
+    /**
      * @return
      */
     public function paginateOrderByDesc()
