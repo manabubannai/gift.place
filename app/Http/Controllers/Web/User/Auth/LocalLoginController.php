@@ -2,11 +2,10 @@
 namespace App\Http\Controllers\Web\User\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
-use App\Models\Image;
 use App\Models\User;
 use Auth;
+use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 
 class LocalLoginController extends Controller
 {
@@ -49,9 +48,9 @@ class LocalLoginController extends Controller
     {
         \DB::beginTransaction();
         try {
-
             $user = User::create([
                 'name'             => $request->name,
+                'slug'             => $request->name,
                 'email'            => $request->email,
             ]);
 
@@ -59,6 +58,7 @@ class LocalLoginController extends Controller
         } catch (\Exception $e) {
             \Log::error($e);
             \DB::rollback();
+
             return redirect('/local/login');
         }
 

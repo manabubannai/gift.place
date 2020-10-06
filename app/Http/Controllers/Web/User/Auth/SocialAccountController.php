@@ -1,11 +1,10 @@
 <?php
-
 namespace App\Http\Controllers\Web\User\Auth;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Auth;
 use App\Services\SocialAccountService;
+use Auth;
+use Illuminate\Http\Request;
 
 class SocialAccountController extends Controller
 {
@@ -32,23 +31,23 @@ class SocialAccountController extends Controller
     }
 
     /**
-     * Obtain the user information
+     * Obtain the user information.
      *
      * @return Response
      */
     public function handleProviderCallback(SocialAccountService $socialAccountService, $provider)
     {
-
         try {
             $user = \Socialite::with($provider)->user();
         } catch (\Exception $e) {
             \Log::error($e);
+
             return redirect('/login');
         }
 
         $authUser = $socialAccountService->getOrCreate($user, $provider);
 
-        if(!$authUser) {
+        if (!$authUser) {
             return redirect('/email');
         }
 
@@ -66,7 +65,7 @@ class SocialAccountController extends Controller
         $provider     = session('callback_provider');
         $providerUser = session('callback_provider_user');
 
-        if(empty($provider) || empty($providerUser)) {
+        if (empty($provider) || empty($providerUser)) {
             return redirect('/login');
         }
 
@@ -76,7 +75,7 @@ class SocialAccountController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
+
         return redirect('/');
     }
-
 }

@@ -2,9 +2,8 @@
 namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\Message\MessageServiceInterface;
-use Illuminate\Http\Request;
 use App\Http\Requests\Web\User\Message\StoreRequest;
+use App\Services\Message\MessageServiceInterface;
 
 class MessageController extends Controller
 {
@@ -19,7 +18,7 @@ class MessageController extends Controller
         $this->messageService = $messageService;
     }
 
-    public function show(int $id)
+    public function show(string $uuId)
     {
     }
 
@@ -31,7 +30,6 @@ class MessageController extends Controller
     // FIXME vvalidation
     public function store(StoreRequest $request)
     {
-
         $this->messageService->userStoreMessage(\Auth::user()->id, $request->all());
 
         return redirect('/dashboard')->with([
