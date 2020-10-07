@@ -41,7 +41,7 @@ class LocalLoginController extends Controller
 
     public function getLocalLogin()
     {
-        return view('auth.local-login');
+        return view('pages.user.auth.local-login');
     }
 
     public function postLocalRegister(Request $request)

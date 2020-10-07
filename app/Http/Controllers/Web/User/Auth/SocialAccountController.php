@@ -2,12 +2,20 @@
 namespace App\Http\Controllers\Web\User\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Services\SocialAccountService;
+use App\Services\SocialAccount\SocialAccountServiceInterface;
 use Auth;
 use Illuminate\Http\Request;
+// use Laravel\Socialite\Facades\Socialite;
+use Socialite;
 
 class SocialAccountController extends Controller
 {
+    public function __construct(
+        SocialAccountServiceInterface $socialAccountService
+    ) {
+        $this->socialAccountService = $socialAccountService;
+    }
+
     /**
      * Show the application registration form.
      *
@@ -17,7 +25,7 @@ class SocialAccountController extends Controller
      */
     public function showLoginForm(Request $request)
     {
-        return view('pages.auth.login');
+        return view('pages.user.auth.login');
     }
 
     /**
@@ -27,7 +35,7 @@ class SocialAccountController extends Controller
      */
     public function redirectToProvider($provider)
     {
-        return \Socialite::driver($provider)->redirect();
+        return Socialite::driver($provider)->redirect();
     }
 
     /**
@@ -35,25 +43,39 @@ class SocialAccountController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback(SocialAccountService $socialAccountService, $provider)
+    public function handleProviderCallback($provider)
     {
         try {
-            $user = \Socialite::with($provider)->user();
+            $providerUser = Socialite::driver($provider)->userFromTokenAndSecret(
+                config('services.twitter.access_token'),
+                config('services.twitter.access_token_secret'),
+            );
         } catch (\Exception $e) {
-            \Log::error($e);
+            \Log::info($e);
 
-            return redirect('/login');
+            return redirect(route('user.auth.login'));
         }
 
-        $authUser = $socialAccountService->getOrCreate($user, $provider);
+        // $providerUser->provideruserをsessionに保存し
+        // emailを入力するformに飛ばす email保存先でregister usecaseを呼び出す
+        if (is_null($providerUser->email)) {
+            session([
+                'callback_provider_user' => $providerUser,
+                'callback_provider'      => $provider,
+            ]);
+
+            return redirect(route('user.auth.get.email'));
+        }
+
+        $authUser = $this->socialAccountService->getOrCreate($providerUser, $provider);
 
         if (!$authUser) {
-            return redirect('/email');
+            return redirect(route('user.auth.get.email'));
         }
 
         Auth::login($authUser);
 
-        return redirect()->to('/');
+        return redirect(route('user.dashboard'));
     }
 
     public function getEmail()
@@ -66,10 +88,23 @@ class SocialAccountController extends Controller
         $providerUser = session('callback_provider_user');
 
         if (empty($provider) || empty($providerUser)) {
-            return redirect('/login');
+            return redirect(route('user.auth.login'));
         }
 
-        return view('auth.email');
+        return view('pages.user.auth.email');
+    }
+
+    public function storeEmail(Request $request)
+    {
+        $providerName = session('callback_provider');
+        $providerUser = session('callback_provider_user');
+
+        $providerUser->email = $request->input('email');
+        $authUser            = $this->socialAccountService->getOrCreate($providerUser, $providerName);
+
+        Auth::login($authUser);
+
+        return redirect(route('user.dashboard'));
     }
 
     public function logout(Request $request)

@@ -4,7 +4,7 @@
 <div class="auth-register mx-auto w-100 py-4 pb-5">
 <h3 class="text-center pb-3">ローカル開発のための認証画面</h2>
   <h5 class="title title-up text-center mb-3 font-weight-bold gray">新規登録</h5>
-  <form method="POST" action="{{ route('user.post.localRegister') }}">
+  <form method="POST" action="{{ route('user.auth.post.localRegister') }}">
     @csrf
 
     <!-- login email -->

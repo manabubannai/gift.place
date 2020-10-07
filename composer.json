@@ -13,7 +13,7 @@
         "aws/aws-sdk-php": "^3.155",
         "fideloper/proxy": "^4.0",
         "jenssegers/agent": "^2.6",
-        "laravel/framework": "6.0.*",
+        "laravel/framework": "7.0.*",
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^1.0",
         "league/flysystem-aws-s3-v3": "^1.0",
