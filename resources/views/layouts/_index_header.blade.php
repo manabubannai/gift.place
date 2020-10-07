@@ -14,7 +14,7 @@
         <nav class="float-right s-header-list">
           @guest
               <a href="/getting-started" class="mr-2">はじめての方へ</a>
-              <a href="/login" class="mr-2">無料会員登録/ログイン</a>
+              <a href="{{ route('user.auth.login') }}" class="mr-2">無料会員登録/ログイン</a>
           @else
               <a href="" class="mr-2 m-btn" style="color: #fff;">スポットを投稿する</a>
                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -24,13 +24,13 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a href="" class="dropdown-item">マイページ</a>
                     <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
-                    <a class="dropdown-item" href="{{ route('user.logout') }}"
+                    <a class="dropdown-item" href="{{ route('user.aurh.logout') }}"
                        onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
                         <small>ログアウト</small>
                     </a>
 
-                    <form id="logout-form" action="{{ route('user.logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('user.aurh.logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </div>
