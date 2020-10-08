@@ -34,6 +34,9 @@ class Handler extends ExceptionHandler
      */
     public function report(Exception $exception)
     {
+        if ($this->shouldReport($exception) && app()->environment('production')) {
+            \Log::channel('slack')->error($exception);
+        }
         parent::report($exception);
     }
 

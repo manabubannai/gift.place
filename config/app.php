@@ -166,7 +166,6 @@ return [
          * Package Service Providers...
          */
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
-        Jenssegers\Agent\AgentServiceProvider::class,
         /*
          * Application Service Providers...
          */

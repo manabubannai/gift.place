@@ -37,11 +37,6 @@ class SampleCommand extends Command
      */
     public function handle()
     {
-        // $dt = Carbon::today('Asia/Tokyo');
-        $dt = Carbon::tomorrow('Asia/Tokyo');
-        $dt->timezone('UTC');
-        $dt->toDateTimeString();
-
-        dd($dt);
+        \Log::channel('slack')->error('dd');
     }
 }
