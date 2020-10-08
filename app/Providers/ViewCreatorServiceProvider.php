@@ -14,7 +14,7 @@ class ViewCreatorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::creator('*', V\ViewSwitchCreator::class);
+        // View::creator('*', V\ViewSwitchCreator::class);
     }
 
     /**
