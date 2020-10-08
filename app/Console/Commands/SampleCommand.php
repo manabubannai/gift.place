@@ -1,7 +1,6 @@
 <?php
 namespace App\Console\Commands;
 
-use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class SampleCommand extends Command
