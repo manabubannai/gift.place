@@ -22,7 +22,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a href="{{ route('user.users.me') }}" class="dropdown-item">マイページ</a>
+                    <a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="dropdown-item">マイページ</a>
                     <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
                     <a class="dropdown-item" href="{{ route('user.auth.logout') }}"
                        onclick="event.preventDefault();

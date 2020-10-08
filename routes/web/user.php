@@ -23,19 +23,20 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
         Route::group(['middleware' => []], function () {
             Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
                 Route::get('/create', 'MessageController@create')->name('create');
-                Route::get('/{id}', 'MessageController@show')->name('show');
+                Route::get('/{uuid}', 'MessageController@show')->name('show');
 
                 Route::post('/', 'MessageController@store')->name('store');
             });
 
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-                Route::get('/me', 'UserController@me')->name('me');
+                // Route::get('/me', 'UserController@me')->name('me');
+                Route::get('/{slug}', 'UserController@show')->name('show');
 
-                Route::group(['prefix' => '/me', 'as' => 'me.'], function () {
+                Route::get('/{slug}/edit', 'UserController@edit')->name('edit');
+                Route::put('/{slug}', 'UserController@update')->name('update');
 
-                  // Route::group(['prefix' => 'subscriptions/', 'as' => 'subscriptions.'], function () {
-                  // });
-                });
+                // Route::group(['prefix' => 'subscriptions/', 'as' => 'subscriptions.'], function () {
+              // });
             });
         });
     });
