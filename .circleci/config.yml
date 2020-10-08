@@ -1,63 +1,58 @@
+# PHP CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-php/ for more details
+#
 version: 2
 jobs:
   build:
     docker:
-      - image: php:7.3-apache
-        environment:
-          APP_ENV: testing
-          APP_DEBUG: true
-          APP_KEY: base64:PHlRbj1iLG04zlEKUUR2I896tirxD5UyhYDjuH61H7c=
-          DB_CONNECTION: mysql
-          DB_HOST: 127.0.0.1
-          DB_PORT: 3306
-          DB_DATABASE: test_db
-          DB_USERNAME: root
-          DB_PASSWORD: rikuparkour9
-          CACHE_DRIVER: file
-          QUEUE_DRIVER: sync
-      - image: circleci/mysql:5.7
-        environment:
-          MYSQL_DATABASE: test_db
-          MYSQL_ROOT_PASSWORD: rikuparkour9
-    working_directory: /var/www/html
+      # Specify the version you desire here
+      - image: circleci/php:7.1-node-browsers
+
+      # Specify service dependencies here if necessary
+      # CircleCI maintains a library of pre-built images
+      # documented at https://circleci.com/docs/2.0/circleci-images/
+      # Using the RAM variation mitigates I/O contention
+      # for database intensive operations.
+      # - image: circleci/mysql:5.7-ram
+      #
+      # - image: redis:2.8.19
+
     steps:
-      - run:
-          name: Install System Packages
-          command: apt-get update && apt-get -y install git unzip zlib1g-dev libpng-dev
       - checkout
+
+      - run: sudo apt update # PHP CircleCI 2.0 Configuration File# PHP CircleCI 2.0 Configuration File sudo apt install zlib1g-dev libsqlite3-dev
+      - run: sudo docker-php-ext-install zip
+
       # Download and cache dependencies
       - restore_cache:
           keys:
-          - v1-dependencies-{{ checksum "composer.json" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-      - run:
-          name: Install PHP Extensions
-          command: apt-get update && apt-get install -y libicu-dev libzip-dev && docker-php-ext-install pdo pdo_mysql zip gd intl
-      - run:
-          name: Install Composer
-          command: |
-            php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
-            php -r "copy('https://composer.github.io/installer.sig', 'composer-setup.sig');"
-            php -r "if (hash_file('SHA384', 'composer-setup.php') === trim(file_get_contents('composer-setup.sig'))) { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-            php composer-setup.php
-            php -r "unlink('composer-setup.php');"
-      - run:
-          name: Install Project Dependencies
-          command: COMPOSER_MEMORY_LIMIT=-1 php composer.phar install
+            # "composer.lock" can be used if it is committed to the repo
+            - v1-dependencies-{{ checksum "composer.json" }}
+            # fallback to using the latest cache if no exact match is found
+            - v1-dependencies-
+
+      - run: composer install -n --prefer-dist
+
       - save_cache:
+          key: v1-dependencies-{{ checksum "composer.json" }}
           paths:
             - ./vendor
-          key: v1-dependencies-{{ checksum "composer.json" }}
-      - run:
-          name: config cashe clear
-          command: |
-            php artisan config:clear
-      - run:
-          name: Initialize Database
-          command: |
-            php artisan migrate:refresh --no-interaction
-            php artisan db:seed
-      - run:
-          name: Run Tests
-          command: vendor/bin/phpunit -d memory_limit=512M
+      - restore_cache:
+          keys:
+            - node-v1-{{ checksum "package.json" }}
+            - node-v1-
+      - run: yarn install
+      - save_cache:
+          key: node-v1-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+      # prepare the database
+      - run: touch storage/testing.sqlite
+      - run: php artisan migrate --env=testing --database=sqlite_testing --force
+
+      # run tests with phpunit or codecept
+      #- run: ./vendor/bin/phpunit
+      - run: ./vendor/bin/codecept build
+      - run: ./vendor/bin/codecept run
