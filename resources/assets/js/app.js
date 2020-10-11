@@ -4,7 +4,7 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
-require('./bootstrap');
+require('./bootstrap')
 
 import Vue from 'vue'
 
@@ -20,7 +20,13 @@ import Vue from 'vue'
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 // Vue.prototype.$axios = window.axios
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+/* ============================================================================
+ * button
+ * ========================================================================= */
+Vue.component(
+    'message-like-button',
+    require('./components/button/messageLikeButton.vue').default
+)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,4 +36,4 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 
 const app = new Vue({ // eslint-disable-line
     el: '#app',
-});
+})
