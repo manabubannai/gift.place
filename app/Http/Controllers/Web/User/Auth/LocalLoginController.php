@@ -59,11 +59,21 @@ class LocalLoginController extends Controller
             \Log::error($e);
             \DB::rollback();
 
-            return redirect('/local/login');
+            return redirect('/auth/local/login')->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '登録に失敗しました',
+                ],
+            ]);
         }
 
         Auth::login($user);
 
-        return redirect('/dashboard');
+        return redirect('/dashboard')->with([
+            'toast' => [
+                'status'  => 'success',
+                'message' => '投稿しました',
+            ],
+        ]);
     }
 }

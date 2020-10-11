@@ -30,6 +30,8 @@
         @include('layouts._header')
     @endif
 
+    @include('layouts._toast')
+
     <main>
         @if( isset($noContainer) && $noContainer == true )
             @yield('content')
