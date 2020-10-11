@@ -69,10 +69,10 @@ class LocalLoginController extends Controller
 
         Auth::login($user);
 
-        return redirect('/dashboard')->with([
+        return redirect(route('user.dashboard'))->with([
             'toast' => [
                 'status'  => 'success',
-                'message' => '投稿しました',
+                'message' => 'ログインしました',
             ],
         ]);
     }
