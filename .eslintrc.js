@@ -1,23 +1,34 @@
 module.exports = {
-    "env": {
-        "browser": true,
-        "commonjs": true,
-        "es6": true
+    root: true,
+    env: {
+        browser: true,
+        commonjs: true,
+        es6: true,
     },
-    "extends": [
-        "eslint:recommended",
-        "plugin:vue/essential"
+    extends: [
+        "plugin:prettier/recommended",
+        "plugin:vue/essential",
+        "prettier/vue",
     ],
-    "globals": {
-        "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
-    },
-    "parserOptions": {
-        "ecmaVersion": 2018
-    },
-    "plugins": [
-        "vue"
+    plugins: [
+      "vue"
     ],
-    "rules": {
-    }
+    globals: {
+        axios: true,
+        Atomics: "readonly",
+        SharedArrayBuffer: "readonly",
+    },
+    parserOptions: {
+        ecmaVersion: 2018,
+    },
+    rules: {
+        "prettier/prettier": [
+            "error",
+            {
+                tabWidth: 4,
+                semi: false,
+                singleQuote: true,
+            },
+        ],
+    },
 };

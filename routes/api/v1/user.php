@@ -17,7 +17,9 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::group(['prefix' => 'likes', 'as' => 'likes.'], function () {
-    Route::post('/', 'LikeController@store')->name('store');
-    Route::delete('/{id}', 'LikeController@destroy')->name('destroy');
+Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User'], function () {
+    Route::group(['prefix' => 'message-likes', 'as' => 'likes.'], function () {
+        Route::post('/', 'MessaegLikeController@store')->name('store');
+        Route::delete('/{id}', 'MessaegLikeController@destroy')->name('destroy');
+    });
 });

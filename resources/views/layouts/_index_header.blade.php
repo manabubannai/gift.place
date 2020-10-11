@@ -24,13 +24,13 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a href="" class="dropdown-item">マイページ</a>
                     <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
-                    <a class="dropdown-item" href="{{ route('user.aurh.logout') }}"
+                    <a class="dropdown-item" href="{{ route('user.auth.logout') }}"
                        onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
                         <small>ログアウト</small>
                     </a>
 
-                    <form id="logout-form" action="{{ route('user.aurh.logout') }}" method="POST" style="display: none;">
+                    <form id="logout-form" action="{{ route('user.auth.logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
                 </div>

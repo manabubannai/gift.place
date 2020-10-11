@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\User\Message\StoreRequest;
+use App\Models\MessageLike;
 use App\Services\Message\MessageServiceInterface;
 
 class MessageController extends Controller
@@ -22,8 +23,21 @@ class MessageController extends Controller
     {
         $message = $this->messageService->userFindMessageByUuId($uuId);
 
+        // FIXME こういうコードはないわ
+        $isLiked           = MessageLike::where('message_id', $message->id)
+                                ->where('user_id', \Auth::user()->id)
+                                ->exists();
+
+        $defaultLike       = MessageLike::where('message_id', $message->id)
+                                ->where('user_id', \Auth::user()->id)
+                                ->first();
+        $defaultLikesCount = MessageLike::where('message_id', $message->id)->count();
+
         return view('pages.user.messages.show', [
-            'message' => $message,
+            'message'           => $message,
+            'isLiked'           => $isLiked,
+            'defaultLike'       => $defaultLike,
+            'defaultLikesCount' => $defaultLikesCount,
         ]);
     }
 
