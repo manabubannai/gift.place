@@ -7,6 +7,13 @@
 require('./bootstrap')
 
 import Vue from 'vue'
+import Toasted from 'vue-toasted'
+
+Vue.use(Toasted, {
+    position: 'top-right',
+    duration: 8000,
+    containerClass: 'c-toasted',
+})
 
 /**
  * The following block of code may be used to automatically register your
@@ -20,6 +27,9 @@ import Vue from 'vue'
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
 // Vue.prototype.$axios = window.axios
+
+Vue.component('toast', require('./components/toast.vue').default)
+
 /* ============================================================================
  * button
  * ========================================================================= */
