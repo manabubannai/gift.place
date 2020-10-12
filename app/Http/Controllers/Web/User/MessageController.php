@@ -23,6 +23,19 @@ class MessageController extends Controller
     {
         $message = $this->messageService->userFindMessageByUuId($uuId);
 
+        // 自分の投稿の投稿詳細pageにアクセスした時のみ、いいねをした人が見える
+        // FIXME
+        $likedUsers = [];
+        if (\Auth::user()->id === $message->id) {
+            $messageId = $message->id;
+
+            $likedUsers = \App\Models\User::whereIn('users.id', function ($query) use ($messageId) {
+                $query->from('message_likes')
+                    ->select('message_likes.user_id')
+                    ->where('message_likes.message_id', $messageId);
+            })->get();
+        }
+
         // FIXME こういうコードはないわ
         $isLiked           = MessageLike::where('message_id', $message->id)
                                 ->where('user_id', \Auth::user()->id)
@@ -36,6 +49,7 @@ class MessageController extends Controller
             'message'           => $message,
             'isLiked'           => $isLiked,
             'defaultLike'       => $defaultLike,
+            'likedUsers'        => $likedUsers,
         ]);
     }
 
