@@ -31,13 +31,11 @@ class MessageController extends Controller
         $defaultLike       = MessageLike::where('message_id', $message->id)
                                 ->where('user_id', \Auth::user()->id)
                                 ->first();
-        $defaultLikesCount = MessageLike::where('message_id', $message->id)->count();
 
         return view('pages.user.messages.show', [
             'message'           => $message,
             'isLiked'           => $isLiked,
             'defaultLike'       => $defaultLike,
-            'defaultLikesCount' => $defaultLikesCount,
         ]);
     }
 

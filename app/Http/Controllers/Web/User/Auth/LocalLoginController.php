@@ -6,6 +6,7 @@ use App\Models\User;
 use Auth;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class LocalLoginController extends Controller
 {
@@ -52,6 +53,7 @@ class LocalLoginController extends Controller
                 'name'             => $request->name,
                 'slug'             => $request->name,
                 'email'            => $request->email,
+                'api_token'        => Str::random(60),
             ]);
 
             \DB::commit();

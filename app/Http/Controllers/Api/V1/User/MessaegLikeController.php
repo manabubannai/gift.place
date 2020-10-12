@@ -16,7 +16,7 @@ class MessaegLikeController extends Controller
         // FIXME
         try {
             $like = MessageLike::create([
-                'user_id'     => $request->input('user_id'),
+                'user_id'     => $request->user()->id,
                 'message_id'  => $request->input('message_id'),
             ]);
         } catch (\Exception $e) {
