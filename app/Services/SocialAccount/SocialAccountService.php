@@ -3,6 +3,7 @@ namespace App\Services\SocialAccount;
 
 use App\Repositories\SocialAccount\SocialAccountRepositoryInterface;
 use App\Repositories\User\UserRepositoryInterface;
+use Illuminate\Support\Str;
 use Laravel\Socialite\Contracts\User as ProviderUser;
 
 class SocialAccountService implements SocialAccountServiceInterface
@@ -27,6 +28,7 @@ class SocialAccountService implements SocialAccountServiceInterface
                       'email'            => $providerUser->email,
                       'slug'             => $providerUser->nickname,
                       'cover_url'        => $providerUser->avatar,
+                      'api_token'        => Str::random(60),
                 ]);
 
                 $socialAccount = $this->socialAccountRepository->create([
@@ -42,6 +44,9 @@ class SocialAccountService implements SocialAccountServiceInterface
 
         if ($socialAccount) {
             $user = $this->userRepository->find($socialAccount->user_id);
+            $user->fill([
+                'api_token' => Str::random(60),
+            ])->save();
         }
 
         return $user;

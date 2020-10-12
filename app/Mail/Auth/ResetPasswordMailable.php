@@ -47,6 +47,7 @@ class ResetPasswordMailable extends Mailable
      */
     protected function verificationUrl(string $token)
     {
-        return route('password.reset', $token);
+        return 'test';
+        // return route('user.password.reset', $token);
     }
 }
