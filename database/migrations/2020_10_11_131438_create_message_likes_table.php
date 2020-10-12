@@ -11,8 +11,8 @@ class CreateMessageLikesTable extends Migration
         Schema::create('message_likes', function (Blueprint $table) {
             $table->bigIncrements('id');
 
-            $table->bigInteger('message_id')->unsigned()->index();
-            $table->bigInteger('user_id')->unsigned()->index();
+            $table->unsignedBigInteger('user_id')->index()->comment('likeしたuser id');
+            $table->unsignedBigInteger('message_id')->index()->comment('likeしたmessage id');
 
             $table->foreign('message_id')->references('id')->on('messages')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

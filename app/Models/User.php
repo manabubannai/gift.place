@@ -21,6 +21,7 @@ class User extends Authenticatable
         'slug',
         'email',
         'cover_url',
+        'api_token',
     ];
 
     /**

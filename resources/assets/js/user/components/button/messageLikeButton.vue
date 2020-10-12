@@ -15,7 +15,6 @@ import * as api from '../../services/api'
 export default {
     props: {
         messageId: { required: true, type: Number },
-        userId: { required: true, type: Number },
         defaultIsLiked: { required: true, type: Boolean },
         defaultLike: { required: true },
     },
@@ -37,7 +36,6 @@ export default {
         async messageLike() {
             let response = await api.postMessageLike({
                 message_id: this.messageId,
-                user_id: this.userId,
             })
 
             if (response['success'] === true) {

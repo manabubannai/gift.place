@@ -1877,10 +1877,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       required: true,
       type: Number
     },
-    userId: {
-      required: true,
-      type: Number
-    },
     defaultIsLiked: {
       required: true,
       type: Boolean
@@ -1914,8 +1910,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _context.next = 2;
                 return _services_api__WEBPACK_IMPORTED_MODULE_1__["postMessageLike"]({
-                  message_id: this.messageId,
-                  user_id: this.userId
+                  message_id: this.messageId
                 });
 
               case 2:
@@ -51009,6 +51004,7 @@ var token = document.head.querySelector('meta[name="csrf-token"]');
 
 if (token) {
   window.axios.defaults.headers.common['X-CSRF-TOKEN'] = token.content;
+  window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + Laravel.apiToken;
 } else {
   console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }

@@ -8,7 +8,6 @@
             @auth
               <message-like-button
                   :message-id="{{ json_encode($message->id) }}"
-                  :user-id="{{ json_encode(\Auth::user()->id) }}"
                   :default-like="{{ json_encode($defaultLike) }}"
                   :default-is-liked="{{ json_encode($isLiked) }}">
               </message-like-button>
