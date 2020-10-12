@@ -10,7 +10,7 @@
               <div class="row">
                   <div class="form-label-group col-lg-8 mx-auto black font-weight-bold py-2">
 
-                      <textarea name="description"class="form-control" placeholder="入力してください">{{ old('description') }}</textarea>
+                      <textarea name="description" class="form-control" placeholder="入力してください">{{ old('description') }}</textarea>
 
                   </div>
               </div>
