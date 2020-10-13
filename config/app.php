@@ -179,6 +179,7 @@ return [
         App\Providers\ServiceServiceProvider::class,
         App\Providers\ViewCreatorServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
+        App\Providers\UseCaseServiceProvider::class,
 
     ],
 
