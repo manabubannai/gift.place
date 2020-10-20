@@ -47,6 +47,11 @@ class UserController extends Controller
         $input = $request->only($this->userRepository->getBlankModel()->getFillable());
         $user  = $this->userRepository->update($user, $input);
 
-        return redirect(route('user.user.show', $slug));
+        return redirect(route('user.users.show', $slug))->with([
+            'toast' => [
+                'status'  => 'success',
+                'message' => '編集しました',
+            ],
+        ]);
     }
 }

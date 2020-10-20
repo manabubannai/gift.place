@@ -5,7 +5,7 @@
         <div class="">
 
           <form method="POST" action="{{ route('user.users.update', $user->slug) }}">
-              @method('PATCH')
+              @method('PUT')
               @csrf
 
               <div class="row">

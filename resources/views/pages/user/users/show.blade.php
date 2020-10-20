@@ -6,9 +6,9 @@
             {{ $user->name }}
             {{ $user->slug }}
 
-            @auth
+            @if (Auth::user()->can('user-user-can-edit', $user))
               <a href="{{ route('user.users.edit', $user->slug) }}">edit</a>
-            @endauth
+            @endif
 
           </div>
     </div>
