@@ -37,17 +37,21 @@ class DashboardController extends Controller
     public function cardStore(Request $request)
     {
         try {
-            dd($request->all());
             // stripe Customer の作成（保存）
             $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
 
+            if (!\Auth::user()->hasDefaultPaymentMethod()) {
+                // \Auth::user()->addPaymentMethod($request->input('payment_method'));
+                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
+            }
+
+            $paymentMethod = \Auth::user()->defaultPaymentMethod();
+
             \Auth::user()->update([
-                'stripe_id' => $stripeCustomer->id,
+                'stripe_id'      => $stripeCustomer->id,
+                'card_brand'     => $paymentMethod->card->brand,
+                'card_last_four' => $paymentMethod->card->last4,
             ]);
-
-            $paymentMethod = $method->id;   // 新しいカードのID
-
-            dd(\Auth::user()->defaultPaymentMethod(), $stripeCustomer);
 
             // \Auth::user()->newSubscription('default', 'Stripeで作成されたプランID')->create($request->input('stripe_token'));
 
