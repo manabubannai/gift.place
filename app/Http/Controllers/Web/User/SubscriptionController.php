@@ -20,6 +20,15 @@ class SubscriptionController extends Controller
 
     public function create()
     {
+        if (\Auth::user()->subscribed('default')) {
+            return redirect(route('user.dashboard'))->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '支払い済みです',
+                ],
+            ]);
+        }
+
         return view('pages.user.subscription.create', [
             'intent' => \Auth::user()->createSetupIntent(),
         ]);
