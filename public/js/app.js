@@ -2174,10 +2174,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     clientSecret: {
       type: String,
       "default": ''
-    },
-    method: {
-      type: String,
-      "default": 'POST'
     }
   },
   data: function data() {

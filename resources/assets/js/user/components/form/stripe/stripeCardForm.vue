@@ -32,10 +32,6 @@ export default {
             type: String,
             default: '',
         },
-        method: {
-            type: String,
-            default: 'POST',
-        },
     },
     data() {
         return {
