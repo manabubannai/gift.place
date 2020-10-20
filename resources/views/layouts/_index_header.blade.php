@@ -14,7 +14,6 @@
         <nav class="float-right s-header-list">
           @guest
               <a href="/getting-started" class="mr-2">はじめての方へ</a>
-              <a href="{{ route('user.auth.login') }}" class="mr-2">無料会員登録/ログイン</a>
           @else
               <a href="" class="mr-2 m-btn" style="color: #fff;">スポットを投稿する</a>
                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

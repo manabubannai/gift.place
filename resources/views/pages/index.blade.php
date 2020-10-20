@@ -6,8 +6,9 @@
         <div class="p-index__image">
           <p class="p-index--copy">ギフト村</p>
           <div class="p-index__search-form text-center">
-            <a href="" class="" style="text-decoration: none;">
-              <button class="m-btn" style="width: 280px; height: 60px;">登録する</button>
+            <a class="m-btn" btn-type="twitter" href="{{ route('user.auth.redirect.provider', 'twitter') }}" style="text-decoration: none;">
+                    <div class="col-1"><i class="fab fa-twitter-square"></i></div>
+                    <div class="col-11 text-left"><p>Twitterで登録・ログイン</p></div>
             </a>
           </div>
         </div>

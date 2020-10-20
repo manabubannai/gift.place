@@ -2,7 +2,7 @@
 
 Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
     Route::group(['namespace' => 'Auth', 'prefix' => 'auth/', 'as' => 'auth.'], function () {
-        Route::get('login', 'SocialAccountController@showLoginForm')->name('login');
+        // Route::get('login', 'SocialAccountController@showLoginForm')->name('login');
         Route::get('login/{provider}', 'SocialAccountController@redirectToProvider')->name('redirect.provider');
         Route::get('{provider}/callback', 'SocialAccountController@handleProviderCallback');
         Route::get('email', 'SocialAccountController@getEmail')->name('get.email');
@@ -18,16 +18,14 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
 
     // loginずみのみ
     Route::group(['middleware' => ['auth:user']], function () {
+        Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
+            Route::get('/', 'SubscriptionController@create')->name('create');
+            Route::post('/', 'SubscriptionController@store')->name('store');
+        });
 
-        // 仮のroute
-        Route::get('/card', 'DashboardController@card')->name('card');
-        Route::post('/card', 'DashboardController@cardStore')->name('card');
-
-        Route::get('/card-change', 'DashboardController@cardChangeForm')->name('card.change');
-        Route::post('/card-change', 'DashboardController@cardChange')->name('card.change');
-
-        Route::group(['middleware' => []], function () {
+        Route::group(['middleware' => ['subscribed']], function () {
             Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
+
             Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
                 Route::get('/create', 'MessageController@create')->name('create');
                 Route::get('/{uuid}', 'MessageController@show')->name('show');
@@ -44,6 +42,11 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
 
                 // Route::group(['prefix' => 'subscriptions/', 'as' => 'subscriptions.'], function () {
               // });
+            });
+
+            Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
+                Route::get('/card-change', 'SubscriptionController@cardChangeForm')->name('card.change');
+                Route::post('/card-change', 'SubscriptionController@cardChange')->name('card.change');
             });
         });
     });
