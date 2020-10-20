@@ -24,8 +24,12 @@ class MessageService implements MessageServiceInterface
     {
         // すでに投稿があるか
         if ($this->messageRepository->isUserAlreadyStoreByOneday($userId)) {
-            // FIXME error messageの出し方や例外の扱い
-            abort(400);
+            return redirect(route('user.dashboard'))->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '投稿できるのは一日一回です',
+                ],
+            ]);
         }
 
         if (!isset($input['uuid'])) {
