@@ -2202,11 +2202,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                console.log(this.route);
-                _context.next = 3;
+                _context.next = 2;
                 return Object(_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__["loadStripe"])(this.publicKey);
 
-              case 3:
+              case 2:
                 this.stripe = _context.sent;
                 elements = this.stripe.elements();
                 style = {
@@ -2241,7 +2240,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   }
                 });
 
-              case 9:
+              case 8:
               case "end":
                 return _context.stop();
             }
@@ -2256,30 +2255,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return init;
     }(),
     checkout: function checkout() {
-      this.loading = true; // this.stripe.createToken(this.card).then((result) => {
-      //     if (result.error) {
-      //         console.log(result.error.message)
-      //     } else {
-      //         const token = document.head.querySelector(
-      //             'meta[name="csrf-token"]'
-      //         )
-      //         let form = document.createElement('form')
-      //         form.action = this.route
-      //         form.method = 'POST'
-      //         form.innerHTML = `
-      //                           <input type="hidden" name="_token" value="${token.content}">
-      //                           <input type="hidden" name="stripe_token" value="${result.token.id}">`
-      //         if (this.method === 'PUT') {
-      //             form.insertAdjacentHTML(
-      //                 'afterbegin',
-      //                 '<input type="hidden" name="_method" value="PUT">'
-      //             )
-      //         }
-      //         document.body.append(form)
-      //         form.submit()
-      //     }
-      // })
-
+      var route = this.route;
+      this.loading = true;
       var cardHolderName = document.getElementById('card-holder-name');
       this.stripe.confirmCardSetup(this.clientSecret, {
         payment_method: {
@@ -2296,8 +2273,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           // console.log(result.setupIntent.payment_method)
           var token = document.head.querySelector('meta[name="csrf-token"]');
           var form = document.createElement('form');
-          form.action = '/card'; // form.action = this.route
+          console.log(route); // form.action = '/card'
 
+          form.action = route;
           form.method = 'POST';
           form.innerHTML = "\n                                  <input type=\"hidden\" name=\"_token\" value=\"".concat(token.content, "\">\n                                  <input type=\"hidden\" name=\"payment_method\" value=\"").concat(result.setupIntent.payment_method, "\">"); // if (this.method === 'PUT') {
           //     form.insertAdjacentHTML(

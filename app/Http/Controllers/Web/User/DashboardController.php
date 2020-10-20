@@ -41,7 +41,6 @@ class DashboardController extends Controller
             $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
 
             if (!\Auth::user()->hasDefaultPaymentMethod()) {
-                // \Auth::user()->addPaymentMethod($request->input('payment_method'));
                 \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
             }
 
@@ -54,6 +53,37 @@ class DashboardController extends Controller
             ]);
 
             \Auth::user()->newSubscription('default', config('services.stripe.plan'))->create($paymentMethod->id);
+
+            return back();
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function cardChangeForm()
+    {
+        return view('pages.user.card-change', [
+            'paymentMethod' => \Auth::user()->defaultPaymentMethod(),
+            'intent'        => \Auth::user()->createSetupIntent(),
+        ]);
+    }
+
+    public function cardChange(Request $request)
+    {
+        try {
+            $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
+
+            if (\Auth::user()->hasDefaultPaymentMethod()) {
+                \Auth::user()->deletePaymentMethods();
+                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
+            }
+
+            $paymentMethod = \Auth::user()->defaultPaymentMethod();
+
+            \Auth::user()->update([
+                'card_brand'     => $paymentMethod->card->brand,
+                'card_last_four' => $paymentMethod->card->last4,
+            ]);
 
             return back();
         } catch (\Exception $ex) {

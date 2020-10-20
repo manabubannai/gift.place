@@ -51,7 +51,6 @@ export default {
     },
     methods: {
         async init() {
-            console.log(this.route)
             this.stripe = await loadStripe(this.publicKey)
             const elements = this.stripe.elements()
             const style = {
@@ -89,30 +88,8 @@ export default {
             })
         },
         checkout() {
+            const route = this.route
             this.loading = true
-            // this.stripe.createToken(this.card).then((result) => {
-            //     if (result.error) {
-            //         console.log(result.error.message)
-            //     } else {
-            //         const token = document.head.querySelector(
-            //             'meta[name="csrf-token"]'
-            //         )
-            //         let form = document.createElement('form')
-            //         form.action = this.route
-            //         form.method = 'POST'
-            //         form.innerHTML = `
-            //                           <input type="hidden" name="_token" value="${token.content}">
-            //                           <input type="hidden" name="stripe_token" value="${result.token.id}">`
-            //         if (this.method === 'PUT') {
-            //             form.insertAdjacentHTML(
-            //                 'afterbegin',
-            //                 '<input type="hidden" name="_method" value="PUT">'
-            //             )
-            //         }
-            //         document.body.append(form)
-            //         form.submit()
-            //     }
-            // })
 
             const cardHolderName = document.getElementById('card-holder-name')
             this.stripe
@@ -137,8 +114,9 @@ export default {
                             'meta[name="csrf-token"]'
                         )
                         let form = document.createElement('form')
-                        form.action = '/card'
-                        // form.action = this.route
+                        console.log(route)
+                        // form.action = '/card'
+                        form.action = route
                         form.method = 'POST'
                         form.innerHTML = `
                                   <input type="hidden" name="_token" value="${token.content}">
