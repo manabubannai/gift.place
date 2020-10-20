@@ -17,18 +17,6 @@ class SocialAccountController extends Controller
     }
 
     /**
-     * Show the application registration form.
-     *
-     * @param \Illuminate\Http\Request $request
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showLoginForm(Request $request)
-    {
-        return view('pages.user.auth.login');
-    }
-
-    /**
      * Redirect the user to the Provider authentication page.
      *
      * @return Response
@@ -53,7 +41,7 @@ class SocialAccountController extends Controller
         } catch (\Exception $e) {
             \Log::info($e);
 
-            return redirect(route('user.auth.login'));
+            return redirect(route('home'));
         }
 
         // $providerUser->provideruserをsessionに保存し
@@ -88,7 +76,7 @@ class SocialAccountController extends Controller
         $providerUser = session('callback_provider_user');
 
         if (empty($provider) || empty($providerUser)) {
-            return redirect(route('user.auth.login'));
+            return redirect(route('home'));
         }
 
         return view('pages.user.auth.email');

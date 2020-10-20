@@ -14,7 +14,6 @@
         <nav class="float-right s-header-list">
           @guest
               <a href="/getting-started" class="mr-2">はじめての方へ</a>
-              <a href="{{ route('user.auth.login') }}" class="mr-2">無料会員登録/ログイン</a>
           @else
               <a href="{{ route('user.messages.create', null, false) }}" class="mr-2 m-btn" style="color: #fff;">投稿する</a>
                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -22,8 +21,9 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="dropdown-item">マイページ</a>
                     <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
+                    <a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="dropdown-item">マイページ</a>
+                    <a href="{{ route('user.subscriptions.card.change') }}" class="dropdown-item">カードを変更</a>
                     <a class="dropdown-item" href="{{ route('user.auth.logout') }}"
                        onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
