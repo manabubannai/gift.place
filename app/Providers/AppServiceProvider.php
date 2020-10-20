@@ -3,6 +3,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
+use Laravel\Cashier\Cashier;
 use URL;
 
 class AppServiceProvider extends ServiceProvider
@@ -14,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        Cashier::ignoreMigrations();
     }
 
     /**

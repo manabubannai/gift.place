@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
 use App\Services\Message\MessageServiceInterface;
+use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
@@ -24,5 +25,69 @@ class DashboardController extends Controller
         return view('pages.user.dashboard', [
             'messages' => $messages,
         ]);
+    }
+
+    public function card()
+    {
+        return view('pages.user.card', [
+            'intent' => \Auth::user()->createSetupIntent(),
+        ]);
+    }
+
+    public function cardStore(Request $request)
+    {
+        try {
+            // stripe Customer の作成（保存）
+            $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
+
+            if (!\Auth::user()->hasDefaultPaymentMethod()) {
+                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
+            }
+
+            $paymentMethod = \Auth::user()->defaultPaymentMethod();
+
+            \Auth::user()->update([
+                'stripe_id'      => $stripeCustomer->id,
+                'card_brand'     => $paymentMethod->card->brand,
+                'card_last_four' => $paymentMethod->card->last4,
+            ]);
+
+            \Auth::user()->newSubscription('default', config('services.stripe.plan'))->create($paymentMethod->id);
+
+            return back();
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
+    }
+
+    public function cardChangeForm()
+    {
+        return view('pages.user.card-change', [
+            'paymentMethod' => \Auth::user()->defaultPaymentMethod(),
+            'intent'        => \Auth::user()->createSetupIntent(),
+        ]);
+    }
+
+    public function cardChange(Request $request)
+    {
+        try {
+            $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
+
+            if (\Auth::user()->hasDefaultPaymentMethod()) {
+                \Auth::user()->deletePaymentMethods();
+                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
+            }
+
+            $paymentMethod = \Auth::user()->defaultPaymentMethod();
+
+            \Auth::user()->update([
+                'card_brand'     => $paymentMethod->card->brand,
+                'card_last_four' => $paymentMethod->card->last4,
+            ]);
+
+            return back();
+        } catch (\Exception $ex) {
+            return $ex->getMessage();
+        }
     }
 }

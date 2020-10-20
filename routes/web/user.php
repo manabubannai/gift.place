@@ -18,9 +18,16 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
 
     // loginずみのみ
     Route::group(['middleware' => ['auth:user']], function () {
-        Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
+
+        // 仮のroute
+        Route::get('/card', 'DashboardController@card')->name('card');
+        Route::post('/card', 'DashboardController@cardStore')->name('card');
+
+        Route::get('/card-change', 'DashboardController@cardChangeForm')->name('card.change');
+        Route::post('/card-change', 'DashboardController@cardChange')->name('card.change');
 
         Route::group(['middleware' => []], function () {
+            Route::get('/dashboard', 'DashboardController@dashboard')->name('dashboard');
             Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
                 Route::get('/create', 'MessageController@create')->name('create');
                 Route::get('/{uuid}', 'MessageController@show')->name('show');

@@ -5,11 +5,13 @@ use App\Mail\Auth\ResetPasswordMailable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravel\Cashier\Billable;
 
 class User extends Authenticatable
 {
     use Notifiable;
     use SoftDeletes;
+    use Billable;
 
     /**
      * The attributes that are mass assignable.
@@ -22,6 +24,10 @@ class User extends Authenticatable
         'email',
         'cover_url',
         'api_token',
+        'stripe_id',
+        'card_brand',
+        'card_last_four',
+        'trial_ends_at',
     ];
 
     /**
