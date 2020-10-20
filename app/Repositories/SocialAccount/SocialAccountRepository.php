@@ -22,4 +22,14 @@ class SocialAccountRepository extends BaseRepository implements SocialAccountRep
     {
         return $this->socialAccount->where('provider_id', $providerId)->first();
     }
+
+    /**
+     * @param string $providerId
+     *
+     * @return bool
+     */
+    public function existsByProviderId(string $providerId): bool
+    {
+        return $this->socialAccount->where('provider_id', $providerId)->exists();
+    }
 }

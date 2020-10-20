@@ -16,38 +16,43 @@ class SocialAccountService implements SocialAccountServiceInterface
         $this->socialAccountRepository   = $socialAccountRepository;
     }
 
-    public function getOrCreate(ProviderUser $providerUser, string $providerName): \App\Models\User
+    public function findAlreadyRegisteredSocialAccount(ProviderUser $providerUser): ?\App\Models\SocialAccount
     {
-        //privider_idですでに登録済みかチェック
-        $socialAccount = $this->socialAccountRepository->findByProviderId($providerUser->id);
+        return $this->socialAccountRepository->findByProviderId($providerUser->id);
+    }
 
-        if (!$socialAccount) {
-            $user = \DB::transaction(function () use ($providerUser, $providerName) {
-                $user = $this->userRepository->create([
-                      'name'             => $providerUser->name,
-                      'email'            => $providerUser->email,
-                      'slug'             => $providerUser->nickname,
-                      'cover_url'        => $providerUser->avatar,
-                      'api_token'        => Str::random(60),
-                ]);
+    public function findAlreadyRegisteredUser(int $userId): \App\Models\User
+    {
+        $user = $this->userRepository->find($userId);
+        $user->fill([
+            'api_token' => Str::random(60),
+        ])->save();
 
-                $socialAccount = $this->socialAccountRepository->create([
-                    'user_id'                => $user->id,
-                    'provider_id'            => $providerUser->id,
-                    'provider'               => $providerName,
-                    'provider_access_token'  => $providerUser->token,
-                ]);
+        return $user;
+    }
 
-                return $user;
-            });
-        }
+    public function create(
+        ProviderUser $providerUser,
+        string $providerName
+    ): \App\Models\User {
+        $user = \DB::transaction(function () use ($providerUser, $providerName) {
+            $user = $this->userRepository->create([
+                  'name'             => $providerUser->name,
+                  'email'            => $providerUser->email,
+                  'slug'             => $providerUser->nickname,
+                  'cover_url'        => $providerUser->avatar,
+                  'api_token'        => Str::random(60),
+            ]);
 
-        if ($socialAccount) {
-            $user = $this->userRepository->find($socialAccount->user_id);
-            $user->fill([
-                'api_token' => Str::random(60),
-            ])->save();
-        }
+            $socialAccount = $this->socialAccountRepository->create([
+                'user_id'                => $user->id,
+                'provider_id'            => $providerUser->id,
+                'provider'               => $providerName,
+                'provider_access_token'  => $providerUser->token,
+            ]);
+
+            return $user;
+        });
 
         return $user;
     }
