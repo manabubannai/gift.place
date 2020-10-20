@@ -53,7 +53,7 @@ class DashboardController extends Controller
                 'card_last_four' => $paymentMethod->card->last4,
             ]);
 
-            // \Auth::user()->newSubscription('default', 'Stripeで作成されたプランID')->create($request->input('stripe_token'));
+            \Auth::user()->newSubscription('default', config('services.stripe.plan'))->create($paymentMethod->id);
 
             return back();
         } catch (\Exception $ex) {
