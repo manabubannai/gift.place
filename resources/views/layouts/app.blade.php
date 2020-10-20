@@ -24,11 +24,8 @@
 </head>
 <body>
 <div id="app">
-    @if(request()->is('/'))
-        @include('layouts._index_header')
-    @else
-        @include('layouts._header')
-    @endif
+
+    @include('layouts._header')
 
     @include('layouts._toast')
 

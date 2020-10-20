@@ -15,7 +15,6 @@
           @guest
               <a href="/getting-started" class="mr-2">はじめての方へ</a>
           @else
-              <a href="" class="mr-2 m-btn" style="color: #fff;">スポットを投稿する</a>
                 <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
                 </a>

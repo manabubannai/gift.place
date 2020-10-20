@@ -22,16 +22,6 @@ class MessageService implements MessageServiceInterface
      */
     public function userStoreMessage(int $userId, array $input)
     {
-        // すでに投稿があるか
-        if ($this->messageRepository->isUserAlreadyStoreByOneday($userId)) {
-            \Redirect::to(route('user.dashboard'))->send()->with([
-                'toast' => [
-                    'status'  => 'error',
-                    'message' => '投稿できるのは一日一回です',
-                ],
-            ]);
-        }
-
         if (!isset($input['uuid'])) {
             $uuid      = \Illuminate\Support\Str::uuid();
             $shortUuid = new ShortUuid();

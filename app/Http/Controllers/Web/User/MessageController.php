@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Web\User\Message\StoreRequest;
 use App\Models\MessageLike;
+use App\Repositories\Message\MessageRepositoryInterface;
 use App\Services\Message\MessageServiceInterface;
 
 class MessageController extends Controller
@@ -14,9 +15,11 @@ class MessageController extends Controller
      * @return void
      */
     public function __construct(
+        MessageRepositoryInterface $messageRepository,
         MessageServiceInterface $messageService
     ) {
-        $this->messageService = $messageService;
+        $this->messageService    = $messageService;
+        $this->messageRepository = $messageRepository;
     }
 
     public function show(string $uuId)
@@ -55,6 +58,16 @@ class MessageController extends Controller
 
     public function create()
     {
+        // すでに投稿があるか
+        if ($this->messageRepository->isUserAlreadyStoreByOneday(\Auth::user()->id)) {
+            return redirect()->route('user.dashboard')->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '投稿できるのは一日一回です',
+                ],
+            ]);
+        }
+
         return view('pages.user.messages.create');
     }
 
