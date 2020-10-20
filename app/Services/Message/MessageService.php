@@ -24,7 +24,7 @@ class MessageService implements MessageServiceInterface
     {
         // すでに投稿があるか
         if ($this->messageRepository->isUserAlreadyStoreByOneday($userId)) {
-            return redirect(route('user.dashboard'))->with([
+            \Redirect::to(route('user.dashboard'))->send()->with([
                 'toast' => [
                     'status'  => 'error',
                     'message' => '投稿できるのは一日一回です',
