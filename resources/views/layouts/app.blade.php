@@ -28,6 +28,7 @@
     @include('layouts._header')
 
     @include('layouts._toast')
+    @include('layouts._modal')
 
     <main>
         @if( isset($noContainer) && $noContainer == true )

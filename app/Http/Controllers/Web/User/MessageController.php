@@ -79,7 +79,11 @@ class MessageController extends Controller
         return redirect('/dashboard')->with([
             'toast' => [
                 'status'  => 'success',
-                'message' => '投稿しました',
+                'message' => '投稿が完了しました',
+            ],
+            'modal' => [
+                'status'  => 'success',
+                'message' => '投稿が完了しました',
             ],
         ]);
     }

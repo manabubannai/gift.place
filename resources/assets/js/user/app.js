@@ -8,12 +8,15 @@ require('./bootstrap')
 
 import Vue from 'vue'
 import Toasted from 'vue-toasted'
+import VModal from 'vue-js-modal'
 
 Vue.use(Toasted, {
     position: 'top-right',
     duration: 8000,
     containerClass: 'c-toasted',
 })
+
+Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
 
 /**
  * The following block of code may be used to automatically register your
@@ -29,6 +32,7 @@ Vue.use(Toasted, {
 // Vue.prototype.$axios = window.axios
 
 Vue.component('toast', require('./components/toast.vue').default)
+Vue.component('show-modal', require('./components/modal/showModal.vue').default)
 
 /* ============================================================================
  * button

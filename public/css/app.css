@@ -11431,6 +11431,80 @@ a.m-btn {
   font-weight: 600;
 }
 
+/* ----------------------------------------------------------------------------
+ * Modal
+ * ------------------------------------------------------------------------- */
+
+.m-modal__header {
+  background-color: #6b7c93;
+  border-bottom: 1px solid #DEDEDE;
+  padding-top: 10px;
+}
+
+.m-modal__header__ttl {
+  font-size: 16px;
+  text-align: center;
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.m-modal__header__close-btn {
+  background-color: #6b7c93;
+  position: absolute;
+  top: 10px;
+  right: 13px;
+  cursor: pointer;
+  width: 34px;
+  height: 34px;
+}
+
+.m-modal__content {
+  padding: 8px;
+}
+
+.m-modal__content--head {
+  font-size: 16px;
+  margin: 0 auto;
+  padding: 0 0 8px 0;
+  border-bottom: dotted 1px #ccc;
+  text-align: center;
+  font-weight: bold;
+}
+
+.m-modal__content--text {
+  flex: 1 0 auto;
+  width: 100%;
+  padding: 15px;
+  font-size: 14px;
+  color: #6b7c93;
+  text-align: center;
+}
+
+.m-modal__content--buttons {
+  display: flex;
+  flex: 0 1 auto;
+  width: 100%;
+  border-top: 1px solid #eee;
+  box-sizing: border-box;
+}
+
+.m-modal__content--button {
+  font-size: 12px !important;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  line-height: 40px;
+  height: 40px;
+  color: inherit;
+  font: inherit;
+  outline: none;
+  flex: 1 1 100%;
+  letter-spacing: 1px;
+}
+
 /* ============================================================================
 * pages
 * ========================================================================= */
