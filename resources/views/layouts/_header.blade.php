@@ -3,9 +3,15 @@
 
       <div class="s-header__content--left">
           <div class="s-header-logo">
-              <a href="/" class="">
+              @guest
+                <a href="/" class="">
+                    <img src="../images/frip_logo_color.png" class="s-header-logo__sizing">
+                </a>
+              @else
+                <a href="{{ route('user.dashboard') }}" class="">
                   <img src="../images/frip_logo_color.png" class="s-header-logo__sizing">
-              </a>
+                </a>
+              @endif
           </div>
       </div>
 
