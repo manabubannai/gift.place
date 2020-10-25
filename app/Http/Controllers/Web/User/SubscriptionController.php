@@ -52,9 +52,18 @@ class SubscriptionController extends Controller
                 'card_last_four' => $paymentMethod->card->last4,
             ]);
 
-            \Auth::user()->newSubscription('default', config('services.stripe.plan'))->create($paymentMethod->id);
+            \Auth::user()
+                ->newSubscription('default', config('services.stripe.plan'))
+                ->create($paymentMethod->id, [
+                    'metadata' => ['user_id' => \Auth::user()->id],
+                ]);
 
-            return redirect(route('user.dashboard'));
+            return redirect(route('user.dashboard'))->with([
+                'toast' => [
+                    'status'  => 'success',
+                    'message' => '入村手続きが完了しました',
+                ],
+            ]);
         } catch (\Exception $ex) {
             return $ex->getMessage();
         }
