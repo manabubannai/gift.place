@@ -54,7 +54,7 @@ class SubscriptionController extends Controller
 
             \Auth::user()
                 ->newSubscription('default', config('services.stripe.plan'))
-                ->create($paymentMethod->id, [
+                ->create($paymentMethod->id, [], [
                     'metadata' => ['user_id' => \Auth::user()->id],
                 ]);
 

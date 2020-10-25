@@ -59,7 +59,6 @@ class PaymentHistoryJob implements ShouldQueue
         $customer  = null;
         $account   = null;
 
-        logger($object);
         \Log::info('event:'.$payload['type']);
 
         $event     = $payload['type'] ?? 'unknown';
@@ -76,6 +75,7 @@ class PaymentHistoryJob implements ShouldQueue
         }
 
         if ($status !== PaymentHistory::STATUS_UNKNOWN) {
+            logger($object);
             try {
                 if (!$object) {
                     // ERROR
