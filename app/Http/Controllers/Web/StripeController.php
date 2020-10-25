@@ -9,6 +9,8 @@ class WebhookController extends Controller
 {
     public function stripe()
     {
+        \Log::info('stripe webhook!');
+
         $payload    = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? null;
         $exception  = null;

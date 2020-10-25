@@ -42,7 +42,7 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
             });
 
             Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
-                Route::get('/card-change', 'SubscriptionController@cardChangeForm')->name('card.change');
+                Route::get('/card-change', 'SubscriptionController@cardChangeForm')->name('card.change.form');
                 Route::post('/card-change', 'SubscriptionController@cardChange')->name('card.change');
             });
         });

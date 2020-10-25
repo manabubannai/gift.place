@@ -29,7 +29,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
                     <a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="dropdown-item">マイページ</a>
-                    <a href="{{ route('user.subscriptions.card.change') }}" class="dropdown-item">カードを変更</a>
+                    <a href="{{ route('user.subscriptions.card.change.form') }}" class="dropdown-item">カードを変更</a>
                     <a class="dropdown-item" href="{{ route('user.auth.logout') }}"
                        onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">

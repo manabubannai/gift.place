@@ -110,7 +110,6 @@ class PaymentHistoryJob implements ShouldQueue
 
                     \MailHelper::send($user->email, new NoticeUserPaymentMailable(
                         $user,
-                        $plan,
                         [
                             sprintf('%s クレジットカード課金エラー', Carbon::now()->format('Y年m月d日')),
                         ]
@@ -118,7 +117,6 @@ class PaymentHistoryJob implements ShouldQueue
                 } else {
                     \MailHelper::send($user->email, new NoticeUserPaymentMailable(
                         $user,
-                        $plan
                     ));
                 }
             } catch (\Exception $e) {
