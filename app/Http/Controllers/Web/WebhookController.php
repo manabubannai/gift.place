@@ -12,8 +12,7 @@ class WebhookController extends Controller
     {
         \Log::info('stripe webhook!');
 
-        // $payload    = @file_get_contents('php://input');
-        $payload    = json_decode($request->getContent(), true);
+        $payload    = @file_get_contents('php://input');
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? null;
         $exception  = null;
 
