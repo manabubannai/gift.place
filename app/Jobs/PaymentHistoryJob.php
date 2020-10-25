@@ -58,6 +58,9 @@ class PaymentHistoryJob implements ShouldQueue
         $meta      = $object['metadata'] ?? [];
         $customer  = null;
         $account   = null;
+
+        \Log::info('event:'.$payload['type']);
+
         $event     = $payload['type'] ?? 'unknown';
         $status    = PaymentHistory::STATUS_UNKNOWN;
         switch ($event) {

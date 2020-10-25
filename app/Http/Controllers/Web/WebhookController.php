@@ -3,15 +3,17 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use App\Jobs\PaymentHistoryJob;
+use Illuminate\Http\Request;
 use Stripe\Webhook;
 
 class WebhookController extends Controller
 {
-    public function stripe()
+    public function handleWebhook(Request $request)
     {
         \Log::info('stripe webhook!');
 
-        $payload    = @file_get_contents('php://input');
+        // $payload    = @file_get_contents('php://input');
+        $payload    = json_decode($request->getContent(), true);
         $sig_header = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? null;
         $exception  = null;
 
