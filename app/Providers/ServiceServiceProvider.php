@@ -36,5 +36,10 @@ class ServiceServiceProvider extends ServiceProvider
             \App\Services\Message\MessageServiceInterface::class,
             \App\Services\Message\MessageService::class
         );
+
+        $this->app->bind(
+            \App\Services\Payment\PaymentServiceInterface::class,
+            \App\Services\Payment\PaymentService::class
+        );
     }
 }
