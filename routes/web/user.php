@@ -39,6 +39,9 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
 
                 Route::get('/{slug}/edit', 'UserController@edit')->name('edit');
                 Route::put('/{slug}', 'UserController@update')->name('update');
+
+                Route::get('/{slug}/delete', 'UserController@destroyForm')->name('destroy.form');
+                Route::delete('/{slug}', 'UserController@destroy')->name('destroy');
             });
 
             Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {

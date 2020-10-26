@@ -46,12 +46,18 @@ class LocalLoginController extends Controller
     {
         \DB::beginTransaction();
         try {
-            $user = User::create([
-                'name'             => $request->name,
-                'slug'             => $request->name,
-                'email'            => $request->email,
-                'api_token'        => Str::random(60),
-            ]);
+            if (!User::where('email', $request->email)->exists()) {
+                $user = User::create([
+                    'name'             => $request->name,
+                    'slug'             => $request->name,
+                    'email'            => $request->email,
+                    'api_token'        => Str::random(60),
+                ]);
+            }
+
+            if (User::where('email', $request->email)->exists()) {
+                $user = User::where('email', $request->email)->first();
+            }
 
             \DB::commit();
         } catch (\Exception $e) {

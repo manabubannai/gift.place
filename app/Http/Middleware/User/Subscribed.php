@@ -17,7 +17,12 @@ class Subscribed
     {
         if ($request->user() && !$request->user()->subscribed('default')) {
             // このユーザーは支払っていない顧客
-            return redirect(route('user.subscriptions.create'));
+            return redirect(route('user.subscriptions.create'))->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '月額390円の登録が必要です',
+                ],
+            ]);
         }
 
         return $next($request);
