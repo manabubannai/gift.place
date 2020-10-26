@@ -34,14 +34,14 @@ class NoticeUserPaymentMailable extends Mailable
     public function build()
     {
         if (count($this->errors) > 0) {
-            $subject = 'プランのお支払いでエラーが発生しました';
+            $subject = 'お支払いでエラーが発生しました';
 
             return $this->view('emails.user.notification-payment-failed', [
                 'user'     => $this->user,
                 'errors'   => $this->errors,
             ])->subject($subject);
         } else {
-            $subject = 'プランのお支払いを受け付けました';
+            $subject = 'お支払いを受け付けました';
 
             return $this->view('emails.user.notification-payment', [
                 'user'            => $this->user,
