@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web\User\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -20,8 +19,6 @@ class LocalLoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
@@ -49,12 +46,18 @@ class LocalLoginController extends Controller
     {
         \DB::beginTransaction();
         try {
-            $user = User::create([
-                'name'             => $request->name,
-                'slug'             => $request->name,
-                'email'            => $request->email,
-                'api_token'        => Str::random(60),
-            ]);
+            if (!User::where('email', $request->email)->exists()) {
+                $user = User::create([
+                    'name'             => $request->name,
+                    'slug'             => $request->name,
+                    'email'            => $request->email,
+                    'api_token'        => Str::random(60),
+                ]);
+            }
+
+            if (User::where('email', $request->email)->exists()) {
+                $user = User::where('email', $request->email)->first();
+            }
 
             \DB::commit();
         } catch (\Exception $e) {
