@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Web\User\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Auth;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -20,8 +19,6 @@ class LocalLoginController extends Controller
     | to conveniently provide its functionality to your applications.
     |
     */
-
-    use AuthenticatesUsers;
 
     /**
      * Where to redirect users after login.
