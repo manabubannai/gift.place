@@ -31,7 +31,7 @@
         <main class="p-index__main">
           <h1 class="p-index__main_title">ギフト村</h1>
           <p class="p-index__main_text">1日1回、出会った人に感謝しよう。</p>
-          <a href="#" class="m-btn" btn-type="main">ギフト村に入る</a>
+          <a href="{{ route('user.auth.redirect.provider', 'twitter') }}" class="m-btn" btn-type="main">ギフト村に入る</a>
         </main>
 
         <section class="p-index__gift" id="about">

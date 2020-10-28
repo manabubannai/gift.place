@@ -59,6 +59,8 @@
         @guest
           <li><a href="#about" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
           <li><a href="#cost" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
+          <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
         @else
 
         <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
@@ -87,6 +89,8 @@
         @guest
           <li><a href="#about" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
           <li><a href="#cost" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
+          <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
         @else
           <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="s-header__nav-link">マイページ</li>
           <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
