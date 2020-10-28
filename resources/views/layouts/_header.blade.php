@@ -53,16 +53,30 @@
 <header class="s-header">
   <div class="flex_sb align_center">
     <div><a href="/"><img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img"></a></div>
-    
+
     <nav class="s-header__nav">
       <ul class="s-header__nav--ul">
-        <li><a href="#1" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
-        <li><a href="#2" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
-        <li><a href="#" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-        <li><a href="#" class="s-header__nav--btn m-btn">投稿する</a></li>
+        @guest
+          <li><a href="#about" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
+          <li><a href="#cost" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
+        @else
+
+        <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+
+          <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="s-header__nav-link">マイページ</li>
+          
+          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
+          <li><a class="s-header__nav-link" href="{{ route('user.auth.logout') }}"
+                       onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">ログアウト</a></li>
+
+          <form id="logout-form" action="{{ route('user.auth.logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
+        @endif
       </ul>
     </nav>
-    
+
     <div class="m-hamburger">
       <span class="m-hamburger__line"></span>
       <span class="m-hamburger__line"></span>
@@ -70,10 +84,21 @@
     </div>
     <nav class="globalMenuSp">
       <ul>
-        <li><a href="#1" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
-        <li><a href="#2" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
-        <li><a href="#" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-        <li><a href="#" class="s-header__nav--btn m-btn">投稿する</a></li>
+        @guest
+          <li><a href="#about" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
+          <li><a href="#cost" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
+        @else
+          <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="s-header__nav-link">マイページ</li>
+          <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
+          <li><a class="s-header__nav-link" href="{{ route('user.auth.logout') }}"
+                       onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">ログアウト</a></li>
+
+          <form id="logout-form" action="{{ route('user.auth.logout') }}" method="POST" style="display: none;">
+              @csrf
+          </form>
+        @endif
       </ul>
     </nav>
   </div>

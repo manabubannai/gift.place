@@ -34,7 +34,7 @@
           <a href="#" class="m-btn" btn-type="main">ギフト村に入る</a>
         </main>
 
-        <section class="p-index__gift" id="1">
+        <section class="p-index__gift" id="about">
           <h2 class="p-index__sub_title p-index__gift_title">ギフト村とは</h2>
           <p class="p-index__sub_text">寝る前にギフト（＝感謝）を投稿して、<br class="br_hide">幸福度を高めるサービスです</p>
           <div class="flex_sb">
@@ -53,7 +53,7 @@
           </div>
         </section>
 
-        <section class="p-index__cost" id="2">
+        <section class="p-index__cost" id="cost">
           <h2 class="p-index__sub_title p-index__cost_title">利用料金</h2>
           <p class="p-index__sub_text">感謝の気持ちを込めてサンキュー価格にしております</p>
            <div class="p-index__cost_cntent">
