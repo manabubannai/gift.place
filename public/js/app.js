@@ -2262,7 +2262,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }
       }).then(function (result) {
-        if (result.error) {// Display error.message in your UI.
+        if (result.error) {
+          // Display error.message in your UI.
+          console.log(result.error);
         } else {
           // The setup has succeeded. Display a success message.
           // PaymentMethod ID apiに渡す

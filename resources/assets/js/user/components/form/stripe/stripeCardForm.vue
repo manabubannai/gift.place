@@ -100,6 +100,7 @@ export default {
                 .then(function (result) {
                     if (result.error) {
                         // Display error.message in your UI.
+                        console.log(result.error)
                     } else {
                         // The setup has succeeded. Display a success message.
 

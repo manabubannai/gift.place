@@ -47,11 +47,7 @@ class SubscriptionController extends Controller
                 $stripeCustomer->id
             );
 
-            \Auth::user()
-                ->newSubscription('default', config('services.stripe.plan'))
-                ->create($paymentMethod->id, [], [
-                    'metadata' => ['user_id' => \Auth::user()->id],
-                ]);
+            $this->paymentService->userCreateNewSubscription(\Auth::user(), $paymentMethod->id);
 
             return redirect(route('user.dashboard'))->with([
                 'toast' => [
