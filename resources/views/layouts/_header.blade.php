@@ -1,4 +1,4 @@
-<header class="s-header" style="position: sticky; top: 0; z-index: 9999;">
+<!-- <header class="s-header" style="position: sticky; top: 0; z-index: 9999;">
     <div class="s-header__container">
 
       <div class="s-header__content--left">
@@ -48,4 +48,33 @@
         </nav>
       </div>
     </div>
+</header> -->
+
+<header class="s-header">
+  <div class="flex_sb align_center">
+    <div><a href="/"><img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img"></a></div>
+    
+    <nav class="s-header__nav">
+      <ul class="s-header__nav--ul">
+        <li><a href="#1" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
+        <li><a href="#2" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
+        <li><a href="#" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+        <li><a href="#" class="s-header__nav--btn m-btn">投稿する</a></li>
+      </ul>
+    </nav>
+    
+    <div class="m-hamburger">
+      <span class="m-hamburger__line"></span>
+      <span class="m-hamburger__line"></span>
+      <span class="m-hamburger__line"></span>
+    </div>
+    <nav class="globalMenuSp">
+      <ul>
+        <li><a href="#1" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
+        <li><a href="#2" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
+        <li><a href="#" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+        <li><a href="#" class="s-header__nav--btn m-btn">投稿する</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>

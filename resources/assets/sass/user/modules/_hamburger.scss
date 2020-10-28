@@ -1,0 +1,57 @@
+.m-hamburger {
+  display: none;
+}
+
+@include max-screen($breakpoint-mobile) {
+  .m-hamburger {
+    display : block;
+    position: fixed;
+    z-index : 3;
+    right : 10px;
+    width : 42px;
+    height: 42px;
+    cursor: pointer;
+    text-align: center;
+
+    &__line {
+      display : block;
+      position: absolute;
+      width   : 30px;
+      height  : 2px ;
+      left    : 6px;
+      background : #555;
+      -webkit-transition: 0.3s ease-in-out;
+      -moz-transition   : 0.3s ease-in-out;
+      transition        : 0.3s ease-in-out;
+    }
+
+    &__line:nth-child(1) {
+      top: 10px;
+    }
+
+    &__line:nth-child(2) {
+      top: 20px;
+    }
+
+    &__line:nth-child(3) {
+      top: 30px;
+    }
+  }
+
+  /* ナビ開いてる時のボタン */
+  .active .m-hamburger__line:nth-child(1) {
+    top : 16px;
+    left: 6px;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform   : rotate(-45deg);
+    transform        : rotate(-45deg);
+  }
+
+  .active .m-hamburger__line:nth-child(2),
+  .active .m-hamburger__line:nth-child(3) {
+    top: 16px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform   : rotate(45deg);
+    transform        : rotate(45deg);
+  }
+}

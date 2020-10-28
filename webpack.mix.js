@@ -1,5 +1,5 @@
 const mix = require('laravel-mix')
-// const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const CompressionPlugin = require("compression-webpack-plugin");
 
 /*
@@ -31,14 +31,14 @@ mix.webpackConfig({
         level: 9
       }
     }),
-  //   new CopyWebpackPlugin(
-  //     [
-  //       {
-  //         from: "./resources/assets/images/",
-  //         to:   "images/"
-  //       }
-  //     ]
-  //   )
+    new CopyWebpackPlugin(
+      [
+        {
+          from: "./resources/assets/images/",
+          to:   "images/"
+        }
+      ]
+    )
   ]
 })
 
