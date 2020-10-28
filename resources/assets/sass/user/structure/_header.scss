@@ -1,77 +1,69 @@
-
 .s-header {
-  position: relative;
-  width: 100%;
-  min-width: 960px;
-  background: $c-white;
-  box-shadow: 0 0 4px rgba(34,34,34,0.2);
-  border-bottom: 2px solid #d5d5d5;
+  margin: 40px 0;
 
-  &__container {
+  &__img {
+    height: 70px;
+  }
+
+  &__nav--ul {
     display: flex;
+  }
+
+  &__nav--ul li {
+    font-size: 16px;
+    text-align: center;
     position: relative;
-    align-items: center;
-    justify-content: space-between;
-    max-width: 960px;
-    height: 80px;
-    margin: 0 auto;
   }
 
-  &__content {
-    &--left {
-
-    }
-
-    &--right {
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-    }
+  &__nav--ul li::before {
+    display: block;
+    content: "";
+    background-color: #58595B;
+    width: 1px;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  &-logo{
-    &__sizing {
-      height: 35px;
-      width: auto;
-      object-fit: cover;
-    }
+
+  &__nav-link {
+    text-decoration: none;
+    color: #201E1F;
+    text-align: center;
+    margin: 20px;
+    display: block;
   }
 
-  &-list {
-    &--link {
-      color: $c-text-headliner;
-      text-decoration: none;
-    }
-    &__avatar {
-      border-radius: 30px;
-      width: 30px;
-      height: 30px;
-    }
-
-    &__dropdown {
-      &__nav-lists {
-        li {
-          display: block;
-          padding: 6px 15px;
-          &::hover {
-            // background-color: #aaaaaa;
-          }
-          a {
-            color: #4a4a4b;
-          }
-        }
-      }
-    }
+  &__nav-link span {
+    display: block;
+    font-size: 11px;
+    color: #77BC1F;
   }
-  .m-hamburger {
-    .bm-burger-button {
-      top: 16px;
-    }
+
+  &__nav--btn {
+    background-color: #35A638;
+    padding: 5px 25px;
+    margin: 20px;
+  }
+  &__spnav {
+    display: none;
   }
 }
 
 @include max-screen($breakpoint-mobile) {
   .s-header {
-    min-width: 100%;
+    margin: 10px 0;
+
+    &__nav--ul {
+      display: none;
+    }
+
+    &__nav-link {
+      text-decoration: none;
+      color: #201E1F;
+      text-align: center;
+      margin: 0;
+    }
   }
 }

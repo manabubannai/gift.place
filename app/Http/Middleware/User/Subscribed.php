@@ -16,7 +16,9 @@ class Subscribed
      */
     public function handle($request, Closure $next)
     {
-        if ($request->user() && $request->user()->subscription('default')->onGracePeriod()) {
+        if ($request->user() &&
+            !is_null($request->user()->subscription('default')) &&
+            $request->user()->subscription('default')->onGracePeriod()) {
             $request->user()->subscription('default')->resume();
         }
 

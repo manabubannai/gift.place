@@ -1,31 +1,42 @@
 .s-footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 60px;
-  padding: 10px;
-  background-color: #fff;
-  border: 1px solid #ebebeb;
-  z-index: 10;
+    margin-bottom: 40px;
+    font-size: 15px;
 
-  display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+    &_nav--ul {
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 5px;
+    }
 
-  a {
-    text-decoration: none;
-  }
+    &_nav--ul li {
+      position: relative;
+    }
 
-  span {
-    text-align: center;
-  }
+    &_nav--link {
+      padding: 0 15px;
+      text-decoration: none;
+      color: #201E1F;
+      display: block;
 
-  p {
-    font-size: 8px;
-  }
+    }
 
-  i {
-    font-size: 20px;
-  }
+    &_nav--ul li::before {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 1px;
+      height: 18px;
+      background-color: #201E1F;
+    }
+
+    &_nav--ul li::after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: 1px;
+      height: 18px;
+      right: -1px;
+      top: 0;
+      background-color: #201E1F;
+    }
 }
