@@ -52,7 +52,17 @@
 
 <header class="s-header">
   <div class="flex_sb align_center">
-    <div><a href="/"><img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img"></a></div>
+    <div>
+      @guest
+        <a href="/">
+          <img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
+        </a>
+      @else
+        <a href="{{ route('user.dashboard') }}">
+          <img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
+        </a>
+      @endif
+    </div>
 
     <nav class="s-header__nav">
       <ul class="s-header__nav--ul">
