@@ -55,11 +55,11 @@
     <div>
       @guest
         <a href="/">
-          <img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
+          <img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
         </a>
       @else
         <a href="{{ route('user.dashboard') }}">
-          <img src="../images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
+          <img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
         </a>
       @endif
     </div>

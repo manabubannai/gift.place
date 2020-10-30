@@ -39,15 +39,15 @@
           <p class="p-index__sub_text">寝る前にギフト（＝感謝）を投稿して、<br class="br_hide">幸福度を高めるサービスです</p>
           <div class="flex_sb">
             <div class="p-index__gift_content--item">
-              <img src="../images/img_5.png" alt="出会った人に感謝しよう" class="p-index__gift_content--img">
+              <img src="https://files.gift.place/images/img_5.png" alt="出会った人に感謝しよう" class="p-index__gift_content--img">
               <p class="p-index__gift_content--text">１日１回、出会った人に感謝することであなたの幸福度を高めることができます。直接本人に伝えることが出来なくても、想いを抱くことが大切です。</p>
             </div>
             <div class="p-index__gift_content--item">
-              <img src="../images/img_6.png" alt="感謝のパワーを獲得しよう" class="p-index__gift_content--img">
+              <img src="https://files.gift.place/images/img_6.png" alt="感謝のパワーを獲得しよう" class="p-index__gift_content--img">
               <p class="p-index__gift_content--text">寝る前などに感謝の投稿をすることで上記５項目の効果が期待されます。体感でも効果を感じますし、科学的にも実証されています。</p>
             </div>
             <div class="p-index__gift_content--item">
-              <img src="../images/img_7.png" alt="売上の50％は寄付します" class="p-index__gift_content--img">
+              <img src="https://files.gift.place/images/img_7.png" alt="売上の50％は寄付します" class="p-index__gift_content--img">
               <p class="gift_content--text">ギフト村の売上の５０％を慈善団体に寄付します。寄付先や寄付額などの内訳につきましては毎月末ギフト村にて公開いたします。</p>
             </div>
           </div>
@@ -57,13 +57,13 @@
           <h2 class="p-index__sub_title p-index__cost_title">利用料金</h2>
           <p class="p-index__sub_text">感謝の気持ちを込めてサンキュー価格にしております</p>
            <div class="p-index__cost_cntent">
-            <img src="../images/contents_2.png" alt="月額390円" class="p-index__cost_cntent--img">
+            <img src="https://files.gift.place/images/contents_2.png" alt="月額390円" class="p-index__cost_cntent--img">
             <p class="p-index__cost_cntent--text">※慈善団体に一部<br class="br_pc">寄付されます。</p>
            </div>
 
            <div class="twitter">
             <p class="twitter_txt">Twitterログインで「ギフト村」に参加できます</p>
-            <p><a href="#" class="m-btn" btn-type="twitter"><img src="../images/twi_logo.png" alt="twiter_logo" class="twitter_btn--logo"> Twitterで登録する</a></p>
+            <p><a href="#" class="m-btn" btn-type="twitter"><img src="https://files.gift.place/images/twi_logo.png" alt="twiter_logo" class="twitter_btn--logo"> Twitterで登録する</a></p>
            </div>
         </section>
 
