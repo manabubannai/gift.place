@@ -25,10 +25,9 @@ class PaymentHistoryJob implements ShouldQueue
     /**
      * Create a new job instance.
      */
-    public function __construct($payload, $exception)
+    public function __construct($payload)
     {
         $this->payload   = $payload;
-        $this->exception = $exception;
     }
 
     /**
@@ -53,7 +52,7 @@ class PaymentHistoryJob implements ShouldQueue
 
     private function handleStripe()
     {
-        $payload   = json_decode($this->payload, true);
+        $payload   = $this->payload;
         $object    = (isset($payload['data']['object'])) ? $payload['data']['object'] : null;
         $meta      = $object['metadata'] ?? [];
         $customer  = null;
