@@ -41,10 +41,10 @@ Vue.component(
 /* ============================================================================
  * form
  * ========================================================================= */
-Vue.component(
-    'stripe-card-form',
-    require('./components/form/stripe/stripeCardForm.vue').default
-)
+// Vue.component(
+//     'stripe-card-form',
+//     require('./components/form/stripe/stripeCardForm.vue').default
+// )
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

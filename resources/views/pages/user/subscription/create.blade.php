@@ -28,3 +28,7 @@
         :client-secret="{{ json_encode($intent->client_secret) }}"></stripe-card-form>
     </div>
 @endsection
+
+@section('js')
+<script src="{{ asset('js/stripe.js') }}"></script>
+@endsection
