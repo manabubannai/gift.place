@@ -2,6 +2,7 @@
 namespace App\Services\Payment;
 
 use App\Repositories\User\UserRepositoryInterface;
+use Laravel\Cashier\Exceptions\IncompletePayment;
 
 class PaymentService implements PaymentServiceInterface
 {
@@ -12,13 +13,43 @@ class PaymentService implements PaymentServiceInterface
     }
 
     /**
+     * userがサブスクリプションを作成する.
+     *
+     * @param \App\Models\User $authUser
+     * @param string           $paymentMethodId
+     *
+     * @return void
+     */
+    public function userCreateNewSubscription(
+        \App\Models\User $authUser,
+        string $paymentMethodId
+    ) {
+        try {
+            $authUser->newSubscription('default', config('services.stripe.plan'))
+                ->create($paymentMethodId, [], [
+                    'metadata' => ['user_id' => $authUser->id],
+                ]);
+        } catch (IncompletePayment $exception) {
+            // dd($exception);
+            \Log::error($exception);
+
+            return redirect()->route('user.subscriptions.create')->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました',
+                ],
+            ]);
+        }
+    }
+
+    /**
      * userがクレジットカードを登録する.
      *
      * @param \App\Models\User $authUser
      * @param string           $requestPaymentMethod
      * @param string           $stripeCustomerId
      *
-     * @return void
+     * @return object
      */
     public function updateOrCreateUserPaymentMethod(
         \App\Models\User $authUser,

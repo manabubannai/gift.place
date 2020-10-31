@@ -47,11 +47,7 @@ class SubscriptionController extends Controller
                 $stripeCustomer->id
             );
 
-            \Auth::user()
-                ->newSubscription('default', config('services.stripe.plan'))
-                ->create($paymentMethod->id, [], [
-                    'metadata' => ['user_id' => \Auth::user()->id],
-                ]);
+            $this->paymentService->userCreateNewSubscription(\Auth::user(), $paymentMethod->id);
 
             return redirect(route('user.dashboard'))->with([
                 'toast' => [
@@ -77,17 +73,23 @@ class SubscriptionController extends Controller
         try {
             $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
 
-            if (\Auth::user()->hasDefaultPaymentMethod()) {
-                \Auth::user()->deletePaymentMethods();
-                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
-            }
+            // if (\Auth::user()->hasDefaultPaymentMethod()) {
+            //     \Auth::user()->deletePaymentMethods();
+            //     \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
+            // }
 
-            $paymentMethod = \Auth::user()->defaultPaymentMethod();
+            // $paymentMethod = \Auth::user()->defaultPaymentMethod();
 
-            \Auth::user()->update([
-                'card_brand'     => $paymentMethod->card->brand,
-                'card_last_four' => $paymentMethod->card->last4,
-            ]);
+            // \Auth::user()->update([
+            //     'card_brand'     => $paymentMethod->card->brand,
+            //     'card_last_four' => $paymentMethod->card->last4,
+            // ]);
+
+            $paymentMethod = $this->paymentService->updateOrCreateUserPaymentMethod(
+                \Auth::user(),
+                $request->input('payment_method'),
+                $stripeCustomer->id
+            );
 
             return back()->with([
                 'toast' => [
