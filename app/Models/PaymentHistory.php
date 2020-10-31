@@ -21,7 +21,6 @@ class PaymentHistory extends Model
         'type',
         'amount',
         'payload',
-        'exception',
     ];
 
     protected $dates = [

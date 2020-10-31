@@ -23,7 +23,6 @@ class CreatePaymentHistoriesTable extends Migration
             $table->integer('type')->comment('支払種別 > 定期:1, 単発:2');
             $table->integer('amount');
             $table->text('payload');
-            $table->text('exception');
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 
