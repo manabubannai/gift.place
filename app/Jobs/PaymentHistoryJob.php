@@ -63,7 +63,7 @@ class PaymentHistoryJob implements ShouldQueue
         $event     = $payload['type'] ?? 'unknown';
         $status    = PaymentHistory::STATUS_UNKNOWN;
         switch ($event) {
-            case 'invoice.paid':
+            case 'invoice.payment_succeeded':
                 $status = PaymentHistory::STATUS_SUCCEEDED;
                 break;
             case 'invoice.payment_failed':
