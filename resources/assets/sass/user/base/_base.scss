@@ -1,263 +1,119 @@
-/* ----------------------------------------------------------------------------
- * Base
- * ------------------------------------------------------------------------- */
-html,
-body,
-div,
-span,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-abbr,
-address,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-samp,
-small,
-strong,
-var,
-b,
-i,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-input,
-button,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-figcaption,
-figure,
-footer,
-header,
-main,
-menu,
-nav,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  font-size: 100%;
-  font-style: normal;
-  box-sizing: border-box;
-}
+@charset "utf-8";
 
-html,
-body {
-  min-height: 700px;
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code,
+del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var,
+b, i,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+margin:0;
+padding:0;
+border:0;
+outline:0;
+font-size:100%;
+vertical-align:baseline;
+list-style: none;
 }
 
 body {
-  font-size: 14px;
-  font-weight: 500;
-  color: $c-text-normal;
-  text-align: left;
-  line-height: 1.4;
-  word-break: break-word;
-  background-color: $c-white;
+  -webkit-text-size-adjust: 100%;
+  color: #201E1F;
+  font-family: 'TsukuARdGothic-Regular','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic','Yu Gothic UI','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
+  line-height: 1.2;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin: 0;
-  font-size: 14px;
-  font-weight: normal;
+
+html{
+/*overflow-y: scroll;*/
+-webkit-text-size-adjust: 100%;
+-ms-text-size-adjust: 100%;
 }
 
-li {
-  list-style: none;
+article,aside,details,figcaption,figure,
+footer,header,hgroup,menu,nav,section {
+display:block;
 }
 
-strong {
-  font-weight: normal;
-  color: #a10;
-}
+nav ul {list-style:none;}
 
-// table {
-//   border-collapse: collapse;
-// }
-table{
-  border-collapse: separate;
-}
+blockquote, q {quotes:none;}
 
-th,
-td {
-  vertical-align: middle;
-  border-collapse: collapse;
+blockquote:before, blockquote:after,
+q:before, q:after {
+content:'';
+content:none;
 }
-
-a,
-button {
-  cursor: pointer;
-  transition: 0.3s all ease;
-}
-
-button:focus {
-  outline:0;
-}
-
-input,
-textarea {
-  outline: none;
-  color: $c-text-normal;
-  &::-webkit-input-placeholder {
-    font-size: 14px;
-    color: $c-text-disable;
-  }
-  &::-moz-placeholder {
-    font-size: 14px;
-    color: $c-text-disable;
-  }
-  &[disabled] {
-    color: $c-text-normal;
-    background: #ddd;
-  }
-}
-
+ol, ul {list-style: none;}
 a {
-  color: $c-text-link-normal;
-  text-decoration: none !important;
-
-  &:hover {
-    color: $c-text-link-normal;
-    text-decoration: none !important;
-  }
-  &:active {
-    color: $c-text-link-press;
-  }
-
-  // 非活性
-  &.is-disabled {
-    i {
-      // color: $c-text-disable;
-    }
-    &:before {
-      // color: $c-text-disable;
-    }
-  }
+margin:0;
+padding:0;
+font-size:100%;
+vertical-align:baseline;
+background:transparent;
 }
 
+/* change colours to suit your needs */
+ins {
+background-color:#ff9;
+color:#000;
+text-decoration:none;
+}
+
+/* change colours to suit your needs */
+mark {
+background-color:#ff9;
+color:#000;
+font-style:italic;
+font-weight:bold;
+}
+
+del {text-decoration: line-through;}
+abbr[title], dfn[title] {
+border-bottom:1px dotted;
+cursor:help;
+}
+
+table {
+border-collapse:collapse;
+border-spacing:0;
+font-size: inherit; /* モダンブラウザ向け */
+font: 100%; /* Win IE 5-5.5､6(後方互換モード)向け */
+}
+
+hr {
+display:block;
+height:1px;
+border:0;
+border-top:1px solid #cccccc;
+margin:1em 0;
+padding:0;
+}
+
+input, select {vertical-align:middle;}
+img, iframe {max-width: 100%;}
 img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: top;
+box-sizing: border-box;
+height: auto;
+}
+* {
+-webkit-box-sizing: border-box;
+-moz-box-sizing:    border-box;
+box-sizing:         border-box;
 }
 
-// カレント、非活性
-.is-current,
-.is-disabled {
-  &:hover {
-    cursor: default;
-  }
+/* For modern browsers */
+.cf:before,.cf:after {
+  content:"";
+  display:table;
 }
+.cf:after { clear:both;}
 
-// ウィンドウ固定
-.is-fixed {
-  overflow: hidden !important;
-}
+/* For IE 6/7 (trigger hasLayout) */
+.cf {zoom:1;}
 
-.g-clearfix::after {
-  display: block;
-  clear: both;
-  content: "";
-}
-
-.g-ffRoboto {
-  font-family: "Roboto Condensed";
-}
-
-//ブラウザのfocusを打ち消す
-input[type="text"],
-input[type="password"],
-a,
-textarea,
-select,
-button[type="submit"] {
-  outline: none;
-}
-
-// text align
-.text-left {
-  text-align: left;
-}
-
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-
-/* iOSでのデフォルトスタイルをリセット */
-input[type="submit"],
-input[type="button"] {
-  border-radius: 0;
-  -webkit-box-sizing: content-box;
-  -webkit-appearance: button;
-  appearance: button;
-  border: none;
-  border-radius: 0;
-  box-sizing: border-box;
-    &::-webkit-search-decoration {
-      display: none;
-    }
-    &::focus {
-      outline-offset: -2px;
-    }
-}
-
-
-@include max-screen($breakpoint-mobile) {
-
-  input[type=text] {
-    font-size: 16px;
-    border: none;
-    border-radius: 0;
-    outline: none;
-    background: none;
-    // transform: scale(0.8);
-  }
-
-
-}

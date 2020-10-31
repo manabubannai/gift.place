@@ -1,0 +1,56 @@
+@startuml
+package user {
+    note left of user
+        - twitter認証後支払いpageにredirect
+        - 支払いがないとuserはサービスを使用できない
+
+        - 保存できるカードは1枚までとし、users tableに保存
+        切り替えたい場合はusers tableを更新し、stripeのpayment methodを更新 + 次からのサブスク処理を新しく登録したカードで処理できるようにする
+        - ユーザー退会時、サブスクリプションをキャンセルし、users tableは特にいじらない
+    end note
+    class user {
+    }
+}
+
+package message {
+    note left of message
+         - userによる投稿は一日に一回まで
+    end note
+
+    note left of like
+        - ユーザーは投稿にイイネできる
+        - 投稿のイイネは非表示
+        - ユーザーは誰からイイネが届いたか見える
+        => 自分の投稿の投稿詳細pageにアクセスした時のみ、いいねをした人が見える
+        - いいねされた場合、通知
+    end note
+
+    class message {
+
+    }
+
+    class like {
+
+    }
+
+}
+
+package payment {
+    note left of subscriptions
+       - 月額390のサブスクリプション
+       - 再入会時、有効期限が残っている場合、サブスクリプション再開
+       - 再入会時、有効期限が残っていない場合、登録されているカード情報 or カードを変更したのち、決済させる
+    end note
+
+    class subscriptions {
+
+    }
+}
+
+
+
+
+message <|-- user
+
+
+@enduml

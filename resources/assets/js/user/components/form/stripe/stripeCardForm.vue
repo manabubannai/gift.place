@@ -18,7 +18,6 @@
 import { loadStripe } from '@stripe/stripe-js'
 
 export default {
-    name: 'StripeFrom',
     props: {
         route: {
             type: String,

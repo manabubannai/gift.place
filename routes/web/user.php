@@ -34,7 +34,6 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
             });
 
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-                // Route::get('/me', 'UserController@me')->name('me');
                 Route::get('/{slug}', 'UserController@show')->name('show');
 
                 Route::get('/{slug}/edit', 'UserController@edit')->name('edit');
