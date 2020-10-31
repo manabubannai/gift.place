@@ -84,8 +84,9 @@ export default {
             })
         },
         checkout() {
-            const route = this.route
             this.loading = true
+            const route = this.route
+            const toasted = this.$toasted
 
             const cardHolderName = document.getElementById('card-holder-name')
             this.stripe
@@ -100,7 +101,7 @@ export default {
                 .then(function (result) {
                     if (result.error) {
                         // Display error.message in your UI.
-                        console.log(result.error)
+                        toasted.show(result.error.message, { type: 'error' })
                     } else {
                         // The setup has succeeded. Display a success message.
 
@@ -128,6 +129,8 @@ export default {
                         form.submit()
                     }
                 })
+
+            this.loading = false
         },
     },
 }

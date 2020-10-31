@@ -30,12 +30,15 @@ class PaymentService implements PaymentServiceInterface
                     'metadata' => ['user_id' => $authUser->id],
                 ]);
         } catch (IncompletePayment $exception) {
-            dd($exception);
+            // dd($exception);
+            \Log::error($exception);
 
-            // return redirect()->route(
-            //     'cashier.payment',
-            //     [$exception->payment->id, 'redirect' => route('home')]
-            // );
+            return redirect()->route('user.subscriptions.create')->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました',
+                ],
+            ]);
         }
     }
 

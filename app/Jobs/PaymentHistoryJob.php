@@ -112,6 +112,8 @@ class PaymentHistoryJob implements ShouldQueue
                 if ($status === PaymentHistory::STATUS_FAILED) {
                     Log::notice('PaymentHistoryJob: '.'支払いエラー発生');
 
+                    Log::channel('slack')->error('userID: '.$user->id.' 支払いエラー発生');
+
                     \MailHelper::send($user->email, new NoticeUserPaymentMailable(
                         $user,
                         [
@@ -119,6 +121,7 @@ class PaymentHistoryJob implements ShouldQueue
                         ]
                     ));
                 } else {
+                    Log::channel('slack')->error('userID: '.$user->id.' 支払い成功');
                     \MailHelper::send($user->email, new NoticeUserPaymentMailable(
                         $user,
                     ));
