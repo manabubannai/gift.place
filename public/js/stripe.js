@@ -366,8 +366,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       return init;
     }(),
     checkout: function checkout() {
-      var route = this.route;
       this.loading = true;
+      var route = this.route;
+      var toasted = this.$toasted;
       var cardHolderName = document.getElementById('card-holder-name');
       this.stripe.confirmCardSetup(this.clientSecret, {
         payment_method: {
@@ -377,7 +378,11 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
         }
       }).then(function (result) {
-        if (result.error) {// Display error.message in your UI.
+        if (result.error) {
+          // Display error.message in your UI.
+          toasted.show(result.error.message, {
+            type: 'error'
+          });
         } else {
           // The setup has succeeded. Display a success message.
           // PaymentMethod ID apiに渡す
@@ -399,6 +404,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           form.submit();
         }
       });
+      this.loading = false;
     }
   }
 });
