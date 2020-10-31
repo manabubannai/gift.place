@@ -95,8 +95,7 @@ class PaymentHistoryJob implements ShouldQueue
                     'status'     => $status,
                     'type'       => PaymentHistory::TYPE_SUBSCRIPTION,
                     'amount'     => $object['amount_paid'] ?? 0,
-                    'payload'    => $this->payload ?? '',
-                    'exception'  => $this->exception ?? '',
+                    'payload'    => json_encode($this->payload) ?? '',
                 ]);
 
                 if (!$userId) {
@@ -107,7 +106,6 @@ class PaymentHistoryJob implements ShouldQueue
                     throw new \Exception('No user found. ID='.$userId);
                 }
 
-                // userPlan紐付け解除 if failed
                 if ($status === PaymentHistory::STATUS_FAILED) {
                     Log::notice('PaymentHistoryJob: '.'支払いエラー発生');
 
