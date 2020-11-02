@@ -5,7 +5,10 @@ use Tests\TestCase;
 
 class SubscriptionControllerTest extends TestCase
 {
-    private const SUCCESS_PAYMENT_METHOD = 'pm_card_visa';
+    private const SUCCESS_PAYMENT_METHOD                      = 'pm_card_visa';
+    private const SUCCESS_PAYMENT_METHOD_カード情報不正              = 'pm_card_cvcCheckFail';
+    private const SUCCESS_PAYMENT_METHOD_決済失敗                 = 'pm_card_chargeDeclined';
+    private const SUCCESS_PAYMENT_METHOD_カード情報正常_決済失敗         = 'pm_card_chargeCustomerFail';
 
     public function setUp(): void
     {
@@ -37,8 +40,18 @@ class SubscriptionControllerTest extends TestCase
             ]);
     }
 
-    // public function testStoreFail_初回登録_カード情報不正()
-    // {}
+    public function testStoreFail_初回登録_カード情報不正()
+    {
+        $user  = factory(\App\Models\User::class)->create();
+        $data  = [
+          'payment_method' => self::SUCCESS_PAYMENT_METHOD_カード情報不正,
+        ];
+
+        $response = $this->actingAs($user)->post('/subscriptions', $data);
+
+        $response->assertStatus(200);
+        $this->assertSame("Your card's security code is incorrect.", $response->getContent());
+    }
 
     // public function testStoreFail_初回登録_カード情報正常_決済失敗()
     // {}
