@@ -30,6 +30,8 @@ class SubscriptionControllerTest extends TestCase
 
         $response = $this->actingAs($user)->post('/subscriptions', $data);
 
+        dd($response);
+
         $response
             // ->assertRedirect('/dashboard')
             ->assertSessionHasAll([
