@@ -47,6 +47,9 @@ class SubscriptionController extends Controller
                 $stripeCustomer->id
             );
 
+            var_dump(\Auth::user());
+            var_dump($paymentMethod);
+
             $this->paymentService->userCreateNewSubscription(\Auth::user(), $paymentMethod->id);
 
             return redirect(route('user.dashboard'))->with([
