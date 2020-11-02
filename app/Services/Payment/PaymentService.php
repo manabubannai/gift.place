@@ -25,12 +25,14 @@ class PaymentService implements PaymentServiceInterface
         string $paymentMethodId
     ) {
         try {
-            $authUser->newSubscription('default', config('services.stripe.plan'))
+            $response = $authUser->newSubscription('default', config('services.stripe.plan'))
                 ->create($paymentMethodId, [], [
                     'metadata' => ['user_id' => $authUser->id],
                 ]);
-        } catch (IncompletePayment $exception) {
-            // dd($exception);
+
+            return $response;
+        } catch (\Throwable $exception) {
+            // } catch (IncompletePayment $exception) {
             \Log::error($exception);
 
             return redirect()->route('user.subscriptions.create')->with([
