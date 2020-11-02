@@ -30,5 +30,6 @@
         <server name="QUEUE_CONNECTION" value="sync"/>
         <server name="SESSION_DRIVER" value="array"/>
         <env name="STRIPE_SECRET" value="sk_test_51HbkXAApXwykMyDDzzBo4p6VQ8Xscfp6qdiDtj39yRnhJgifD2RyEHPUXAR3ozpD2W4osE5S587L9BlpAqnyLAJh00p4vHzetv"/>
+        <env name="STRIPE_PLAN" value="price_1HdzZPApXwykMyDDAREMXu5U"/>
     </php>
 </phpunit>
