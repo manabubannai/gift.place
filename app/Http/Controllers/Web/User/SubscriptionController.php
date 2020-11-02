@@ -39,13 +39,13 @@ class SubscriptionController extends Controller
     {
         try {
             // stripe Customer の作成（保存）
-            // $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
+            $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
 
-            // $paymentMethod = $this->paymentService->updateOrCreateUserPaymentMethod(
-            //     \Auth::user(),
-            //     $request->input('payment_method'),
-            //     $stripeCustomer->id
-            // );
+            $paymentMethod = $this->paymentService->updateOrCreateUserPaymentMethod(
+                \Auth::user(),
+                $request->input('payment_method'),
+                $stripeCustomer->id
+            );
 
             // $this->paymentService->userCreateNewSubscription(\Auth::user(), $paymentMethod->id);
 
