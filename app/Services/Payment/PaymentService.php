@@ -34,13 +34,7 @@ class PaymentService implements PaymentServiceInterface
         } catch (\Throwable $exception) {
             // } catch (IncompletePayment $exception) {
             \Log::error($exception);
-
-            return redirect()->route('user.subscriptions.create')->with([
-                'toast' => [
-                    'status'  => 'error',
-                    'message' => '決済に失敗しました',
-                ],
-            ]);
+            throw new \Exception('fail create subscription');
         }
     }
 
