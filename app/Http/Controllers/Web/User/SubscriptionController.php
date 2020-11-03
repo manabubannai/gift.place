@@ -56,7 +56,12 @@ class SubscriptionController extends Controller
                 ],
             ]);
         } catch (\Exception $ex) {
-            return $ex->getMessage();
+            return redirect()->route('user.subscriptions.create')->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました。決済に失敗した場合、別のカードを登録してください',
+                ],
+            ]);
         }
     }
 
@@ -72,18 +77,6 @@ class SubscriptionController extends Controller
     {
         try {
             $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
-
-            // if (\Auth::user()->hasDefaultPaymentMethod()) {
-            //     \Auth::user()->deletePaymentMethods();
-            //     \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
-            // }
-
-            // $paymentMethod = \Auth::user()->defaultPaymentMethod();
-
-            // \Auth::user()->update([
-            //     'card_brand'     => $paymentMethod->card->brand,
-            //     'card_last_four' => $paymentMethod->card->last4,
-            // ]);
 
             $paymentMethod = $this->paymentService->updateOrCreateUserPaymentMethod(
                 \Auth::user(),

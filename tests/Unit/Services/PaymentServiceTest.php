@@ -44,6 +44,9 @@ class PaymentServiceTest extends TestCase
 
     public function testUserCreateNewSubscription_決済失敗()
     {
+        $this->expectException(\Exception::class);
+        $this->expectExceptionMessage('fail create subscription');
+
         $user           = factory(\App\Models\User::class)->create();
         $stripeCustomer = $user->createOrGetStripeCustomer();
         $user->fill([
@@ -56,7 +59,5 @@ class PaymentServiceTest extends TestCase
         );
 
         $response = app('PaymentService')->userCreateNewSubscription($user, self::PAYMENT_METHOD_決済失敗);
-
-        $this->assertInstanceOf(\Illuminate\Session\Store::class, $response->getSession());
     }
 }

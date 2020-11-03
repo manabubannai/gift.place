@@ -49,8 +49,14 @@ class SubscriptionControllerTest extends TestCase
 
         $response = $this->actingAs($user)->post('/subscriptions', $data);
 
-        $response->assertStatus(200);
-        $this->assertSame("Your card's security code is incorrect.", $response->getContent());
+        $response
+            ->assertRedirect('/subscriptions')
+            ->assertSessionHasAll([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました。決済に失敗した場合、別のカードを登録してください',
+                ],
+            ]);
     }
 
     public function testStoreFail_決済失敗()
@@ -61,22 +67,35 @@ class SubscriptionControllerTest extends TestCase
         ];
 
         $response = $this->actingAs($user)->post('/subscriptions', $data);
-        $response->assertStatus(200);
-        $this->assertSame('Your card was declined.', $response->getContent());
+
+        $response
+            ->assertRedirect('/subscriptions')
+            ->assertSessionHasAll([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました。決済に失敗した場合、別のカードを登録してください',
+                ],
+            ]);
     }
 
-    // public function testStoreFail_初回登録_カード情報正常_決済失敗()
-    // {
-    //     $user  = factory(\App\Models\User::class)->create();
-    //     $data  = [
-    //       'payment_method' => self::PAYMENT_METHOD_カード情報正常_決済失敗,
-    //     ];
+    public function testStoreFail_初回登録_カード情報正常_決済失敗()
+    {
+        $user  = factory(\App\Models\User::class)->create();
+        $data  = [
+          'payment_method' => self::PAYMENT_METHOD_カード情報正常_決済失敗,
+        ];
 
-    //     $response = $this->actingAs($user)->post('/subscriptions', $data);
-    //     dd($response);
-    //     $response->assertStatus(200);
-    //     $this->assertSame("", $response->getContent());
-    // }
+        $response = $this->actingAs($user)->post('/subscriptions', $data);
+
+        $response
+            ->assertRedirect('/subscriptions')
+            ->assertSessionHasAll([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました。決済に失敗した場合、別のカードを登録してください',
+                ],
+            ]);
+    }
 
     public function testStoreSuccess_再入会_カード同じ()
     {
@@ -168,7 +187,13 @@ class SubscriptionControllerTest extends TestCase
 
         $response = $this->actingAs($user)->post('/subscriptions', $data);
 
-        $response->assertStatus(200);
-        $this->assertSame("Your card's security code is incorrect.", $response->getContent());
+        $response
+            ->assertRedirect('/subscriptions')
+            ->assertSessionHasAll([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました。決済に失敗した場合、別のカードを登録してください',
+                ],
+            ]);
     }
 }
