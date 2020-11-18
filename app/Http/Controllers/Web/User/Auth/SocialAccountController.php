@@ -44,11 +44,11 @@ class SocialAccountController extends Controller
             return redirect(route('home'));
         }
 
-        \Log::info($providerUser);
+        logger($providerUser);
 
         $socialAccount = $this->socialAccountService->findAlreadyRegisteredSocialAccount($providerUser);
 
-        \Log::info($socialAccount);
+        logger($socialAccount);
 
         if ($socialAccount) {
             $authUser = $this->socialAccountService->findAlreadyRegisteredUser($socialAccount->user_id);
@@ -58,7 +58,7 @@ class SocialAccountController extends Controller
             $authUser = $this->socialAccountService->create($providerUser, $provider);
         }
 
-        \Log::info($authUser);
+        logger($authUser);
 
         // $providerUser->provideruserをsessionに保存し
         // emailを入力するformに飛ばす email保存先でregister usecaseを呼び出す
