@@ -5,8 +5,7 @@ use App\Http\Controllers\Controller;
 use App\Services\SocialAccount\SocialAccountServiceInterface;
 use Auth;
 use Illuminate\Http\Request;
-// use Laravel\Socialite\Facades\Socialite;
-use Socialite;
+use Laravel\Socialite\Facades\Socialite;
 
 class SocialAccountController extends Controller
 {
@@ -31,24 +30,19 @@ class SocialAccountController extends Controller
      *
      * @return Response
      */
-    public function handleProviderCallback($provider)
+    public function handleProviderCallback(Request $request, $provider)
     {
         try {
-            $providerUser = Socialite::driver($provider)->userFromTokenAndSecret(
-                config('services.twitter.access_token'),
-                config('services.twitter.access_token_secret'),
-            );
+            $providerUser = Socialite::driver($provider)->user();
         } catch (\Exception $e) {
             \Log::info($e);
 
             return redirect(route('home'));
         }
 
-        logger($providerUser->id);
-
         $socialAccount = $this->socialAccountService->findAlreadyRegisteredSocialAccount($providerUser);
 
-        logger($socialAccount);
+        // logger($socialAccount);
 
         if ($socialAccount) {
             $authUser = $this->socialAccountService->findAlreadyRegisteredUser($socialAccount->user_id);
@@ -124,6 +118,8 @@ class SocialAccountController extends Controller
      */
     protected function sendLoginResponse()
     {
+        \Log::info(1);
+
         return redirect(route('user.dashboard'))->with([
             'toast' => [
                 'status'  => 'success',
