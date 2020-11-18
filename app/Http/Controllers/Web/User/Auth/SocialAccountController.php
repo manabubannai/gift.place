@@ -44,7 +44,7 @@ class SocialAccountController extends Controller
             return redirect(route('home'));
         }
 
-        logger($providerUser);
+        logger($providerUser->id);
 
         $socialAccount = $this->socialAccountService->findAlreadyRegisteredSocialAccount($providerUser);
 
