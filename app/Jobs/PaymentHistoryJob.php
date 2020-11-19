@@ -118,7 +118,7 @@ class PaymentHistoryJob implements ShouldQueue
                         ]
                     ));
                 } else {
-                    Log::channel('slack')->error('userID: '.$user->id.' 支払い成功');
+                    Log::channel('slack')->info('userID: '.$user->id.' 支払い成功');
                     \MailHelper::send($user->email, new NoticeUserPaymentMailable(
                         $user,
                     ));

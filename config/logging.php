@@ -89,6 +89,20 @@ return [
             'driver' => 'errorlog',
             'level'  => 'debug',
         ],
+
+        'cloudwatch' => [
+            'driver' => 'custom',
+            'via'    => \App\Logging\CloudWatchLogger::class,
+            'sdk'    => [
+                'region'      => env('AWS_CLOUDWATCH_DEFAULT_REGION', 'ap-northeast-1'),
+                'version'     => 'latest',
+                'credentials' => [
+                    'key'    => env('AWS_CLOUDWATCH_ACCESS_KEY_ID'),
+                    'secret' => env('AWS_CLOUDWATCH_SECRET_ACCESS_KEY'),
+                ],
+            ],
+            'retention' => env('CLOUDWATCH_LOG_RETENTION', 7), // <- ログ保存期間（null の場合は無制限）
+        ],
     ],
 
 ];
