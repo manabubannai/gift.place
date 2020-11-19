@@ -24,6 +24,7 @@
         "olssonm/l5-very-basic-auth": "^6.3",
         "pascaldevink/shortuuid": "^2.3",
         "renatomarinho/laravel-page-speed": "^1.9",
+        "spatie/laravel-googletagmanager": "^2.6",
         "stripe/stripe-php": "^7.44"
     },
     "require-dev": {
