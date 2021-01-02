@@ -2,7 +2,20 @@
     <div class="container">
         <div id="card-element"></div>
         <div id="card-errors" role="alert"></div>
-        <input id="card-holder-name" type="text" placeholder="cardHolderName" />
+
+        <p>
+            以﻿下﻿のチ﻿ェ﻿ッ﻿クボ﻿ッ﻿ク﻿ス﻿をチ﻿ェ﻿ッ﻿クす﻿るこ﻿と﻿によ﻿り﻿、<a
+                href="/term"
+                target="__blank"
+                >利﻿用規﻿約</a
+            >お﻿よ﻿び<a href="/policy" target="__blank">プライバシーポリシー</a
+            >﻿に同﻿意す﻿るも﻿の﻿とし﻿ま﻿す﻿。キ﻿ャ﻿ン﻿セ﻿ルす﻿る﻿ま﻿で月﻿額メ﻿ン﻿バ﻿ー﻿シ﻿ッ﻿プ料﻿金
+            (現﻿在￥390)﻿
+            ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。
+        </p>
+        <input type="checkbox" id="card-check" class="" required />
+        <label class="" for="">同意する</label>
+
         <button
             @click="checkout"
             class="mt-4 c-button text-white"
@@ -87,49 +100,62 @@ export default {
             const route = this.route
             const toasted = this.$toasted
 
-            const cardHolderName = document.getElementById('card-holder-name')
-            this.stripe
-                .confirmCardSetup(this.clientSecret, {
-                    payment_method: {
-                        card: this.card,
-                        billing_details: {
-                            name: cardHolderName.value,
+            if (this.validate()) {
+                this.stripe
+                    .confirmCardSetup(this.clientSecret, {
+                        payment_method: {
+                            card: this.card,
+                            billing_details: {},
                         },
-                    },
-                })
-                .then(function (result) {
-                    if (result.error) {
-                        // Display error.message in your UI.
-                        toasted.show(result.error.message, { type: 'error' })
-                    } else {
-                        // The setup has succeeded. Display a success message.
+                    })
+                    .then(function (result) {
+                        if (result.error) {
+                            // Display error.message in your UI.
+                            toasted.show(result.error.message, {
+                                type: 'error',
+                            })
+                        } else {
+                            // The setup has succeeded. Display a success message.
 
-                        // PaymentMethod ID apiに渡す
-                        // console.log(result.setupIntent.payment_method)
+                            // PaymentMethod ID apiに渡す
+                            // console.log(result.setupIntent.payment_method)
 
-                        const token = document.head.querySelector(
-                            'meta[name="csrf-token"]'
-                        )
-                        let form = document.createElement('form')
-                        console.log(route)
-                        // form.action = '/card'
-                        form.action = route
-                        form.method = 'POST'
-                        form.innerHTML = `
-                                  <input type="hidden" name="_token" value="${token.content}">
-                                  <input type="hidden" name="payment_method" value="${result.setupIntent.payment_method}">`
-                        // if (this.method === 'PUT') {
-                        //     form.insertAdjacentHTML(
-                        //         'afterbegin',
-                        //         '<input type="hidden" name="_method" value="PUT">'
-                        //     )
-                        // }
-                        document.body.append(form)
-                        form.submit()
-                    }
-                })
+                            const token = document.head.querySelector(
+                                'meta[name="csrf-token"]'
+                            )
+                            let form = document.createElement('form')
+                            console.log(route)
+                            // form.action = '/card'
+                            form.action = route
+                            form.method = 'POST'
+                            form.innerHTML = `
+                                      <input type="hidden" name="_token" value="${token.content}">
+                                      <input type="hidden" name="payment_method" value="${result.setupIntent.payment_method}">`
+                            // if (this.method === 'PUT') {
+                            //     form.insertAdjacentHTML(
+                            //         'afterbegin',
+                            //         '<input type="hidden" name="_method" value="PUT">'
+                            //     )
+                            // }
+                            document.body.append(form)
+                            form.submit()
+                        }
+                    })
+            }
 
             this.loading = false
+        },
+
+        validate() {
+            if (document.getElementById('card-check').checked === false) {
+                this.$toasted.show(
+                    'チ﻿ェ﻿ッ﻿クボ﻿ッ﻿ク﻿ス﻿をチ﻿ェ﻿ッ﻿クしてください',
+                    { type: 'error' }
+                )
+                return false
+            }
+
+            return true
         },
     },
 }
