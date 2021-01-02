@@ -1,4 +1,11 @@
 import Vue from 'vue'
+import Toasted from 'vue-toasted'
+
+Vue.use(Toasted, {
+    position: 'top-right',
+    duration: 8000,
+    containerClass: 'c-toasted',
+})
 
 Vue.component(
     'stripe-card-form',
