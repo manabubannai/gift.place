@@ -1,0 +1,87 @@
+/* ----------------------------------------------------------------------------
+ * page contact
+ * ------------------------------------------------------------------------- */
+.p-contact {
+  input,
+  button,
+  textarea,
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+  }
+
+  &__form {
+    border: 1px solid #ddd;
+  }
+
+  &__form--flex {
+    display: flex;
+    border-bottom: 1px solid #ddd;
+  }
+
+  &__form--txt {
+    background-color: #f7f7f7;
+    padding: 28px;
+    border-right: 1px solid #ddd;
+    width: 220px;
+  }
+
+  &__form--input {
+    padding: 28px;
+    width: 100%;
+  }
+
+  &__form--text,
+  &__form--message {
+    border: 1px solid #ccc;
+    border-color: var(--_form-control-border-color,#ccc);
+    border-radius: 3px;
+    border-radius: var(--_border-radius,3px);
+    outline: 0;
+    transition: border .2s ease-out;
+    padding: .44231rem .88462rem;
+    padding: calc(var(--_space, 1.76923rem)*0.25) calc(var(--_space, 1.76923rem)*0.5);
+    background-color: #fff;
+    background-color: var(--_color-white,#fff);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.035);
+    width: 100%;
+    font-size: 16px;
+  }
+
+  &__form--submit {
+    cursor: pointer;
+    display: block;
+    border: 1px solid #ccc;
+    border-color: var(--_form-control-border-color,#ccc);
+    border-radius: var(--_border-radius,3px);
+    outline: 0;
+    transition: border .2s ease-out;
+    background-color: #eee;
+    background-image: linear-gradient(180deg,#fff,#eee);
+    border-radius: 3px;
+    color: #333;
+    padding: 15px 40px;
+    text-decoration: none;
+    margin: 30px auto;
+    font-size: 16px;
+  }
+
+  &__form--submit:hover {
+    border-color: #999;
+  }
+
+}
+
+@media screen and (max-width: 560px) {
+  .p-contact {
+    &__form--flex {
+      flex-direction: column;
+    }
+    &__form--txt {
+      border-bottom: 1px solid #ddd;
+      border-right: none;
+      width: 100%;
+    }
+  }
+}

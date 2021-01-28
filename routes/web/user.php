@@ -34,15 +34,17 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
             });
 
             Route::group(['prefix' => 'users', 'as' => 'users.'], function () {
-                // Route::get('/me', 'UserController@me')->name('me');
                 Route::get('/{slug}', 'UserController@show')->name('show');
 
                 Route::get('/{slug}/edit', 'UserController@edit')->name('edit');
                 Route::put('/{slug}', 'UserController@update')->name('update');
+
+                Route::get('/{slug}/delete', 'UserController@destroyForm')->name('destroy.form');
+                Route::delete('/{slug}', 'UserController@destroy')->name('destroy');
             });
 
             Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
-                Route::get('/card-change', 'SubscriptionController@cardChangeForm')->name('card.change');
+                Route::get('/card-change', 'SubscriptionController@cardChangeForm')->name('card.change.form');
                 Route::post('/card-change', 'SubscriptionController@cardChange')->name('card.change');
             });
         });

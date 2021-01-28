@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
-use App\Services\Message\MessageServiceInterface;
+use App\Services\Payment\PaymentServiceInterface;
 use Illuminate\Http\Request;
 
 class SubscriptionController extends Controller
@@ -13,9 +13,9 @@ class SubscriptionController extends Controller
      * @return void
      */
     public function __construct(
-        MessageServiceInterface $messageService
+        PaymentServiceInterface $paymentService
     ) {
-        $this->messageService = $messageService;
+        $this->paymentService = $paymentService;
     }
 
     public function create()
@@ -30,7 +30,8 @@ class SubscriptionController extends Controller
         }
 
         return view('pages.user.subscription.create', [
-            'intent' => \Auth::user()->createSetupIntent(),
+            'intent'        => \Auth::user()->createSetupIntent(),
+            'paymentMethod' => !is_null(\Auth::user()->defaultPaymentMethod()) ? \Auth::user()->defaultPaymentMethod() : null,
         ]);
     }
 
@@ -40,23 +41,27 @@ class SubscriptionController extends Controller
             // stripe Customer の作成（保存）
             $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
 
-            if (!\Auth::user()->hasDefaultPaymentMethod()) {
-                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
-            }
+            $paymentMethod = $this->paymentService->updateOrCreateUserPaymentMethod(
+                \Auth::user(),
+                $request->input('payment_method'),
+                $stripeCustomer->id
+            );
 
-            $paymentMethod = \Auth::user()->defaultPaymentMethod();
+            $this->paymentService->userCreateNewSubscription(\Auth::user(), $paymentMethod->id);
 
-            \Auth::user()->update([
-                'stripe_id'      => $stripeCustomer->id,
-                'card_brand'     => $paymentMethod->card->brand,
-                'card_last_four' => $paymentMethod->card->last4,
+            return redirect(route('user.dashboard'))->with([
+                'toast' => [
+                    'status'  => 'success',
+                    'message' => '入村手続きが完了しました',
+                ],
             ]);
-
-            \Auth::user()->newSubscription('default', config('services.stripe.plan'))->create($paymentMethod->id);
-
-            return redirect(route('user.dashboard'));
         } catch (\Exception $ex) {
-            return $ex->getMessage();
+            return redirect()->route('user.subscriptions.create')->with([
+                'toast' => [
+                    'status'  => 'error',
+                    'message' => '決済に失敗しました。決済に失敗した場合、別のカードを登録してください',
+                ],
+            ]);
         }
     }
 
@@ -73,17 +78,11 @@ class SubscriptionController extends Controller
         try {
             $stripeCustomer = \Auth::user()->createOrGetStripeCustomer();
 
-            if (\Auth::user()->hasDefaultPaymentMethod()) {
-                \Auth::user()->deletePaymentMethods();
-                \Auth::user()->updateDefaultPaymentMethod($request->input('payment_method'));
-            }
-
-            $paymentMethod = \Auth::user()->defaultPaymentMethod();
-
-            \Auth::user()->update([
-                'card_brand'     => $paymentMethod->card->brand,
-                'card_last_four' => $paymentMethod->card->last4,
-            ]);
+            $paymentMethod = $this->paymentService->updateOrCreateUserPaymentMethod(
+                \Auth::user(),
+                $request->input('payment_method'),
+                $stripeCustomer->id
+            );
 
             return back()->with([
                 'toast' => [

@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Web\User;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\User\UserRepositoryInterface;
+use App\Services\User\UserServiceInterface;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -13,8 +14,10 @@ class UserController extends Controller
      * @return void
      */
     public function __construct(
+        UserServiceInterface $userService,
         UserRepositoryInterface $userRepository
     ) {
+        $this->userService    = $userService;
         $this->userRepository = $userRepository;
     }
 
@@ -51,6 +54,42 @@ class UserController extends Controller
             'toast' => [
                 'status'  => 'success',
                 'message' => '編集しました',
+            ],
+        ]);
+    }
+
+    public function destroyForm(string $slug, Request $request)
+    {
+        $user = $this->userRepository->findBySlug($slug);
+
+        $this->authorize('user-user-can-edit', $user);
+
+        return view('pages.user.users.destroy', [
+            'user' => $user,
+        ]);
+    }
+
+    /**
+     * 退会処理.
+     *
+     * @return
+     */
+    public function destroy(string $slug, Request $request)
+    {
+        $user = $this->userRepository->findBySlug($slug);
+
+        $this->authorize('user-user-can-edit', $user);
+
+        $this->userService->userWithdrawal(\Auth::user());
+
+        \Auth::guard('user')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect(route('home'))->with([
+            'toast' => [
+                'status'  => 'success',
+                'message' => '退会しました。。 また来てね!',
             ],
         ]);
     }

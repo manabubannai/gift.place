@@ -1,7 +1,7 @@
 <template>
     <div class="m-modal">
         <div class="m-modal__content">
-            <h4 class="m-modal__content--head">削除する</h4>
+            <h4 class="m-modal__content--head">タイトル</h4>
 
             <div class="m-modal__content--text"></div>
         </div>

@@ -19,4 +19,19 @@ class HomeController extends Controller
         // \SeoHelper::setIndexSeo();
         return view('pages.index');
     }
+
+    public function term()
+    {
+        return view('pages.term');
+    }
+
+    public function policy()
+    {
+        return view('pages.policy');
+    }
+
+    public function contact()
+    {
+        return view('pages.contact');
+    }
 }

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => 'ギフト村',
 
     /*
     |--------------------------------------------------------------------------
@@ -177,9 +177,9 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\RepositoryServiceProvider::class,
         App\Providers\ServiceServiceProvider::class,
-        App\Providers\ViewCreatorServiceProvider::class,
         App\Providers\HelperServiceProvider::class,
         App\Providers\UseCaseServiceProvider::class,
+        // App\Providers\ViewCreatorServiceProvider::class,
 
     ],
 
@@ -232,7 +232,7 @@ return [
         'Validator'    => Illuminate\Support\Facades\Validator::class,
         'View'         => Illuminate\Support\Facades\View::class,
 
-        'Agent'     => Jenssegers\Agent\Facades\Agent::class,
+        // 'Agent'     => Jenssegers\Agent\Facades\Agent::class,
         'SEOMeta'   => Artesaos\SEOTools\Facades\SEOMeta::class,
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,

@@ -45,16 +45,39 @@ Vue.component(
 /* ============================================================================
  * form
  * ========================================================================= */
-Vue.component(
-    'stripe-card-form',
-    require('./components/form/stripe/stripeCardForm.vue').default
-)
+// Vue.component(
+//     'stripe-card-form',
+//     require('./components/form/stripe/stripeCardForm.vue').default
+// )
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+
+$(function () {
+    $('.m-hamburger').click(function () {
+        $(this).toggleClass('active')
+
+        if ($(this).hasClass('active')) {
+            $('.globalMenuSp').addClass('active')
+        } else {
+            $('.globalMenuSp').removeClass('active')
+        }
+    })
+})
+
+$(function () {
+    $('a[href^="#"]').click(function () {
+        var speed = 500
+        var href = $(this).attr('href')
+        var target = $(href == '#' || href == '' ? 'html' : href)
+        var position = target.offset().top
+        $('html, body').animate({ scrollTop: position }, speed, 'swing')
+        return false
+    })
+})
 
 const app = new Vue({ // eslint-disable-line
     el: '#app',

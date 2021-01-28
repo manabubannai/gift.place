@@ -31,16 +31,17 @@ mix.webpackConfig({
         level: 9
       }
     }),
-  //   new CopyWebpackPlugin(
-  //     [
-  //       {
-  //         from: "./resources/assets/images/",
-  //         to:   "images/"
-  //       }
-  //     ]
-  //   )
+    // new CopyWebpackPlugin(
+    //   [
+    //     {
+    //       from: "./resources/assets/images/",
+    //       to:   "images/"
+    //     }
+    //   ]
+    // )
   ]
 })
 
 mix.js('resources/assets/js/user/app.js', 'public/js')
+    .js('resources/assets/js/user/stripe.js', 'public/js')
     .sass('resources/assets/sass/user/app.scss', 'public/css')

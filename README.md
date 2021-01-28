@@ -81,3 +81,6 @@ https://qiita.com/reflet/items/d4c4a1c3e5a87c9a2ac2
 connect RDS via sequel pro
 
 https://qiita.com/pieroplus/items/c0651030d9b12ad2aa65
+
+## domain図?
+![domain](/out/domain/domain.png)

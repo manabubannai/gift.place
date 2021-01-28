@@ -1,7 +1,9 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
+    @include('googletagmanager::head')
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -25,21 +27,22 @@
 <body>
 <div id="app">
 
-    @include('layouts._header')
+    <div class="wrap">
 
-    @include('layouts._toast')
-    @include('layouts._modal')
+        @include('layouts._toast')
+        @include('layouts._modal')
 
-    <main>
-        @if( isset($noContainer) && $noContainer == true )
-            @yield('content')
-        @else
-            @include('layouts._frame')
-        @endif
-        <div style="height: 96px;"></div>
-    </main>
+        @include('layouts._header')
+
+
+        @yield('content')
+
+        @include('layouts._footer')
+    </div>
 </div>
 
 @include('layouts._scripts')
+@yield('js')
+@include('googletagmanager::body')
 </body>
 </html>

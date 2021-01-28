@@ -37,7 +37,9 @@ class SampleCommand extends Command
     public function handle()
     {
         \Log::channel('slack')->error('dd');
-        $resetPasswordMailableContent = new \App\Mail\Auth\ResetPasswordMailable('sss', 'sss', 'sss');
-        \MailHelper::send('rikuparkour9@gmail.com', $resetPasswordMailableContent);
+        // $resetPasswordMailableContent = new \App\Mail\Auth\ResetPasswordMailable('sss', 'sss', 'sss');
+        // \MailHelper::send('rikuparkour9@gmail.com', $resetPasswordMailableContent);
+        $user = \App\Models\User::find(1);
+        \MailHelper::send($user->email, new \App\Mail\User\NoticeUserPaymentMailable($user));
     }
 }
