@@ -52,8 +52,6 @@ class SocialAccountController extends Controller
             $authUser = $this->socialAccountService->create($providerUser, $provider);
         }
 
-        logger($authUser);
-
         // $providerUser->provideruserをsessionに保存し
         // emailを入力するformに飛ばす email保存先でregister usecaseを呼び出す
         if (is_null($providerUser->email)) {
@@ -73,13 +71,13 @@ class SocialAccountController extends Controller
     public function getEmail()
     {
         if (Auth::check()) {
-            return redirect('/');
+            return redirect(route('home'));
         }
 
         $provider     = session('callback_provider');
         $providerUser = session('callback_provider_user');
 
-        if (empty($provider) || empty($providerUser) || empty($socialAccount)) {
+        if (empty($provider) || empty($providerUser)) {
             return redirect(route('home'));
         }
 
@@ -92,7 +90,7 @@ class SocialAccountController extends Controller
         $providerUser = session('callback_provider_user');
 
         $providerUser->email = $request->input('email');
-        $authUser            = $this->socialAccountService->create($providerUser, $providerName, $socialAccount);
+        $authUser            = $this->socialAccountService->create($providerUser, $providerName);
 
         Auth::login($authUser);
 
@@ -118,8 +116,6 @@ class SocialAccountController extends Controller
      */
     protected function sendLoginResponse()
     {
-        \Log::info(1);
-
         return redirect(route('user.dashboard'))->with([
             'toast' => [
                 'status'  => 'success',
