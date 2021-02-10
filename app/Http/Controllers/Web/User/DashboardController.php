@@ -19,6 +19,12 @@ class DashboardController extends Controller
 
     public function dashboard()
     {
+        \Log::debug('debug message!');
+        \Log::info('info message!');
+        \Log::warning('warning message!');
+        \Log::error('error message!');
+        \Log::emergency('emergency message!');
+
         $messages = $this->messageService->paginateOrderByDesc();
         // \SeoHelper::setIndexSeo();
         return view('pages.user.dashboard', [
