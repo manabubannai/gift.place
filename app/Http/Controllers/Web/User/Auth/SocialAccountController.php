@@ -48,13 +48,15 @@ class SocialAccountController extends Controller
             $authUser = $this->socialAccountService->findAlreadyRegisteredUser($socialAccount->user_id);
         }
 
-        if (!$socialAccount && !is_null($providerUser->email)) {
+        \Log::debug(!$socialAccount);
+        \Log::debug(!empty($providerUser->email));
+        if (!$socialAccount && !empty($providerUser->email)) {
             $authUser = $this->socialAccountService->create($providerUser, $provider);
         }
 
         // $providerUser->provideruserをsessionに保存し
         // emailを入力するformに飛ばす email保存先でregister usecaseを呼び出す
-        if (is_null($providerUser->email)) {
+        if (empty($providerUser->email)) {
             session([
                 'callback_provider_user'  => $providerUser,
                 'callback_provider'       => $provider,
@@ -89,7 +91,10 @@ class SocialAccountController extends Controller
         $providerName = session('callback_provider');
         $providerUser = session('callback_provider_user');
 
+        \Log::debug($request->input('email'));
+
         $providerUser->email = $request->input('email');
+        \Log::debug($providerUser->email);
         $authUser            = $this->socialAccountService->create($providerUser, $providerName);
 
         Auth::login($authUser);
