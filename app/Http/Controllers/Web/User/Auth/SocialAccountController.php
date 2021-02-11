@@ -27,6 +27,10 @@ class SocialAccountController extends Controller
 
     /**
      * Obtain the user information.
+     * 未登録 email twitter user
+     * 未登録 tel twitter user
+     * 登録済 email twitter user
+     * 登録済 tel twitter user.
      *
      * @return Response
      */
@@ -42,21 +46,20 @@ class SocialAccountController extends Controller
 
         $socialAccount = $this->socialAccountService->findAlreadyRegisteredSocialAccount($providerUser);
 
-        // logger($socialAccount);
+        logger($socialAccount);
+        logger($providerUser);
 
         if ($socialAccount) {
             $authUser = $this->socialAccountService->findAlreadyRegisteredUser($socialAccount->user_id);
         }
 
-        \Log::debug(!$socialAccount);
-        \Log::debug(!empty($providerUser->email));
         if (!$socialAccount && !empty($providerUser->email)) {
             $authUser = $this->socialAccountService->create($providerUser, $provider);
         }
 
         // $providerUser->provideruserをsessionに保存し
         // emailを入力するformに飛ばす email保存先でregister usecaseを呼び出す
-        if (empty($providerUser->email)) {
+        if (!$socialAccount && empty($providerUser->email)) {
             session([
                 'callback_provider_user'  => $providerUser,
                 'callback_provider'       => $provider,
