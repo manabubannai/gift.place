@@ -46,9 +46,6 @@ class SocialAccountController extends Controller
 
         $socialAccount = $this->socialAccountService->findAlreadyRegisteredSocialAccount($providerUser);
 
-        logger($socialAccount);
-        logger($providerUser);
-
         if ($socialAccount) {
             $authUser = $this->socialAccountService->findAlreadyRegisteredUser($socialAccount->user_id);
         }
