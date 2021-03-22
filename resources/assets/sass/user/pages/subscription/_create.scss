@@ -1,0 +1,91 @@
+/* ----------------------------------------------------------------------------
+ * page subscription create
+ * ------------------------------------------------------------------------- */
+.p-subscription-create {
+
+  /* settlement */
+  .settlement {
+    max-width: 700px;
+    margin: 80px auto;
+  }
+
+  .settlement-form label {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .settlement-form_block {
+    display: block;
+    width: 100%;
+    margin-top: 24px;
+  }
+
+  .settlement-form input {
+    margin-top: 10px;
+    display: block;
+    width: 100%;
+    font-size: 18px;
+    padding: 12px 16px;
+    border: 1px solid #6C6C6C;
+  }
+
+  .settlement-form_inline {
+    display: inline-block;
+    width: 100%;
+    max-width: 337px;
+    margin-top: 24px;
+  }
+
+  .ml20 {
+    margin-left: 20px;
+  }
+
+  .settlement-txt {
+    margin-top: 32px;
+    line-height: 20px;
+  }
+
+  .settlement-check_container {
+    text-align: center;
+    margin-top: 48px;
+  }
+
+  .settlement-check input {
+    width: auto;
+    margin-top: 0;
+    display: inline-block;
+    -webkit-appearance: checkbox;
+    -moz-appearance: checkbox;
+    appearance: checkbox;
+  }
+
+  .settlement-form input.settlement-submit {
+    cursor: pointer;
+    border: none;
+    margin: 0 auto;
+    max-width: 200px;
+    font-size: 16px;
+    border-radius: 50px;
+    color: white;
+    margin-top: 24px;
+    background-color: #ED4C59;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 960px) {
+    .settlement-form_inline {
+      max-width: 45%;
+    }
+
+    .settlement {
+      margin: 40px 0;
+    }
+  }
+
+  .settlement-form input.settlement-submit.post-btn {
+    margin-top: 60px;
+    max-width: 230px;
+    padding: 12px 24px;
+  }
+
+}

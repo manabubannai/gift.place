@@ -1,0 +1,44 @@
+.p-user-user-show {
+
+  min-height: 460px;
+  max-width: 700px;
+  margin: 80px auto;
+
+  .c-message-index-card {
+    min-width: 100%;
+    &:nth-child(2n) {
+      padding-left: 0;
+    }
+  }
+
+  .mypage-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  .mypage-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .mypage-info_container {
+    margin-left: 15px;
+  }
+
+  .mypage-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .p-user-user-show {
+    margin: 40px 0;
+  }
+}

@@ -1,56 +1,4 @@
-<!-- <header class="s-header" style="position: sticky; top: 0; z-index: 9999;">
-    <div class="s-header__container">
-
-      <div class="s-header__content--left">
-          <div class="s-header-logo">
-              @guest
-                <a href="/" class="">
-                    <img src="../images/frip_logo_color.png" class="s-header-logo__sizing">
-                </a>
-              @else
-                <a href="{{ route('user.dashboard') }}" class="">
-                  <img src="../images/frip_logo_color.png" class="s-header-logo__sizing">
-                </a>
-              @endif
-          </div>
-      </div>
-
-      <div class="s-header__content--right">
-
-        <nav class="float-right s-header-list">
-          @guest
-              <a href="/getting-started" class="mr-2">はじめての方へ</a>
-          @else
-              <a href="{{ route('user.messages.create', null, false) }}" class="mr-2 m-btn" style="color: #fff;">投稿する</a>
-                <a id="navbarDropdown" class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                    {{ Auth::user()->name }} <span class="caret"></span>
-                </a>
-
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                    <a href="/getting-started" class="dropdown-item">はじめての方へ</a>
-                    <a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="dropdown-item">マイページ</a>
-
-                    <a href="{{ route('user.subscriptions.card.change.form') }}" class="dropdown-item">カードを変更</a>
-
-                    <a href="{{ route('user.users.destroy.form', \Auth::user()->slug) }}" class="dropdown-item">退会する</a>
-
-                    <a class="dropdown-item" href="{{ route('user.auth.logout') }}"
-                       onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">
-                        <small>ログアウト</small>
-                    </a>
-
-                    <form id="logout-form" action="{{ route('user.auth.logout') }}" method="POST" style="display: none;">
-                        @csrf
-                    </form>
-                </div>
-          @endif
-        </nav>
-      </div>
-    </div>
-</header> -->
-
-<header class="s-header">
+<!-- <header class="s-header">
   <div class="flex_sb align_center">
     <div>
       @guest
@@ -116,4 +64,57 @@
       </ul>
     </nav>
   </div>
+</header> -->
+
+<header class="s-header">
+  <div class="flex_sb align_center header-pc">
+    <div><a href="/"><img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="header_img"></a></div>
+
+    <nav class="header_nav">
+      <ul class="header_nav--ul">
+        <li><a href="/mypage.html" class="header_nav-link">マイページ<span>My page</span></a></li>
+        <li><a href="/messages.html" class="header_nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
+        <li><a href="#2" class="header_nav-link">ログアウト<span>Logout</span></a></li>
+        <li><a href="/mypage.html" class="header_nav-bell"><img src="/img/bell-off.svg" alt=""></a></li>
+        <li><a href="/post.html" class="header_nav--btn btn">投稿する</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="header-sp">
+    <div class="flex_sb ">
+      <div class="header-sp_logos">
+        <div class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div class="header-sp-img"><a href="/"><img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村"
+              class="header_img"></a></div>
+      </div>
+      <div class="header-sp-nav">
+        <ul class="header_nav--ul">
+          <li><a href="/mypage.html" class="header_nav-bell"><img src="https://files.gift.place/images//bell-off.svg" alt=""></a></li>
+          <li><a href="/post.html" class="header_nav--btn btn">投稿する</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <nav class="globalMenuSp ta-left">
+    <ul>
+      <li>
+        <a href="/mypage.html" class="header_nav-flex">
+          <img src="https://files.gift.place/images/toukou_img.png" alt="" class="post-icon">
+          <div class="post-txtbox">
+            <p class="header-name">名前</p>
+            <p class="header-id">@megumi_design</p>
+          </div>
+        </a>
+      </li>
+      <li class="header_udnav-link"><a href="/mypage.html">マイページ</a></li>
+      <li class="header_udnav-link"><a href="/messages.html">みんなの投稿</a></li>
+      <li class="header_udnav-link"><a href="#">ログアウト</a></li>
+    </ul>
+  </nav>
 </header>

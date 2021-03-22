@@ -22,13 +22,8 @@ list-style: none;
 }
 
 body {
-  -webkit-text-size-adjust: 100%;
-  color: #201E1F;
-  font-family: 'TsukuARdGothic-Regular','Hiragino Kaku Gothic ProN','ヒラギノ角ゴ ProN W3',YuGothic,'Yu Gothic','Yu Gothic UI','Avenir','Helvetica Neue','Helvetica','Arial','Hiragino Sans','メイリオ', Meiryo,'ＭＳ Ｐゴシック','MS PGothic',sans-serif;
-  line-height: 1.2;
+-webkit-text-size-adjust: 100%;
 }
-
-
 html{
 /*overflow-y: scroll;*/
 -webkit-text-size-adjust: 100%;
@@ -116,4 +111,3 @@ box-sizing:         border-box;
 
 /* For IE 6/7 (trigger hasLayout) */
 .cf {zoom:1;}
-

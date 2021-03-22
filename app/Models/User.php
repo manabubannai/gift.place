@@ -56,4 +56,9 @@ class User extends Authenticatable
         $resetPasswordMailableContent = new ResetPasswordMailable($token, $this->name, $this->email);
         \MailHelper::send($this->email, $resetPasswordMailableContent);
     }
+
+    public function messages()
+    {
+        return $this->hasMany('App\Models\Message', 'user_id', 'id');
+    }
 }
