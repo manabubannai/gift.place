@@ -34,14 +34,14 @@
 /* ============================================================================
  * components
  * ========================================================================= */
-
+@import "./components/message/index-card";
 
  /* ============================================================================
  * modules
  * ========================================================================= */
 @import "./modules/button";
 @import "./modules/icon";
-@import "./modules/hamburger";
+// @import "./modules/hamburger";
 
 
  /* ============================================================================
@@ -49,16 +49,48 @@
  * ========================================================================= */
 @import "./pages/index";
 @import "./pages/contact";
+@import "./pages/dashboard";
 
 @import "./pages/auth/login";
+@import "./pages/subscription/create";
+@import "./pages/message/create";
+@import "./pages/user/show";
 
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
 }
 
+body {
+  color: #201E1F;
+  font-family: 'TsukuARdGothic-Regular', fot-tsukuardgothic-std, 'M PLUS 1p', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', YuGothic, 'Yu Gothic', 'Yu Gothic UI', 'Avenir', 'Helvetica Neue', 'Helvetica', 'Arial', 'Hiragino Sans', 'メイリオ', Meiryo, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+  line-height: 1.2;
+}
+
+.btn {
+  color: #ffffff;
+  display: block;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
 .br_hide {
   display: none;
+}
+
+.ta-left li {
+  text-align: left;
+}
+
+a {
+  color: #211F20;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 560px) {
+  .br_hide {
+    display: block;
+  }
 }
 
 
@@ -161,75 +193,36 @@ nav.globalMenuSp ul li:hover,
   width: 22px;
 }
 
-@include max-screen($breakpoint-mobile) {
-  .br_hide {
-    display: block;
+@include max-screen($breakpoint-tablet) {
+  main {
+      margin: 40px 0;
   }
 
   .wrap {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 52px 10px 0;
   }
 
-  nav.globalMenuSp ul {
-    margin-top: 30px;
+  .post {
+    margin: 40px 0;
   }
 
-  nav.globalMenuSp ul li {
-    padding: 0 20px;
+  .page_title {
+    font-size: 24px;
+    margin-bottom: 32px;
   }
 
-  nav.globalMenuSp ul li a {
-    padding: 20px 0;
-  }
-
-  nav.globalMenuSp ul li a.header_nav--btn {
-    padding: 15px 25px;
-    margin: 0;
-    margin: 20px 0;
-  }
-
-  nav.globalMenuSp {
-    position: fixed;
-    z-index : 2;
-    top  : 0;
-    left : 0;
-    color: #000;
-    background: #fff;
-    text-align: center;
-    transform: translateY(-100%);
-    transition: all 0.6s;
-    width: 100%;
-    display: block;
-  }
-
-  nav.globalMenuSp ul {
-    margin: 30px auto;
+  .post-content {
+    max-width: 100%;
     padding: 0;
-    width: 100%;
-    padding: 0 20px;
   }
 
-  nav.globalMenuSp ul li {
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    border-bottom: 1px solid #fff;
-  }
-  nav.globalMenuSp ul li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
+  .post-content:nth-child(2n) {
+    padding-left: 0;
   }
 
-  /* このクラスを、jQueryで付与・削除する */
-  nav.globalMenuSp.active {
-    transform: translateY(0%);
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .br_pc {
-    display: none;
+  .see_more {
+    margin-top: 40px;
   }
 }

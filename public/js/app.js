@@ -50966,7 +50966,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.component('message-like-button', __we
  */
 
 $(function () {
-  $('.m-hamburger').click(function () {
+  $('.hamburger').click(function () {
     $(this).toggleClass('active');
 
     if ($(this).hasClass('active')) {

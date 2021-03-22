@@ -1,4 +1,4 @@
-<div class="text-center">
+<!-- <div class="text-center">
   <div class="" style="background-color: #f7f7f7;
     font-size: 16px;
     font-weight: 600;
@@ -11,3 +11,4 @@
   </div>
 </div>
 
+ -->

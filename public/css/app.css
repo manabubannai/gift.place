@@ -92,9 +92,6 @@ video {
 
 body {
   -webkit-text-size-adjust: 100%;
-  color: #201E1F;
-  font-family: "TsukuARdGothic-Regular", "Hiragino Kaku Gothic ProN", "\30D2\30E9\30AE\30CE\89D2\30B4   ProN W3", YuGothic, "Yu Gothic", "Yu Gothic UI", "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
-  line-height: 1.2;
 }
 
 html {
@@ -283,21 +280,21 @@ img {
   margin: 40px 0;
 }
 
-.s-header__img {
+.s-header .header_img {
   height: 70px;
 }
 
-.s-header__nav--ul {
+.s-header .header_nav--ul {
   display: flex;
 }
 
-.s-header__nav--ul li {
+.s-header .header_nav--ul li {
   font-size: 16px;
   text-align: center;
   position: relative;
 }
 
-.s-header__nav--ul li::before {
+.s-header .header_nav--ul li::before {
   display: block;
   content: "";
   background-color: #58595B;
@@ -308,7 +305,7 @@ img {
   transform: translateY(-50%);
 }
 
-.s-header__nav-link {
+.s-header .header_nav-link {
   text-decoration: none;
   color: #201E1F;
   text-align: center;
@@ -316,42 +313,305 @@ img {
   display: block;
 }
 
-.s-header__nav-link span {
+.s-header .header_nav-link span {
   display: block;
   font-size: 11px;
   color: #77BC1F;
 }
 
-.s-header__nav--btn {
+.s-header .header_nav-bell {
+  text-decoration: none;
+  text-align: center;
+  margin: 20px 15px;
+  display: block;
+}
+
+.s-header .header_nav-bell img {
+  width: 30px;
+}
+
+.s-header .header_nav--btn {
   background-color: #35A638;
   padding: 5px 25px;
   margin: 20px;
+  margin-left: 0;
 }
 
-.s-header__spnav {
+.s-header .header_nav--ul li:last-child:before {
   display: none;
 }
 
-@media screen and (max-width: 640px) {
-  .s-header {
-    margin: 10px 0;
-  }
+.s-header .header_spnav {
+  display: none;
+}
 
-  .s-header__nav--ul {
+.s-header a:hover {
+  opacity: 0.5;
+  transition: all 0.5s;
+}
+
+.s-header .header-sp {
+  display: none;
+}
+
+@media screen and (max-width: 960px) {
+  .header_nav--ul {
     display: none;
   }
 
-  .s-header__nav-link {
+  .s-header {
+    width: 100%;
+    top: 0;
+    background: white;
+    position: fixed;
+    z-index: 1000;
+    padding: 10px 0;
+    margin: 0;
+    /* ハンバーガー */
+    /* ナビ開いてる時のボタン */
+    /* このクラスを、jQueryで付与・削除する */
+    /* ロゴ */
+  }
+
+  .s-header .header_nav-link {
     text-decoration: none;
     color: #201E1F;
     text-align: center;
     margin: 0;
+  }
+
+  .s-header .header_nav--ul li::before {
+    display: none;
+  }
+
+  .s-header nav.globalMenuSp ul {
+    margin-top: 30px;
+  }
+
+  .s-header nav.globalMenuSp ul li {
+    padding: 0 20px;
+  }
+
+  .s-header nav.globalMenuSp ul li a {
+    padding: 20px 0;
+  }
+
+  .s-header nav.globalMenuSp ul li a.header_nav--btn {
+    padding: 15px 25px;
+    margin: 0;
+    margin: 20px 0;
+  }
+
+  .s-header .hamburger {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .s-header .hamburger span {
+    display: block;
+    position: absolute;
+    width: 30px;
+    height: 2px;
+    left: 6px;
+    background: #555;
+    transition: 0.3s ease-in-out;
+  }
+
+  .s-header .hamburger span:nth-child(1) {
+    top: 10px;
+  }
+
+  .s-header .hamburger span:nth-child(2) {
+    top: 20px;
+  }
+
+  .s-header .hamburger span:nth-child(3) {
+    top: 30px;
+  }
+
+  .s-header .hamburger.active span:nth-child(1) {
+    top: 16px;
+    left: 6px;
+    transform: rotate(-45deg);
+  }
+
+  .s-header .hamburger.active span:nth-child(2),
+  .s-header .hamburger.active span:nth-child(3) {
+    top: 16px;
+    transform: rotate(45deg);
+  }
+
+  .s-header nav.globalMenuSp {
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    color: #000;
+    background: #fff;
+    text-align: center;
+    transform: translateX(-100%);
+    transition: all 0.6s;
+    width: 250px;
+    height: 100%;
+    display: block;
+  }
+
+  .s-header nav.globalMenuSp ul {
+    margin: 80px auto;
+    padding: 0;
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .s-header nav.globalMenuSp ul li {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    border-bottom: 1px solid #fff;
+  }
+
+  .s-header nav.globalMenuSp ul li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .s-header nav.globalMenuSp.active {
+    transform: translateY(0%);
+  }
+
+  .s-header .header-sp-img {
+    position: relative;
+    left: 48px;
+  }
+
+  .s-header .header_img {
+    vertical-align: text-top;
+    height: auto;
+    width: 120px;
+  }
+
+  .s-header .header-sp {
+    display: block;
+  }
+
+  .s-header .header-pc {
+    display: none;
+  }
+
+  .s-header header .flex_sb {
+    align-items: flex-end;
+  }
+
+  .s-header .header-sp-nav .header_nav--ul {
+    display: flex;
+    align-items: center;
+  }
+
+  .s-header .header_nav--btn {
+    margin: 0 20px 0 8px;
+  }
+
+  .s-header .header-sp_logos {
+    z-index: 1001;
+  }
+
+  .s-header .header_nav--ul img {
+    vertical-align: text-top;
+  }
+
+  .s-header .header_nav-bell {
+    margin: 0;
+  }
+
+  .s-header .header_udnav-link {
+    display: block;
+    border-bottom: 1px solid #211F20 !important;
+  }
+
+  .s-header .header_udnav-link a {
+    display: block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #211F20;
+    padding: 20px;
+  }
+
+  .s-header .header_nav-flex {
+    display: flex;
+    align-items: center;
+    padding-bottom: 20px !important;
+    border-bottom: 1px solid #211F20 !important;
+  }
+
+  .s-header .header-name {
+    font-weight: bold;
+  }
+
+  .s-header .header-id {
+    font-size: 14px;
   }
 }
 
 /* ============================================================================
  * components
  * ========================================================================= */
+
+/* ----------------------------------------------------------------------------
+ * 
+ * ------------------------------------------------------------------------- */
+
+.c-message-index-card {
+  min-width: 50%;
+  max-width: 50%;
+  padding-right: 10px;
+  margin-bottom: 20px;
+  box-sizing: border-box;
+}
+
+.c-message-index-card:nth-child(2n) {
+  padding-left: 10px;
+  padding-right: 0;
+}
+
+.c-message-index-card .post-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.c-message-index-card .post-flex {
+  border: 1px solid #6C6C6C;
+  padding: 15px;
+  display: flex;
+}
+
+.c-message-index-card .post-name {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.c-message-index-card .postpage-name {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+}
+
+.c-message-index-card .post-txtbox {
+  margin-left: 10px;
+}
+
+.c-message-index-card .post-txt {
+  margin: 15px 0;
+}
+
+.c-message-index-card .post-face {
+  display: block;
+  min-width: 40px;
+}
 
 /* ============================================================================
 * modules
@@ -617,59 +877,6 @@ img {
   font-family: "Font Awesome 5 Free";
   content: "\F007";
   font-weight: 600;
-}
-
-.m-hamburger {
-  display: none;
-}
-
-@media screen and (max-width: 640px) {
-  .m-hamburger {
-    display: block;
-    position: fixed;
-    z-index: 3;
-    right: 10px;
-    width: 42px;
-    height: 42px;
-    cursor: pointer;
-    text-align: center;
-  }
-
-  .m-hamburger__line {
-    display: block;
-    position: absolute;
-    width: 30px;
-    height: 2px;
-    left: 6px;
-    background: #555;
-    transition: 0.3s ease-in-out;
-  }
-
-  .m-hamburger__line:nth-child(1) {
-    top: 10px;
-  }
-
-  .m-hamburger__line:nth-child(2) {
-    top: 20px;
-  }
-
-  .m-hamburger__line:nth-child(3) {
-    top: 30px;
-  }
-
-  /* ナビ開いてる時のボタン */
-
-  .active .m-hamburger__line:nth-child(1) {
-    top: 16px;
-    left: 6px;
-    transform: rotate(-45deg);
-  }
-
-  .active .m-hamburger__line:nth-child(2),
-  .active .m-hamburger__line:nth-child(3) {
-    top: 16px;
-    transform: rotate(45deg);
-  }
 }
 
 /* ============================================================================
@@ -988,6 +1195,19 @@ img {
 }
 
 /* ----------------------------------------------------------------------------
+ * page  dashboard
+ * ------------------------------------------------------------------------- */
+
+.p-dashboard .post {
+  margin: 80px 0;
+}
+
+.p-dashboard .post-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* ----------------------------------------------------------------------------
  * auth login
  * ------------------------------------------------------------------------- */
 
@@ -1054,13 +1274,224 @@ img {
   color: #a10000;
 }
 
+/* ----------------------------------------------------------------------------
+ * page subscription create
+ * ------------------------------------------------------------------------- */
+
+.p-subscription-create {
+  /* settlement */
+}
+
+.p-subscription-create .settlement {
+  max-width: 700px;
+  margin: 80px auto;
+}
+
+.p-subscription-create .settlement-form label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.p-subscription-create .settlement-form_block {
+  display: block;
+  width: 100%;
+  margin-top: 24px;
+}
+
+.p-subscription-create .settlement-form input {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px 16px;
+  border: 1px solid #6C6C6C;
+}
+
+.p-subscription-create .settlement-form_inline {
+  display: inline-block;
+  width: 100%;
+  max-width: 337px;
+  margin-top: 24px;
+}
+
+.p-subscription-create .ml20 {
+  margin-left: 20px;
+}
+
+.p-subscription-create .settlement-txt {
+  margin-top: 32px;
+  line-height: 20px;
+}
+
+.p-subscription-create .settlement-check_container {
+  text-align: center;
+  margin-top: 48px;
+}
+
+.p-subscription-create .settlement-check input {
+  width: auto;
+  margin-top: 0;
+  display: inline-block;
+  -webkit-appearance: checkbox;
+  -moz-appearance: checkbox;
+  appearance: checkbox;
+}
+
+.p-subscription-create .settlement-form input.settlement-submit {
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+  max-width: 200px;
+  font-size: 16px;
+  border-radius: 50px;
+  color: white;
+  margin-top: 24px;
+  background-color: #ED4C59;
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .p-subscription-create .settlement-form_inline {
+    max-width: 45%;
+  }
+
+  .p-subscription-create .settlement {
+    margin: 40px 0;
+  }
+}
+
+.p-subscription-create .settlement-form input.settlement-submit.post-btn {
+  margin-top: 60px;
+  max-width: 230px;
+  padding: 12px 24px;
+}
+
+/* ----------------------------------------------------------------------------
+ * page message create
+ * ------------------------------------------------------------------------- */
+
+.p-user-message-create {
+  max-width: 700px;
+  margin: 80px auto;
+}
+
+.p-user-message-create .post-textarea {
+  width: 100%;
+  padding: 24px;
+}
+
+.p-user-message-create .settlement-form input {
+  margin-top: 10px;
+  display: block;
+  width: 100%;
+  font-size: 18px;
+  padding: 12px 16px;
+  border: 1px solid #6C6C6C;
+}
+
+.p-user-message-create .settlement-form input.settlement-submit.post-btn {
+  margin-top: 60px;
+  max-width: 230px;
+  padding: 12px 24px;
+}
+
+.p-user-message-create .settlement-form input.settlement-submit {
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+  max-width: 200px;
+  font-size: 16px;
+  border-radius: 50px;
+  color: white;
+  margin-top: 24px;
+  background-color: #ED4C59;
+  text-align: center;
+}
+
+@media screen and (max-width: 960px) {
+  .p-user-message-create .settlement {
+    margin: 40px 0;
+  }
+}
+
+.p-user-user-show {
+  min-height: 460px;
+  max-width: 700px;
+  margin: 80px auto;
+}
+
+.p-user-user-show .c-message-index-card {
+  min-width: 100%;
+}
+
+.p-user-user-show .c-message-index-card:nth-child(2n) {
+  padding-left: 0;
+}
+
+.p-user-user-show .mypage-info {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.p-user-user-show .mypage-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.p-user-user-show .mypage-info_container {
+  margin-left: 15px;
+}
+
+.p-user-user-show .mypage-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+@media screen and (max-width: 960px) {
+  .p-user-user-show {
+    margin: 40px 0;
+  }
+}
+
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
 }
 
+body {
+  color: #201E1F;
+  font-family: "TsukuARdGothic-Regular", fot-tsukuardgothic-std, "M PLUS 1p", "Hiragino Kaku Gothic ProN", "\30D2\30E9\30AE\30CE\89D2\30B4   ProN W3", YuGothic, "Yu Gothic", "Yu Gothic UI", "Avenir", "Helvetica Neue", "Helvetica", "Arial", "Hiragino Sans", "\30E1\30A4\30EA\30AA", Meiryo, "\FF2D\FF33   \FF30\30B4\30B7\30C3\30AF", "MS PGothic", sans-serif;
+  line-height: 1.2;
+}
+
+.btn {
+  color: #ffffff;
+  display: block;
+  border-radius: 30px;
+  text-decoration: none;
+}
+
 .br_hide {
   display: none;
+}
+
+.ta-left li {
+  text-align: left;
+}
+
+a {
+  color: #211F20;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 560px) {
+  .br_hide {
+    display: block;
+  }
 }
 
 /* flex */
@@ -1168,78 +1599,37 @@ nav.globalMenuSp ul li:hover,
   width: 22px;
 }
 
-@media screen and (max-width: 640px) {
-  .br_hide {
-    display: block;
+@media screen and (max-width: 980px) {
+  main {
+    margin: 40px 0;
   }
 
   .wrap {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 0 10px;
+    padding: 52px 10px 0;
   }
 
-  nav.globalMenuSp ul {
-    margin-top: 30px;
+  .post {
+    margin: 40px 0;
   }
 
-  nav.globalMenuSp ul li {
-    padding: 0 20px;
+  .page_title {
+    font-size: 24px;
+    margin-bottom: 32px;
   }
 
-  nav.globalMenuSp ul li a {
-    padding: 20px 0;
-  }
-
-  nav.globalMenuSp ul li a.header_nav--btn {
-    padding: 15px 25px;
-    margin: 0;
-    margin: 20px 0;
-  }
-
-  nav.globalMenuSp {
-    position: fixed;
-    z-index: 2;
-    top: 0;
-    left: 0;
-    color: #000;
-    background: #fff;
-    text-align: center;
-    transform: translateY(-100%);
-    transition: all 0.6s;
-    width: 100%;
-    display: block;
-  }
-
-  nav.globalMenuSp ul {
-    margin: 30px auto;
+  .post-content {
+    max-width: 100%;
     padding: 0;
-    width: 100%;
-    padding: 0 20px;
   }
 
-  nav.globalMenuSp ul li {
-    list-style-type: none;
-    padding: 0;
-    width: 100%;
-    border-bottom: 1px solid #fff;
+  .post-content:nth-child(2n) {
+    padding-left: 0;
   }
 
-  nav.globalMenuSp ul li:last-child {
-    padding-bottom: 0;
-    border-bottom: none;
-  }
-
-  /* このクラスを、jQueryで付与・削除する */
-
-  nav.globalMenuSp.active {
-    transform: translateY(0%);
-  }
-}
-
-@media screen and (max-width: 560px) {
-  .br_pc {
-    display: none;
+  .see_more {
+    margin-top: 40px;
   }
 }
 

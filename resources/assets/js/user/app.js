@@ -53,7 +53,7 @@ Vue.component(
  */
 
 $(function () {
-    $('.m-hamburger').click(function () {
+    $('.hamburger').click(function () {
         $(this).toggleClass('active')
 
         if ($(this).hasClass('active')) {
