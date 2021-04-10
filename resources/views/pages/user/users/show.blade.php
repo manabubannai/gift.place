@@ -15,7 +15,9 @@
     </div>
   </div>
 
-  @each('components.user.messages.index-card', $user->messages, 'message' ,'pages.user.messages.empty')
+  <message-index-card
+    :is-user="true"
+    :user-id="{{ json_encode(\Auth::user()->id) }}"></message-index-card>
 
 </main>
 @endsection

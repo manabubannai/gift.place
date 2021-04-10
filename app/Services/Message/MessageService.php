@@ -57,16 +57,21 @@ class MessageService implements MessageServiceInterface
     }
 
     /**
+     * @param array $params
+     *
      * @return
      */
-    public function paginateOrderByDesc()
+    public function paginateOrderByDesc($params = [])
     {
-        // FIXME
-        $messages = $this->messageRepository
-                    ->getBlankModel()
-                    ->latest()
+        $messages = $this->messageRepository->getBlankModel();
+
+        if (isset($params['user_id'])) {
+            $messages = $messages->where('user_id', $params['user_id']);
+        }
+
+        $messages = $messages->orderBy('id', 'desc')
                     ->with('user')
-                    ->paginate();
+                    ->paginate(5);
 
         return $messages;
     }

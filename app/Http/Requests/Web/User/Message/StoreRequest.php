@@ -23,7 +23,7 @@ class StoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'description'  => 'string',
+            'description'  => 'string|max:140',
         ];
     }
 }

@@ -562,16 +562,10 @@ img {
  * ------------------------------------------------------------------------- */
 
 .c-message-index-card {
-  min-width: 50%;
-  max-width: 50%;
-  padding-right: 10px;
+  min-width: 100%;
+  max-width: 100%;
   margin-bottom: 20px;
   box-sizing: border-box;
-}
-
-.c-message-index-card:nth-child(2n) {
-  padding-left: 10px;
-  padding-right: 0;
 }
 
 .c-message-index-card .post-icon {
@@ -1571,7 +1565,9 @@ img {
 }
 
 .content {
+  max-width: 700px;
   min-height: 500px;
+  margin: 0 auto;
 }
 
 body {

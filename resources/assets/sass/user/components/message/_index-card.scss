@@ -2,17 +2,17 @@
  * 
  * ------------------------------------------------------------------------- */
 .c-message-index-card {
-    min-width: 50%;
-    max-width: 50%;
-    padding-right: 10px;
+    min-width: 100%;
+    max-width: 100%;
+    // padding-right: 10px;
     margin-bottom: 20px;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 
-  &:nth-child(2n) {
-    padding-left: 10px;
-    padding-right: 0;
-  }
+  // &:nth-child(2n) {
+  //   padding-left: 10px;
+  //   padding-right: 0;
+  // }
 
   .post-icon {
     width: 40px;

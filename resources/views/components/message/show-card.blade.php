@@ -9,7 +9,7 @@
                         <p class="post-name">{{ $message->user->name }}</p>
                     </div>
                     <p class="c-message-show-card-txt">
-                        {{ $message->description }}
+                        {!! nl2br(e($message->description)) !!}
                     </p>
                 </section>
             </div>
