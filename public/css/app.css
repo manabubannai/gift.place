@@ -334,7 +334,6 @@ img {
   background-color: #35A638;
   padding: 5px 25px;
   margin: 20px;
-  margin-left: 0;
 }
 
 .s-header .header_nav--ul li:last-child:before {
@@ -611,6 +610,115 @@ img {
 .c-message-index-card .post-face {
   display: block;
   min-width: 40px;
+}
+
+/* ----------------------------------------------------------------------------
+ * 
+ * ------------------------------------------------------------------------- */
+
+.c-message-show-card {
+  min-height: 460px;
+  max-width: 700px;
+  margin: 80px auto;
+}
+
+.c-message-show-card .post-content {
+  padding-left: 0;
+  padding-right: 0;
+  display: block;
+  max-width: 100%;
+}
+
+.c-message-show-card .post-txt {
+  margin-top: 0;
+}
+
+.c-message-show-card-info {
+  display: flex;
+  margin-bottom: 30px;
+}
+
+.c-message-show-card-icon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+
+.c-message-show-card-info_container {
+  margin-left: 15px;
+}
+
+.c-message-show-card-name {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.c-message-show-card-post_content {
+  width: 100%;
+  max-width: 340px;
+  margin: 0 auto;
+  border: 1px solid #6C6C6C;
+  padding: 15px 15px 145px;
+  margin-bottom: 20px;
+  position: relative;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.c-message-show-card-post_content::before {
+  position: absolute;
+  display: block;
+  content: "";
+  background-image: url(https://files.gift.place/images/logo_gift_village.png);
+  width: 100px;
+  height: 31px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 20px;
+}
+
+.c-message-show-card-post_content::after {
+  position: absolute;
+  display: block;
+  content: "";
+  background-image: url(https://files.gift.place/images/img_5.png);
+  width: 137px;
+  height: 137px;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  bottom: 5px;
+  right: 7px;
+}
+
+.c-message-show-card-flex {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.c-message-show-card-txt {
+  font-size: 14px;
+  line-height: 22px;
+  padding: 0 10px;
+}
+
+.c-message-show-card-post_icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  margin-right: 15px;
+}
+
+@media screen and (max-width: 960px) {
+  .c-message-show-card {
+    margin: 40px 0;
+  }
 }
 
 /* ============================================================================
@@ -1278,27 +1386,27 @@ img {
  * page subscription create
  * ------------------------------------------------------------------------- */
 
-.p-subscription-create {
+.p-subscription {
   /* settlement */
 }
 
-.p-subscription-create .settlement {
+.p-subscription .settlement {
   max-width: 700px;
   margin: 80px auto;
 }
 
-.p-subscription-create .settlement-form label {
+.p-subscription .settlement-form label {
   font-size: 18px;
   font-weight: bold;
 }
 
-.p-subscription-create .settlement-form_block {
+.p-subscription .settlement-form_block {
   display: block;
   width: 100%;
   margin-top: 24px;
 }
 
-.p-subscription-create .settlement-form input {
+.p-subscription .settlement-form input {
   margin-top: 10px;
   display: block;
   width: 100%;
@@ -1307,28 +1415,28 @@ img {
   border: 1px solid #6C6C6C;
 }
 
-.p-subscription-create .settlement-form_inline {
+.p-subscription .settlement-form_inline {
   display: inline-block;
   width: 100%;
   max-width: 337px;
   margin-top: 24px;
 }
 
-.p-subscription-create .ml20 {
+.p-subscription .ml20 {
   margin-left: 20px;
 }
 
-.p-subscription-create .settlement-txt {
+.p-subscription .settlement-txt {
   margin-top: 32px;
   line-height: 20px;
 }
 
-.p-subscription-create .settlement-check_container {
+.p-subscription .settlement-check_container {
   text-align: center;
   margin-top: 48px;
 }
 
-.p-subscription-create .settlement-check input {
+.p-subscription .settlement-check input {
   width: auto;
   margin-top: 0;
   display: inline-block;
@@ -1337,7 +1445,7 @@ img {
   appearance: checkbox;
 }
 
-.p-subscription-create .settlement-form input.settlement-submit {
+.p-subscription .settlement-form input.settlement-submit {
   cursor: pointer;
   border: none;
   margin: 0 auto;
@@ -1351,16 +1459,16 @@ img {
 }
 
 @media screen and (max-width: 960px) {
-  .p-subscription-create .settlement-form_inline {
+  .p-subscription .settlement-form_inline {
     max-width: 45%;
   }
 
-  .p-subscription-create .settlement {
+  .p-subscription .settlement {
     margin: 40px 0;
   }
 }
 
-.p-subscription-create .settlement-form input.settlement-submit.post-btn {
+.p-subscription .settlement-form input.settlement-submit.post-btn {
   margin-top: 60px;
   max-width: 230px;
   padding: 12px 24px;
@@ -1460,6 +1568,10 @@ img {
 .wrap {
   max-width: 1080px;
   margin: 0 auto;
+}
+
+.content {
+  min-height: 500px;
 }
 
 body {

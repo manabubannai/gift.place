@@ -4,13 +4,13 @@
 <main class="p-user-user-show">
   <h1 class="page_title">マイページ</h1>
   <div class="mypage-info">
-    <img src="/img/toukou_img.png" alt="" class="mypage-icon">
+    <img src="{{ $user->cover_url }}" alt="" class="mypage-icon">
     <div class="mypage-info_container">
       <p class="mypage-name">{{ $user->name }}</p>
       <p class="mypage-id">@ {{ $user->slug }}</p>
 
       @if (Auth::user()->can('user-user-can-edit', $user))
-        <a href="{{ route('user.users.edit', $user->slug) }}">edit</a>
+        <a href="{{ route('user.users.edit', $user->slug) }}">設定</a>
       @endif
     </div>
   </div>

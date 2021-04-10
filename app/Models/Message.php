@@ -1,6 +1,7 @@
 <?php
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
@@ -17,6 +18,18 @@ class Message extends Model
         'user_id',
         'description',
     ];
+
+    protected $appends = [
+        'created_at_jst',
+    ];
+
+    public function getCreatedAtJstAttribute()
+    {
+        $dt   = new Carbon($this->created_at);
+        $dt->timezone('Asia/Tokyo');
+
+        return $dt->toDateTimeString();
+    }
 
     // relation
     public function user()

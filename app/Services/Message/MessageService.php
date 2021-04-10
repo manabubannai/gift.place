@@ -1,6 +1,7 @@
 <?php
 namespace App\Services\Message;
 
+use App\Models\Message;
 use App\Repositories\Message\MessageRepositoryInterface;
 use PascalDeVink\ShortUuid\ShortUuid;
 
@@ -18,9 +19,9 @@ class MessageService implements MessageServiceInterface
      * @param int   $userId
      * @param array $input
      *
-     * @return
+     * @return Message
      */
-    public function userStoreMessage(int $userId, array $input)
+    public function userStoreMessage(int $userId, array $input): Message
     {
         if (!isset($input['uuid'])) {
             $uuid      = \Illuminate\Support\Str::uuid();
@@ -33,6 +34,8 @@ class MessageService implements MessageServiceInterface
         }
 
         $message = $this->messageRepository->create($input);
+
+        return $message;
     }
 
     /**
@@ -48,6 +51,8 @@ class MessageService implements MessageServiceInterface
             abort(404);
         }
 
+        $message = $message->load('user');
+
         return $message;
     }
 
@@ -57,9 +62,12 @@ class MessageService implements MessageServiceInterface
     public function paginateOrderByDesc()
     {
         // FIXME
-        return $this->messageRepository
+        $messages = $this->messageRepository
                     ->getBlankModel()
                     ->latest()
+                    ->with('user')
                     ->paginate();
+
+        return $messages;
     }
 }

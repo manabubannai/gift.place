@@ -7,5 +7,5 @@
       <li><a href="{{ route('contact') }}" class="s-footer_nav--link">お問い合わせ</a></li>
     </ul>
   </nav>
-  <small>Copyright - Manabu Bannai, 2020 All Rights Reserved.</small>
+  <small>Copyright - Manabu Bannai, 2021 All Rights Reserved.</small>
 </footer>

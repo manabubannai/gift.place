@@ -2318,7 +2318,7 @@ var render = function() {
     _vm._v(" "),
     _c("input", {
       staticClass: "settlement-submit",
-      attrs: { disabled: _vm.loading, value: "ギフト村に参加する" },
+      attrs: { disabled: _vm.loading, value: "送信する" },
       on: { click: _vm.checkout }
     }),
     _vm._v(" "),

@@ -74,9 +74,12 @@ class MessageController extends Controller
     // FIXME vvalidation
     public function store(StoreRequest $request)
     {
-        $this->messageService->userStoreMessage(\Auth::user()->id, $request->all());
+        $message = $this->messageService->userStoreMessage(
+            \Auth::user()->id,
+            $request->all()
+        );
 
-        return redirect('/dashboard')->with([
+        return redirect(route('user.messages.show', $message->uuid))->with([
             'toast' => [
                 'status'  => 'success',
                 'message' => '投稿しました',

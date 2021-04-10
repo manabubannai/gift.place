@@ -28,7 +28,7 @@
             @click="checkout"
             :disabled="loading"
             class="settlement-submit"
-            value="ギフト村に参加する"
+            value="送信する"
         />
         <div v-if="show_result">{{ result_message }}</div>
     </div>

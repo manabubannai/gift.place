@@ -1,10 +1,10 @@
 @extends('layouts.app', ['noContainer' => true])
 
 @section('content')
-    <div class="p-subscription-create">
+    <div class="p-subscription">
         <div class="settlement">
             <h1 class="page_title">決済情報（月額390円）</h1>
-            <!-- <p class="text-center">決済page 月額390</p>
+            <p class="text-center">決済page 月額390</p>
 
             @if(!is_null($paymentMethod))
               <form action="{{ route('user.subscriptions.create') }}" method="POST">
@@ -26,7 +26,7 @@
 
                 <button type="submit" class="m-btn">ご登録済みのカードで再入会する</button>
               </form>
-            @endif -->
+            @endif
 
             @if(is_null($paymentMethod))
                 <stripe-card-form

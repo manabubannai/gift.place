@@ -2,31 +2,6 @@
 
 @section('content')
     <div id="p-index" class="p-index">
-        <!-- <div class="p-index__image">
-          <p class="p-index--copy">ギフト村</p>
-          <div class="p-index__search-form text-center">
-            <a class="m-btn" btn-type="twitter" href="{{ route('user.auth.redirect.provider', 'twitter') }}" style="text-decoration: none;">
-                    <div class="col-1"><i class="fab fa-twitter-square"></i></div>
-                    <div class="col-11 text-left"><p>Twitterで登録・ログイン</p></div>
-            </a>
-          </div>
-        </div>
-
-        <section class="p-index--new">
-            <div class="container py-4">
-                <header class="c-heading">
-                    <h2 class="c-heading__big">
-                        <span class="c-heading__string">hoge</span>
-                    </h2>
-                </header>
-                <p class="pb-4">感謝を残してみましょう。</p>
-                
-
-                <div class="text-center">
-                    <a href="" class="m-btn" style="color: #fff;">もっとみる</a>
-                </div>
-            </div>
-        </section> -->
 
         <main class="p-index__main">
           <h1 class="p-index__main_title">ギフト村</h1>
@@ -63,7 +38,7 @@
 
            <div class="twitter">
             <p class="twitter_txt">Twitterログインで「ギフト村」に参加できます</p>
-            <p><a href="#" class="m-btn" btn-type="twitter"><img src="https://files.gift.place/images/twi_logo.png" alt="twiter_logo" class="twitter_btn--logo"> Twitterで登録する</a></p>
+            <p><a href="{{ route('user.auth.redirect.provider', 'twitter') }}" class="m-btn" btn-type="twitter"><img src="https://files.gift.place/images/twi_logo.png" alt="twiter_logo" class="twitter_btn--logo"> Twitterで登録する</a></p>
            </div>
         </section>
 

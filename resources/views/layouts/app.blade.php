@@ -22,18 +22,21 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- いええええええええええええええい！ -->
+    <!-- 絶対にシェアするんじゃないぞ！絶対だぞ！分かったな！ -->
 
 </head>
 <body>
 <div id="app">
-
     <div class="wrap">
 
         @include('layouts._header')
 
         @include('layouts._toast')
 
-        @yield('content')
+        <div class="content">
+            @yield('content')
+        </div>
 
         @include('layouts._footer')
     </div>
