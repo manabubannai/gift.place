@@ -9,11 +9,11 @@
       </a>
       <a href="{{ route('user.messages.show', $message->uuid) }}" style="display: block;">
         <p class="post-txt">
-          <!-- {!! $message->description !!} -->
-          {{ $message->description }}
+          {!! $message->description !!}
+          <!-- {{ $message->description }} -->
         </p>
         <div class="flex_sb">
-          <div class="heart-toggle"></div>
+          <!-- <div class="heart-toggle"></div> -->
           <p class="post-time">
             {{ $message->created_at_jst }}
             <!-- PM23時55分2021年2月1日 -->

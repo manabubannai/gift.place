@@ -5,12 +5,12 @@
 
   <div class="post">
     <h1 class="page_title">みんなの投稿を見てみよう</h1>
-    <div class="post-wrap">
+    <!-- <div class="post-wrap"> -->
+    <message-index-card
+      :is-user="false"></message-index-card>
 
-      @each('components.user.messages.index-card', $messages, 'message' ,'pages.user.messages.empty')
-
-      {{ $messages->links('components.pagination.default') }}
-    </div>
+    <!-- </div> -->
   </div>
 </div>
+
 @endsection

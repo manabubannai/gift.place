@@ -15,6 +15,8 @@ Vue.use(Toasted, {
     containerClass: 'c-toasted',
 })
 
+Vue.component('InfiniteLoading', require('vue-infinite-loading').default)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,6 +38,14 @@ Vue.component('toast', require('./components/toast.vue').default)
 Vue.component(
     'message-like-button',
     require('./components/button/messageLikeButton.vue').default
+)
+
+/* ============================================================================
+ * card
+ * ========================================================================= */
+Vue.component(
+    'message-index-card',
+    require('./components/card/message/index.vue').default
 )
 
 /* ============================================================================
