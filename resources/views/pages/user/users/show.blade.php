@@ -17,7 +17,7 @@
 
   <message-index-card
     :is-user="true"
-    :user-id="{{ json_encode(\Auth::user()->id) }}"></message-index-card>
+    :user-id="{{ json_encode($user->id) }}"></message-index-card>
 
 </main>
 @endsection
