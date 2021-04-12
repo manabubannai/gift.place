@@ -302,5 +302,13 @@
     .header-id {
       font-size: 14px;
     }
+
+    .post-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-right: 16px;
+    }
   }
 }
