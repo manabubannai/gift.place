@@ -16,15 +16,21 @@ class SocialAccountService implements SocialAccountServiceInterface
         $this->socialAccountRepository   = $socialAccountRepository;
     }
 
-    public function findAlreadyRegisteredSocialAccount(ProviderUser $providerUser): ?\App\Models\SocialAccount
-    {
+    public function findAlreadyRegisteredSocialAccount(
+        ProviderUser $providerUser
+    ): ?\App\Models\SocialAccount {
         return $this->socialAccountRepository->findByProviderId($providerUser->id);
     }
 
-    public function findAlreadyRegisteredUser(int $userId): \App\Models\User
-    {
+    public function findAlreadyRegisteredUser(
+        int $userId,
+        ProviderUser $providerUser
+    ): \App\Models\User {
         $user = $this->userRepository->find($userId);
+
         $user->fill([
+            'name'      => $providerUser->name,
+            'cover_url' => $providerUser->avatar,
             'api_token' => Str::random(60),
         ])->save();
 
