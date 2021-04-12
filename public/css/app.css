@@ -551,6 +551,15 @@ img {
   .s-header .header-id {
     font-size: 14px;
   }
+
+  .s-header .post-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    margin-right: 16px;
+  }
 }
 
 /* ============================================================================
