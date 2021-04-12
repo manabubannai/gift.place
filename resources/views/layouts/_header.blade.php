@@ -1,71 +1,3 @@
-<!-- <header class="s-header">
-  <div class="flex_sb align_center">
-    <div>
-      @guest
-        <a href="/">
-          <img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
-        </a>
-      @else
-        <a href="{{ route('user.dashboard') }}">
-          <img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="s-header__img">
-        </a>
-      @endif
-    </div>
-
-    <nav class="s-header__nav">
-      <ul class="s-header__nav--ul">
-        @guest
-          <li><a href="#about" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
-          <li><a href="#cost" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
-          <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
-        @else
-
-        <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-
-          <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="s-header__nav-link">マイページ</li>
-          
-          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
-          <li><a class="s-header__nav-link" href="{{ route('user.auth.logout') }}"
-                       onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">ログアウト</a></li>
-
-          <form id="logout-form" action="{{ route('user.auth.logout') }}" method="POST" style="display: none;">
-              @csrf
-          </form>
-        @endif
-      </ul>
-    </nav>
-
-    <div class="m-hamburger">
-      <span class="m-hamburger__line"></span>
-      <span class="m-hamburger__line"></span>
-      <span class="m-hamburger__line"></span>
-    </div>
-    <nav class="globalMenuSp">
-      <ul>
-        @guest
-          <li><a href="#about" class="s-header__nav-link">ギフト村とは<span>What's gift village?</span></a></li>
-          <li><a href="#cost" class="s-header__nav-link">利用料金<span>How much does it cost?</span></a></li>
-          <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
-        @else
-          <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="s-header__nav-link">マイページ</li>
-          <li><a href="{{ route('user.dashboard') }}" class="s-header__nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-          <li><a href="{{ route('user.messages.create', null, false) }}" class="s-header__nav--btn m-btn">投稿する</a></li>
-          <li><a class="s-header__nav-link" href="{{ route('user.auth.logout') }}"
-                       onclick="event.preventDefault();
-                         document.getElementById('logout-form').submit();">ログアウト</a></li>
-
-          <form id="logout-form" action="{{ route('user.auth.logout') }}" method="POST" style="display: none;">
-              @csrf
-          </form>
-        @endif
-      </ul>
-    </nav>
-  </div>
-</header> -->
-
 <header class="s-header">
   <div class="flex_sb align_center header-pc">
     <div>
@@ -142,7 +74,7 @@
       @else
         <li>
           <a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="header_nav-flex">
-            <img src="https://files.gift.place/images/toukou_img.png" alt="" class="post-icon">
+            <img src="{{ \Auth::user()->cover_url }}" alt="" class="post-icon">
             <div class="post-txtbox">
               <p class="header-name">{{ \Auth::user()->name }}</p>
               <p class="header-id">@ {{ \Auth::user()->slug }}</p>
