@@ -2,9 +2,9 @@
   <div class="flex_sb align_center header-pc">
     <div>
       @guest
-        <a href="/"><img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="header_img"></a>
+        <a href="/"><img src="/images/logo_gift_village.png" alt="ギフト村" class="header_img"></a>
       @else
-        <a href="{{ route('user.dashboard') }}"><img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村" class="header_img"></a>
+        <a href="{{ route('user.dashboard') }}"><img src="/images/logo_gift_village.png" alt="ギフト村" class="header_img"></a>
       @endguest
     </div>
 
@@ -45,12 +45,12 @@
         <div class="header-sp-img">
           @guest
             <a href="/">
-              <img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村"
+              <img src="/images/logo_gift_village.png" alt="ギフト村"
                 class="header_img">
             </a>
           @else
             <a href="{{ route('user.dashboard') }}">
-              <img src="https://files.gift.place/images/logo_gift_village.png" alt="ギフト村"
+              <img src="/images/logo_gift_village.png" alt="ギフト村"
                 class="header_img">
             </a>
           @endif
@@ -60,7 +60,7 @@
         <ul class="header_nav--ul">
           @guest
           @else
-            <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="header_nav-bell"><img src="https://files.gift.place/images//bell-off.svg" alt=""></a></li>
+            <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="header_nav-bell"><img src="/images//bell-off.svg" alt=""></a></li>
             <li><a href="{{ route('user.messages.create', null, false) }}" class="header_nav--btn btn">投稿する</a></li>
           @endif
         </ul>

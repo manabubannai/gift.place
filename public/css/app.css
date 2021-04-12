@@ -675,7 +675,7 @@ img {
   position: absolute;
   display: block;
   content: "";
-  background-image: url(https://files.gift.place/images/logo_gift_village.png);
+  background-image: url(/images/logo_gift_village.png);
   width: 100px;
   height: 31px;
   background-position: center;
@@ -688,7 +688,7 @@ img {
   position: absolute;
   display: block;
   content: "";
-  background-image: url(https://files.gift.place/images/img_5.png);
+  background-image: url(/images/img_5.png);
   width: 137px;
   height: 137px;
   background-position: center;
@@ -1027,7 +1027,7 @@ img {
   content: "";
   position: absolute;
   display: block;
-  background: url(https://files.gift.place/images/img_1.png), url(https://files.gift.place/images/img_2.png);
+  background: url(/images/img_1.png), url(/images/img_2.png);
   width: 800px;
   height: 300px;
   background-size: contain, contain;
@@ -1042,7 +1042,7 @@ img {
   content: "";
   position: absolute;
   display: block;
-  background: url(https://files.gift.place/images/img_3.png), url(https://files.gift.place/images/img_4.png);
+  background: url(/images/img_3.png), url(/images/img_4.png);
   width: 1080px;
   height: 300px;
   background-size: contain, contain;
