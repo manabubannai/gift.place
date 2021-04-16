@@ -41,7 +41,7 @@ return [
             'type'        => false,
             'site_name'   => false,
             'images'      => [
-                '/images/logo_gift_village.png',
+                'https://gift.place/images/logo_gift_village.png',
             ],
         ],
     ],

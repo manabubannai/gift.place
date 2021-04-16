@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# ディレクトリ定義
+ROOT_DIR=$(git rev-parse --show-toplevel)
+LIST=$(git status | grep -e '\(modified:\|new file:\)'| grep '\.php' | cut -d':' -f2 )
+
+# php-cs-fixer
+error=false
+for file in $LIST
+do
+    # --path-modeをintersectionにすることで、Finderが無視されないようにします。
+    $ROOT_DIR/vendor/bin/php-cs-fixer fix --path-mode=intersection --dry-run $ROOT_DIR/$file > /dev/null 2>&1
+    if [ $? != 0 ]; then
+        echo -e "   please, cs fix to $ROOT_DIR/$file"
+        error=true
+    fi
+done
+
+if "${error}"; then
+    echo
+    echo -e "\033[31mCommit fail\033[m please run \"vendor/bin/php-cs-fixer fix\" command"
+    exit 1
+fi
