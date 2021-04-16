@@ -11,10 +11,10 @@ return [
         'defaults'       => [
             'title'        => false, // set false to total remove
             'titleBefore'  => false, // Put defaults.title before page title, like 'It's Over 9000! - Dashboard'
-            'description'  => 'For those who helped create the Genki Dama', // set false to total remove
+            'description'  => '寝る前にギフト（＝感謝）を投稿して、幸福度を高めるサービスです', // set false to total remove
             'separator'    => ' - ',
             'keywords'     => [],
-            'canonical'    => false, // Set null for using Url::current(), set false to total remove
+            'canonical'    => null, // Set null for using Url::current(), set false to total remove
             'robots'       => false, // Set to 'all', 'none' or any combination of index/noindex and follow/nofollow
         ],
         /*
@@ -36,11 +36,13 @@ return [
          */
         'defaults' => [
             'title'       => false, // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
-            'url'         => false, // Set null for using Url::current(), set false to total remove
+            'description' => '寝る前にギフト（＝感謝）を投稿して、幸福度を高めるサービスです', // set false to total remove
+            'url'         => null, // Set null for using Url::current(), set false to total remove
             'type'        => false,
             'site_name'   => false,
-            'images'      => [],
+            'images'      => [
+                '/images/logo_gift_village.png',
+            ],
         ],
     ],
     'twitter' => [
@@ -48,7 +50,7 @@ return [
          * The default values to be used by the twitter cards generator.
          */
         'defaults' => [
-            //'card'        => 'summary',
+            'card'        => 'summary_large_image',
             //'site'        => '@LuizVinicius73',
         ],
     ],
@@ -58,7 +60,7 @@ return [
          */
         'defaults' => [
             'title'       => false, // set false to total remove
-            'description' => 'For those who helped create the Genki Dama', // set false to total remove
+            'description' => '寝る前にギフト（＝感謝）を投稿して、幸福度を高めるサービスです', // set false to total remove
             'url'         => false, // Set null for using Url::current(), set false to total remove
             'type'        => 'WebPage',
             'images'      => [],

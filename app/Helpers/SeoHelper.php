@@ -18,11 +18,10 @@ class SeoHelper
         return self::setSeoText($title, $keyWords, $description);
     }
 
-    // mypage & user
-    public function setUserShowSeo($model)
+    public function setMessageShowSeo($model)
     {
         $appName      = config('app.name');
-        $title        = $model->name.'  |  '.trans('seo.users.show.title');
+        $title        = $model->user->name.'  |  '.'の投稿';
         $description  = $model->description;
         $keyWords     = trans('seo.index.keywords');
 
@@ -39,8 +38,8 @@ class SeoHelper
         $description = trans('seo.index.description');
 
         $keyWords        = trans('seo.index.keywords');
-        $imageTwitter    = config('app.url').'/images/logo-ogp.jpg';
-        $imageFacebook   = config('app.url').'/images/logo-ogp.jpg';
+        $imageTwitter    = config('app.url').'/images/logo_gift_village.png';
+        $imageFacebook   = config('app.url').'/images/logo_gift_village.png';
         $twitterCardType = 'summary_large_image';
 
         empty($twitterCardType) ?: \Twitter::setType($twitterCardType);

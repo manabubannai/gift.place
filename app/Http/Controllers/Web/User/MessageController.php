@@ -48,6 +48,8 @@ class MessageController extends Controller
                                 ->where('user_id', \Auth::user()->id)
                                 ->first();
 
+        \SeoHelper::setMessageShowSeo($message);
+
         return view('pages.user.messages.show', [
             'message'           => $message,
             'isLiked'           => $isLiked,
