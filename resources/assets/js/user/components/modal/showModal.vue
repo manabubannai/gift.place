@@ -6,17 +6,17 @@ import postMessageModal from './postMessageModal.vue'
 export default {
     props: {
         status: { required: true, type: String },
+        title: { required: true, type: String },
         message: { required: true, type: String },
     },
     created() {
-        console.log(1)
-        this.showModal(this.status, this.message)
+        this.showModal()
     },
     methods: {
-        showModal(status, message) {
+        showModal() {
             this.$modal.show(
                 postMessageModal,
-                {},
+                { title: this.title, message: this.message },
                 {
                     height: 'auto',
                     width: '320',

@@ -2148,13 +2148,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: {},
+  props: {
+    title: {
+      required: true,
+      type: String
+    },
+    message: {
+      required: true,
+      type: String
+    }
+  },
   data: function data() {
     return {};
   },
-  created: function created() {
-    console.log(2);
-  },
+  created: function created() {},
   methods: {}
 });
 
@@ -2180,18 +2187,24 @@ __webpack_require__.r(__webpack_exports__);
       required: true,
       type: String
     },
+    title: {
+      required: true,
+      type: String
+    },
     message: {
       required: true,
       type: String
     }
   },
   created: function created() {
-    console.log(1);
-    this.showModal(this.status, this.message);
+    this.showModal();
   },
   methods: {
-    showModal: function showModal(status, message) {
-      this.$modal.show(_postMessageModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {}, {
+    showModal: function showModal() {
+      this.$modal.show(_postMessageModal_vue__WEBPACK_IMPORTED_MODULE_0__["default"], {
+        title: this.title,
+        message: this.message
+      }, {
         height: 'auto',
         width: '320'
       });
@@ -39151,24 +39164,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "m-modal" }, [
-      _c("div", { staticClass: "m-modal__content" }, [
-        _c("h4", { staticClass: "m-modal__content--head" }, [
-          _vm._v("タイトル")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "m-modal__content--text" })
+  return _c("div", { staticClass: "m-modal" }, [
+    _c("div", { staticClass: "m-modal__content" }, [
+      _c("h4", { staticClass: "m-modal__content--head" }, [
+        _vm._v(_vm._s(_vm.title))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "m-modal__content--text" }, [
+        _vm._v(_vm._s(_vm.message))
       ])
     ])
-  }
-]
+  ])
+}
+var staticRenderFns = []
 render._withStripped = true
 
 

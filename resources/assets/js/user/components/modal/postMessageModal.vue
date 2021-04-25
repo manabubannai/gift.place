@@ -1,21 +1,22 @@
 <template>
     <div class="m-modal">
         <div class="m-modal__content">
-            <h4 class="m-modal__content--head">タイトル</h4>
+            <h4 class="m-modal__content--head">{{ title }}</h4>
 
-            <div class="m-modal__content--text"></div>
+            <div class="m-modal__content--text">{{ message }}</div>
         </div>
     </div>
 </template>
 <script>
 export default {
-    props: {},
+    props: {
+        title: { required: true, type: String },
+        message: { required: true, type: String },
+    },
     data() {
         return {}
     },
-    created() {
-        console.log(2)
-    },
+    created() {},
 
     methods: {},
 }

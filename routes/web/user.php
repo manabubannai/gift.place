@@ -16,13 +16,6 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
         }
     });
 
-    // 未login
-    Route::group([], function () {
-        Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
-            Route::get('/{uuid}', 'MessageController@show')->name('show');
-        });
-    });
-
     // loginずみのみ
     Route::group(['middleware' => ['auth:user']], function () {
         Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function () {
@@ -52,6 +45,13 @@ Route::group(['as' => 'user.', 'namespace' => 'User'], function () {
                 Route::get('/card-change', 'SubscriptionController@cardChangeForm')->name('card.change.form');
                 Route::post('/card-change', 'SubscriptionController@cardChange')->name('card.change');
             });
+        });
+    });
+
+    // 未login
+    Route::group([], function () {
+        Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
+            Route::get('/{uuid}', 'MessageController@show')->name('show');
         });
     });
 });
