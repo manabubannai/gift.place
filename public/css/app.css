@@ -235,12 +235,14 @@ img {
  * ========================================================================= */
 
 .s-footer {
+  text-align: center;
   margin-bottom: 40px;
   font-size: 15px;
 }
 
 .s-footer_nav--ul {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-bottom: 5px;
 }
@@ -720,7 +722,7 @@ img {
 
 @media screen and (max-width: 960px) {
   .c-message-show-card {
-    margin: 40px 0;
+    margin: 32px 0 40px;
   }
 }
 
@@ -1467,7 +1469,7 @@ img {
   }
 
   .p-subscription .settlement {
-    margin: 40px 0;
+    margin: 32px 0 40px;
   }
 }
 
@@ -1521,7 +1523,7 @@ img {
 
 @media screen and (max-width: 960px) {
   .p-user-message-create .settlement {
-    margin: 40px 0;
+    margin: 32px 0 40px;
   }
 }
 

@@ -60,7 +60,7 @@
         <ul class="header_nav--ul">
           @guest
           @else
-            <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="header_nav-bell"><img src="/images//bell-off.svg" alt=""></a></li>
+            <!-- <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="header_nav-bell"><img src="/images//bell-off.svg" alt=""></a></li> -->
             <li><a href="{{ route('user.messages.create', null, false) }}" class="header_nav--btn btn">投稿する</a></li>
           @endif
         </ul>

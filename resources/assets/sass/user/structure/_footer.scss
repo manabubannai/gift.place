@@ -1,9 +1,12 @@
 .s-footer {
+    text-align: center;
     margin-bottom: 40px;
     font-size: 15px;
 
+
     &_nav--ul {
       display: flex;
+      justify-content: center;
       flex-wrap: wrap;
       margin-bottom: 5px;
     }
