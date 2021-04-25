@@ -11,10 +11,12 @@
     <nav class="header_nav">
       <ul class="header_nav--ul">
         @guest
-          <li><a href="#about" class="header_nav-link">ギフト村とは<span>What's gift village?</span></a></li>
-          <li><a href="#cost" class="header_nav-link">利用料金<span>How much does it cost?</span></a></li>
+          <li><a href="/#about" class="header_nav-link">ギフト村とは<span>What's gift village?</span></a></li>
+          <li><a href="/#cost" class="header_nav-link">利用料金<span>How much does it cost?</span></a></li>
           <li><a href="{{ route('user.dashboard') }}" class="header_nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
-          <li><a href="{{ route('user.messages.create', null, false) }}" class="header_nav--btn m-btn">投稿する</a></li>
+          <li><a href="{{ route('user.auth.redirect.provider', 'twitter') }}" class="header_nav--btn m-btn">
+            ギフト村に入る
+          </a></li>
         @else
           <li><a href="{{ route('user.users.show', \Auth::user()->slug) }}" class="header_nav-link">マイページ</li>
           <li><a href="{{ route('user.dashboard') }}" class="header_nav-link">みんなの投稿<span>Villager’s gifts</span></a></li>
