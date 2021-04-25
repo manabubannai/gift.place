@@ -18,18 +18,17 @@ class SeoHelper
         return self::setSeoText($title, $keyWords, $description);
     }
 
-    // mypage & user
-    public function setUserShowSeo($model)
+    public static function setMessageShowSeo($model)
     {
         $appName      = config('app.name');
-        $title        = $model->name.'  |  '.trans('seo.users.show.title');
+        $title        = $model->user->name.'  |  '.'の投稿';
         $description  = $model->description;
         $keyWords     = trans('seo.index.keywords');
 
         $imageTwitter  = config('app.url').'images/logo-ogp.jpg';
         $imageFacebook = config('app.url').'images/logo-ogp.jpg';
 
-        return $this->setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
+        return self::setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
     }
 
     public function setDefaultSeo()
@@ -39,8 +38,8 @@ class SeoHelper
         $description = trans('seo.index.description');
 
         $keyWords        = trans('seo.index.keywords');
-        $imageTwitter    = config('app.url').'/images/logo-ogp.jpg';
-        $imageFacebook   = config('app.url').'/images/logo-ogp.jpg';
+        $imageTwitter    = config('app.url').'/images/logo_gift_village.png';
+        $imageFacebook   = config('app.url').'/images/logo_gift_village.png';
         $twitterCardType = 'summary_large_image';
 
         empty($twitterCardType) ?: \Twitter::setType($twitterCardType);
@@ -59,9 +58,14 @@ class SeoHelper
         empty($imageTwitter) ?: \Twitter::setImage($imageTwitter);
     }
 
-    public function setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter)
-    {
-        $this->setSeoText($title, $keyWords, $description);
+    public static function setSeo(
+        $title,
+        $keyWords,
+        $description,
+        $imageFacebook,
+        $imageTwitter
+    ) {
+        self::setSeoText($title, $keyWords, $description);
         empty($imageFacebook) ?: \OpenGraph::addImage($imageFacebook);
         empty($imageTwitter) ?: \Twitter::setImage($imageTwitter);
     }

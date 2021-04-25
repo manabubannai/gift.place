@@ -18,6 +18,8 @@ Vue.use(Toasted, {
 
 Vue.use(VModal, { dynamic: true, injectModalsContainer: true })
 
+Vue.component('InfiniteLoading', require('vue-infinite-loading').default)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -43,6 +45,14 @@ Vue.component(
 )
 
 /* ============================================================================
+ * card
+ * ========================================================================= */
+Vue.component(
+    'message-index-card',
+    require('./components/card/message/index.vue').default
+)
+
+/* ============================================================================
  * form
  * ========================================================================= */
 // Vue.component(
@@ -57,7 +67,7 @@ Vue.component(
  */
 
 $(function () {
-    $('.m-hamburger').click(function () {
+    $('.hamburger').click(function () {
         $(this).toggleClass('active')
 
         if ($(this).hasClass('active')) {

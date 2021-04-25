@@ -37,6 +37,7 @@
         "@stripe/stripe-js": "^1.9.0",
         "copy-webpack-plugin": "^5.1.1",
         "vue-js-modal": "^2.0.0-rc.6",
+        "vue-infinite-loading": "^2.4.5",
         "vue-toasted": "^1.1.28"
     }
 }

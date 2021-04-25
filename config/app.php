@@ -237,7 +237,7 @@ return [
         'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
         'Twitter'   => Artesaos\SEOTools\Facades\TwitterCard::class,
         // helper
-        'SeoHelper'  => \App\Facades\Helpers\SeoHelper::class,
+        'SeoHelper'  => App\Helpers\SeoHelper::class,
         'MailHelper' => \App\Facades\Helpers\MailHelper::class,
     ],
 

@@ -1,0 +1,56 @@
+/* ----------------------------------------------------------------------------
+ * 
+ * ------------------------------------------------------------------------- */
+.c-message-index-card {
+    min-width: 100%;
+    max-width: 100%;
+    // padding-right: 10px;
+    margin-bottom: 20px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+
+  // &:nth-child(2n) {
+  //   padding-left: 10px;
+  //   padding-right: 0;
+  // }
+
+  .post-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  .post-flex {
+    border: 1px solid #6C6C6C;
+    padding: 15px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+
+  .post-name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  .postpage-name {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+  }
+
+  .post-txtbox {
+    margin-left: 10px;
+  }
+
+  .post-txt {
+    margin: 15px 0;
+  }
+
+  .post-face {
+    display: block;
+    min-width: 40px;
+  }
+}

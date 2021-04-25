@@ -1,10 +1,10 @@
 <template>
-    <div class="container">
+    <div class="settlement-form">
         <div id="card-element"></div>
         <div id="card-errors" role="alert"></div>
 
-        <p>
-            以﻿下﻿のチ﻿ェ﻿ッ﻿クボ﻿ッ﻿ク﻿ス﻿をチ﻿ェ﻿ッ﻿クす﻿るこ﻿と﻿によ﻿り﻿、<a
+        <p class="settlement-txt">
+            以下のチェックボックスをチェックすることにより、<a
                 href="/term"
                 target="__blank"
                 >利﻿用規﻿約</a
@@ -13,16 +13,23 @@
             (現﻿在￥390)﻿
             ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。
         </p>
-        <input type="checkbox" id="card-check" class="" required />
-        <label class="" for="">同意する</label>
 
-        <button
+        <div class="settlement-check_container">
+            <label class="settlement-check">
+                <input
+                    type="checkbox"
+                    id="card-check"
+                    required
+                />入力情報を保存する
+            </label>
+        </div>
+
+        <input
             @click="checkout"
-            class="mt-4 c-button text-white"
             :disabled="loading"
-        >
-            申し込む
-        </button>
+            class="settlement-submit"
+            value="送信する"
+        />
         <div v-if="show_result">{{ result_message }}</div>
     </div>
 </template>

@@ -25,5 +25,9 @@ Route::group(['prefix' => 'user', 'as' => 'user.', 'namespace' => 'User'], funct
             Route::post('/', 'MessaegLikeController@store')->name('store');
             Route::delete('/{id}', 'MessaegLikeController@destroy')->name('destroy');
         });
+
+        Route::group(['prefix' => 'messages', 'as' => 'messages.'], function () {
+            Route::get('/', 'MessageController@index')->name('index');
+        });
     });
 });

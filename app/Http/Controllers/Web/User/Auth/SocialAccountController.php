@@ -27,6 +27,10 @@ class SocialAccountController extends Controller
 
     /**
      * Obtain the user information.
+     * 未登録 email twitter user
+     * 未登録 tel twitter user
+     * 登録済 email twitter user
+     * 登録済 tel twitter user.
      *
      * @return Response
      */
@@ -42,21 +46,20 @@ class SocialAccountController extends Controller
 
         $socialAccount = $this->socialAccountService->findAlreadyRegisteredSocialAccount($providerUser);
 
-        // logger($socialAccount);
-
         if ($socialAccount) {
-            $authUser = $this->socialAccountService->findAlreadyRegisteredUser($socialAccount->user_id);
+            $authUser = $this->socialAccountService->findAlreadyRegisteredUser(
+                $socialAccount->user_id,
+                $providerUser
+            );
         }
 
-        if (!$socialAccount && !is_null($providerUser->email)) {
+        if (!$socialAccount && !empty($providerUser->email)) {
             $authUser = $this->socialAccountService->create($providerUser, $provider);
         }
 
-        logger($authUser);
-
         // $providerUser->provideruserをsessionに保存し
         // emailを入力するformに飛ばす email保存先でregister usecaseを呼び出す
-        if (is_null($providerUser->email)) {
+        if (!$socialAccount && empty($providerUser->email)) {
             session([
                 'callback_provider_user'  => $providerUser,
                 'callback_provider'       => $provider,
@@ -73,13 +76,13 @@ class SocialAccountController extends Controller
     public function getEmail()
     {
         if (Auth::check()) {
-            return redirect('/');
+            return redirect(route('home'));
         }
 
         $provider     = session('callback_provider');
         $providerUser = session('callback_provider_user');
 
-        if (empty($provider) || empty($providerUser) || empty($socialAccount)) {
+        if (empty($provider) || empty($providerUser)) {
             return redirect(route('home'));
         }
 
@@ -91,8 +94,11 @@ class SocialAccountController extends Controller
         $providerName = session('callback_provider');
         $providerUser = session('callback_provider_user');
 
+        \Log::debug($request->input('email'));
+
         $providerUser->email = $request->input('email');
-        $authUser            = $this->socialAccountService->create($providerUser, $providerName, $socialAccount);
+        \Log::debug($providerUser->email);
+        $authUser            = $this->socialAccountService->create($providerUser, $providerName);
 
         Auth::login($authUser);
 
@@ -118,8 +124,6 @@ class SocialAccountController extends Controller
      */
     protected function sendLoginResponse()
     {
-        \Log::info(1);
-
         return redirect(route('user.dashboard'))->with([
             'toast' => [
                 'status'  => 'success',

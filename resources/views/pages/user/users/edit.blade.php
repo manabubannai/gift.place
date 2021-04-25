@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="p-user-user-edit">
-        <div class="">
+        <!-- <div class="">
 
           <form method="POST" action="{{ route('user.users.update', $user->slug) }}">
               @method('PUT')
@@ -21,6 +21,8 @@
               </div>
             </form>
 
-          </div>
+          </div> -->
+          <a href="{{ route('user.subscriptions.card.change.form') }}">カード変更する</a>
+          <a href="{{ route('user.users.destroy.form', \Auth::user()->slug) }}">退会する</a>
     </div>
 @endsection

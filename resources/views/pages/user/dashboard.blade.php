@@ -1,10 +1,16 @@
 @extends('layouts.app', ['noContainer' => true])
 
 @section('content')
-    <div class="p-dashboard">
+<div class="p-dashboard">
 
-        @each('components.user.messages.index-card', $messages, 'message' ,'pages.user.messages.empty')
+  <div class="post">
+    <h1 class="page_title">みんなの投稿を見てみよう</h1>
+    <!-- <div class="post-wrap"> -->
+    <message-index-card
+      :is-user="false"></message-index-card>
 
-        {{ $messages->links('components.pagination.default') }}
-    </div>
+    <!-- </div> -->
+  </div>
+</div>
+
 @endsection

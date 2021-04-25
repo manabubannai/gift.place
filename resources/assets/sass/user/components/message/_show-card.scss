@@ -1,0 +1,111 @@
+/* ----------------------------------------------------------------------------
+ * 
+ * ------------------------------------------------------------------------- */
+.c-message-show-card {
+    min-height: 460px;
+    max-width: 700px;
+    margin: 80px auto;
+
+  .post-content {
+    padding-left: 0;
+    padding-right: 0;
+    display: block;
+    max-width: 100%;
+  }
+
+  .post-txt {
+    margin-top: 0;
+  }
+
+  &-info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 30px;
+  }
+
+  &-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+  }
+
+  &-info_container {
+    margin-left: 15px;
+  }
+
+  &-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+
+  &-post_content {
+    width: 100%;
+    max-width: 340px;
+    margin: 0 auto;
+    border: 1px solid #6C6C6C;
+    padding: 15px 15px 145px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  &-post_content::before {
+    position: absolute;
+    display: block;
+    content: "";
+    background-image: url(/images/logo_gift_village.png);
+    width: 100px;
+    height: 31px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: 20px;
+  }
+
+  &-post_content::after {
+    position: absolute;
+    display: block;
+    content: "";
+    background-image: url(/images/img_5.png);
+    width: 137px;
+    height: 137px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    bottom: 5px;
+    right: 7px;
+  }
+
+  &-flex {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    margin-bottom: 15px;
+  }
+
+  &-txt {
+    font-size: 14px;
+    line-height: 22px;
+    padding: 0 10px;
+  }
+
+  &-post_icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    margin-right: 15px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .c-message-show-card {
+    margin: 32px 0 40px;
+  }
+}
