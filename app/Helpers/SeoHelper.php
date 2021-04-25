@@ -18,7 +18,7 @@ class SeoHelper
         return self::setSeoText($title, $keyWords, $description);
     }
 
-    public function setMessageShowSeo($model)
+    public static function setMessageShowSeo($model)
     {
         $appName      = config('app.name');
         $title        = $model->user->name.'  |  '.'の投稿';
@@ -28,7 +28,7 @@ class SeoHelper
         $imageTwitter  = config('app.url').'images/logo-ogp.jpg';
         $imageFacebook = config('app.url').'images/logo-ogp.jpg';
 
-        return $this->setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
+        return self::setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter);
     }
 
     public function setDefaultSeo()
@@ -58,9 +58,14 @@ class SeoHelper
         empty($imageTwitter) ?: \Twitter::setImage($imageTwitter);
     }
 
-    public function setSeo($title, $keyWords, $description, $imageFacebook, $imageTwitter)
-    {
-        $this->setSeoText($title, $keyWords, $description);
+    public static function setSeo(
+        $title,
+        $keyWords,
+        $description,
+        $imageFacebook,
+        $imageTwitter
+    ) {
+        self::setSeoText($title, $keyWords, $description);
         empty($imageFacebook) ?: \OpenGraph::addImage($imageFacebook);
         empty($imageTwitter) ?: \Twitter::setImage($imageTwitter);
     }
