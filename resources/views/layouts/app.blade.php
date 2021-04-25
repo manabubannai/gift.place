@@ -30,9 +30,11 @@
 <div id="app">
     <div class="wrap">
 
+        @include('layouts._toast')
+        @include('layouts._modal')
+
         @include('layouts._header')
 
-        @include('layouts._toast')
 
         <div class="content">
             @yield('content')

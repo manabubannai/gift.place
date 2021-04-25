@@ -81,7 +81,6 @@ class MessageController extends Controller
         return view('pages.user.messages.create');
     }
 
-    // FIXME vvalidation
     public function store(StoreRequest $request)
     {
         $message = $this->messageService->userStoreMessage(
@@ -90,9 +89,10 @@ class MessageController extends Controller
         );
 
         return redirect(route('user.messages.show', $message->uuid))->with([
-            'toast' => [
+            'modal' => [
                 'status'  => 'success',
-                'message' => '投稿しました',
+                'title'   => '投稿が完了しました',
+                'message' => '投稿をスクショしてSNSでシェアしよう!',
             ],
         ]);
     }
