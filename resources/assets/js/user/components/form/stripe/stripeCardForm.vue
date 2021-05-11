@@ -20,7 +20,7 @@
                     type="checkbox"
                     id="card-check"
                     required
-                />入力情報を保存する
+                />同意する
             </label>
         </div>
 
@@ -29,6 +29,7 @@
             :disabled="loading"
             class="settlement-submit"
             value="送信する"
+            tybe="button"
         />
         <div v-if="show_result">{{ result_message }}</div>
     </div>
