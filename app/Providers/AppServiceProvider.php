@@ -29,7 +29,7 @@ class AppServiceProvider extends ServiceProvider
 
         URL::forceRootUrl(config('app.url'));
 
-        if (config('app.env') === 'production') {
+        if (config('app.env') === 'production' || config('app.env') === 'development') {
             // asset()やurl()がhttpsで生成される
             // URL::forceScheme('http');
             URL::forceScheme('https');
