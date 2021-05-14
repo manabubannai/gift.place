@@ -25,7 +25,7 @@
             class="submit-btn"
             tybe="button"
         >
-            送信する
+            入会する
         </button>
         <div v-if="show_result">{{ result_message }}</div>
     </div>

@@ -2320,7 +2320,7 @@ var render = function() {
         attrs: { disabled: _vm.loading, tybe: "button" },
         on: { click: _vm.checkout }
       },
-      [_vm._v("\n        送信する\n    ")]
+      [_vm._v("\n        入会する\n    ")]
     ),
     _vm._v(" "),
     _vm.show_result ? _c("div", [_vm._v(_vm._s(_vm.result_message))]) : _vm._e()

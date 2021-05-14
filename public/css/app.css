@@ -1522,6 +1522,21 @@ img {
   /* settlement */
 }
 
+.p-subscription .submit-btn {
+  cursor: pointer;
+  border: none;
+  margin: 0 auto;
+  font-size: 16px;
+  border-radius: 50px;
+  color: white;
+  margin-top: 24px;
+  background-color: #ed4c59;
+  text-align: center;
+  display: block;
+  width: 100%;
+  padding: 12px 16px;
+}
+
 .p-subscription .settlement {
   max-width: 700px;
   margin: 80px auto;
