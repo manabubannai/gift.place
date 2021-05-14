@@ -22,7 +22,12 @@
             </form>
 
           </div> -->
-          <a href="{{ route('user.subscriptions.card.change.form') }}">カード変更する</a>
-          <a href="{{ route('user.users.destroy.form', \Auth::user()->slug) }}">退会する</a>
+          <p style="margin-bottom: 16px;">
+            <a href="{{ route('user.subscriptions.card.change.form') }}">カード変更する</a>
+          </p>
+
+          <p>
+            <a href="{{ route('user.users.destroy.form', \Auth::user()->slug) }}">退会する</a>
+          </p>
     </div>
 @endsection

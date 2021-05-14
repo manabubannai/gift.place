@@ -292,9 +292,20 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
+    isShow: {
+      type: Boolean
+    },
+    title: {
+      type: String,
+      "default": ''
+    },
     route: {
       type: String,
       "default": ''
@@ -2304,27 +2315,32 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "settlement-form" }, [
-    _c("div", { attrs: { id: "card-element" } }),
-    _vm._v(" "),
-    _c("div", { attrs: { id: "card-errors", role: "alert" } }),
-    _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _c(
-      "button",
-      {
-        staticClass: "submit-btn",
-        attrs: { disabled: _vm.loading, tybe: "button" },
-        on: { click: _vm.checkout }
-      },
-      [_vm._v("\n        入会する\n    ")]
-    ),
-    _vm._v(" "),
-    _vm.show_result ? _c("div", [_vm._v(_vm._s(_vm.result_message))]) : _vm._e()
-  ])
+  return _c(
+    "div",
+    { staticClass: "settlement-form" },
+    [
+      _c("div", { attrs: { id: "card-element" } }),
+      _vm._v(" "),
+      _c("div", { attrs: { id: "card-errors", role: "alert" } }),
+      _vm._v(" "),
+      _vm.isShow ? [_vm._m(0), _vm._v(" "), _vm._m(1)] : _vm._e(),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "submit-btn",
+          attrs: { disabled: _vm.loading, tybe: "button" },
+          on: { click: _vm.checkout }
+        },
+        [_vm._v("\n        " + _vm._s(_vm.title) + "\n    ")]
+      ),
+      _vm._v(" "),
+      _vm.show_result
+        ? _c("div", [_vm._v(_vm._s(_vm.result_message))])
+        : _vm._e()
+    ],
+    2
+  )
 }
 var staticRenderFns = [
   function() {
@@ -2332,7 +2348,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "settlement-txt" }, [
-      _vm._v("\n        以下のチェックボックスをチェックすることにより、"),
+      _vm._v("\n            以下のチェックボックスをチェックすることにより、"),
       _c("a", { attrs: { href: "/term", target: "__blank" } }, [
         _vm._v("利﻿用規﻿約")
       ]),
@@ -2341,7 +2357,7 @@ var staticRenderFns = [
         _vm._v("プライバシーポリシー")
       ]),
       _vm._v(
-        "﻿に同﻿意す﻿るも﻿の﻿とし﻿ま﻿す﻿。キ﻿ャ﻿ン﻿セ﻿ルす﻿る﻿ま﻿で月﻿額メ﻿ン﻿バ﻿ー﻿シ﻿ッ﻿プ料﻿金\n        (現﻿在￥390)﻿\n        ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。\n    "
+        "﻿に同﻿意す﻿るも﻿の﻿とし﻿ま﻿す﻿。キ﻿ャ﻿ン﻿セ﻿ルす﻿る﻿ま﻿で月﻿額メ﻿ン﻿バ﻿ー﻿シ﻿ッ﻿プ料﻿金\n            (現﻿在￥390)﻿\n            ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。\n        "
       )
     ])
   },
@@ -2354,7 +2370,7 @@ var staticRenderFns = [
         _c("input", {
           attrs: { type: "checkbox", id: "card-check", required: "" }
         }),
-        _vm._v("同意する\n        ")
+        _vm._v("同意する\n            ")
       ])
     ])
   }

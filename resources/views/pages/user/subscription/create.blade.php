@@ -30,12 +30,17 @@
                     </label>
                 </div>
 
-                <button type="submit" class="m-btn">ご登録済みのカードで再入会する</button>
+                <button type="submit" class="submit-btn">ご登録済みのカードで再入会する</button>
               </form>
             @endif
 
+            @php
+                $isShow = true;
+            @endphp
             @if(is_null($paymentMethod))
                 <stripe-card-form
+                :title="`入会する`"
+                :is-show="{{ json_encode($isShow) }}"
                 :route="{{ json_encode(route('user.subscriptions.create')) }}"
                 :public-key="{{ json_encode(config('services.stripe.key')) }}"
                 :client-secret="{{ json_encode($intent->client_secret) }}"></stripe-card-form>

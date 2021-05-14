@@ -3,29 +3,33 @@
         <div id="card-element"></div>
         <div id="card-errors" role="alert"></div>
 
-        <p class="settlement-txt">
-            以下のチェックボックスをチェックすることにより、<a
-                href="/term"
-                target="__blank"
-                >利﻿用規﻿約</a
-            >お﻿よ﻿び<a href="/policy" target="__blank">プライバシーポリシー</a
-            >﻿に同﻿意す﻿るも﻿の﻿とし﻿ま﻿す﻿。キ﻿ャ﻿ン﻿セ﻿ルす﻿る﻿ま﻿で月﻿額メ﻿ン﻿バ﻿ー﻿シ﻿ッ﻿プ料﻿金
-            (現﻿在￥390)﻿
-            ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。
-        </p>
+        <template v-if="isShow">
+            <p class="settlement-txt">
+                以下のチェックボックスをチェックすることにより、<a
+                    href="/term"
+                    target="__blank"
+                    >利﻿用規﻿約</a
+                >お﻿よ﻿び<a href="/policy" target="__blank"
+                    >プライバシーポリシー</a
+                >﻿に同﻿意す﻿るも﻿の﻿とし﻿ま﻿す﻿。キ﻿ャ﻿ン﻿セ﻿ルす﻿る﻿ま﻿で月﻿額メ﻿ン﻿バ﻿ー﻿シ﻿ッ﻿プ料﻿金
+                (現﻿在￥390)﻿
+                ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。
+            </p>
 
-        <div class="settlement-check_container">
-            <label class="settlement-check">
-                <input type="checkbox" id="card-check" required />同意する
-            </label>
-        </div>
+            <div class="settlement-check_container">
+                <label class="settlement-check">
+                    <input type="checkbox" id="card-check" required />同意する
+                </label>
+            </div>
+        </template>
+
         <button
             @click="checkout"
             :disabled="loading"
             class="submit-btn"
             tybe="button"
         >
-            入会する
+            {{ title }}
         </button>
         <div v-if="show_result">{{ result_message }}</div>
     </div>
@@ -36,6 +40,13 @@ import { loadStripe } from '@stripe/stripe-js'
 
 export default {
     props: {
+        isShow: {
+            type: Boolean,
+        },
+        title: {
+            type: String,
+            default: '',
+        },
         route: {
             type: String,
             default: '',
