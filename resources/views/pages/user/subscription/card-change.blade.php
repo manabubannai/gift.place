@@ -7,8 +7,13 @@
         <h1 class="page_title">カードを変更する</h1>
         <!-- <p>{{ $paymentMethod->card->brand }}</p>
         <p>{{ $paymentMethod->card->last4 }}</p> -->
+        @php
+            $isShow = false;
+        @endphp
 
         <stripe-card-form
+        :title="`変更する`"
+        :is-show="{{ json_encode($isShow) }}"
         :route="{{ json_encode(route('user.subscriptions.card.change')) }}"
         :public-key="{{ json_encode(config('services.stripe.key')) }}"
         :client-secret="{{ json_encode($intent->client_secret) }}"></stripe-card-form>
