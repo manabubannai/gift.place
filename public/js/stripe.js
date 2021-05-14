@@ -292,9 +292,6 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -454,7 +451,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../../node_mod
 
 
 // module
-exports.push([module.i, "\n.StripeElement {\n    box-sizing: border-box;\n    height: 40px;\n    padding: 10px 12px;\n    border: 1px solid #ddd;\n    border-radius: 4px;\n    background-color: white;\n    /*box-shadow: 0 1px 3px 0 #e6ebf1;*/\n    /*-webkit-transition: box-shadow 150ms ease;*/\n    /*transition: box-shadow 150ms ease;*/\n}\n", ""]);
+exports.push([module.i, "\n.StripeElement {\n    box-sizing: border-box;\n    height: 40px;\n    padding: 10px 12px;\n    border: 1px solid #ddd;\n    border-radius: 4px;\n    background-color: white;\n    /*box-shadow: 0 1px 3px 0 #e6ebf1;*/\n    /*-webkit-transition: box-shadow 150ms ease;*/\n    /*transition: box-shadow 150ms ease;*/\n}\n.submit-btn {\n    cursor: pointer;\n    border: none;\n    margin: 0 auto;\n    max-width: 200px;\n    font-size: 16px;\n    border-radius: 50px;\n    color: white;\n    margin-top: 24px;\n    background-color: #ed4c59;\n    text-align: center;\n    display: block;\n    width: 100%;\n    padding: 12px 16px;\n}\n", ""]);
 
 // exports
 
@@ -2316,11 +2313,15 @@ var render = function() {
     _vm._v(" "),
     _vm._m(1),
     _vm._v(" "),
-    _c("input", {
-      staticClass: "settlement-submit",
-      attrs: { disabled: _vm.loading, value: "送信する" },
-      on: { click: _vm.checkout }
-    }),
+    _c(
+      "button",
+      {
+        staticClass: "submit-btn",
+        attrs: { disabled: _vm.loading, tybe: "button" },
+        on: { click: _vm.checkout }
+      },
+      [_vm._v("\n        送信する\n    ")]
+    ),
     _vm._v(" "),
     _vm.show_result ? _c("div", [_vm._v(_vm._s(_vm.result_message))]) : _vm._e()
   ])
@@ -2353,7 +2354,7 @@ var staticRenderFns = [
         _c("input", {
           attrs: { type: "checkbox", id: "card-check", required: "" }
         }),
-        _vm._v("入力情報を保存する\n        ")
+        _vm._v("同意する\n        ")
       ])
     ])
   }

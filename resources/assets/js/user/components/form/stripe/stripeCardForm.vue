@@ -16,21 +16,17 @@
 
         <div class="settlement-check_container">
             <label class="settlement-check">
-                <input
-                    type="checkbox"
-                    id="card-check"
-                    required
-                />同意する
+                <input type="checkbox" id="card-check" required />同意する
             </label>
         </div>
-
-        <input
+        <button
             @click="checkout"
             :disabled="loading"
-            class="settlement-submit"
-            value="送信する"
+            class="submit-btn"
             tybe="button"
-        />
+        >
+            送信する
+        </button>
         <div v-if="show_result">{{ result_message }}</div>
     </div>
 </template>
@@ -179,5 +175,21 @@ export default {
     /*box-shadow: 0 1px 3px 0 #e6ebf1;*/
     /*-webkit-transition: box-shadow 150ms ease;*/
     /*transition: box-shadow 150ms ease;*/
+}
+
+.submit-btn {
+    cursor: pointer;
+    border: none;
+    margin: 0 auto;
+    max-width: 200px;
+    font-size: 16px;
+    border-radius: 50px;
+    color: white;
+    margin-top: 24px;
+    background-color: #ed4c59;
+    text-align: center;
+    display: block;
+    width: 100%;
+    padding: 12px 16px;
 }
 </style>
