@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Web\User;
 use App\Http\Controllers\Controller;
 use App\Repositories\User\UserRepositoryInterface;
 use App\Services\User\UserServiceInterface;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -32,7 +33,7 @@ class UserController extends Controller
 
     public function edit(string $slug, Request $request)
     {
-        $user = $this->userRepository->findBySlug($slug);
+        $user = \Auth::user();
 
         $this->authorize('user-user-can-edit', $user);
 
@@ -43,7 +44,7 @@ class UserController extends Controller
 
     public function update(string $slug, Request $request)
     {
-        $user = $this->userRepository->findBySlug($slug);
+        $user = \Auth::user();
 
         $this->authorize('user-user-can-edit', $user);
 
@@ -60,12 +61,19 @@ class UserController extends Controller
 
     public function destroyForm(string $slug, Request $request)
     {
-        $user = $this->userRepository->findBySlug($slug);
+        $user = \Auth::user();
+
+        // Retrieve the timestamp from Stripe
+        $timestamp = $user->asStripeCustomer()['subscriptions']->data[0]['current_period_end'];
+
+        // Cast to Carbon instance and return
+        $nextPaymentday = Carbon::createFromTimeStamp($timestamp)->toFormattedDateString();
 
         $this->authorize('user-user-can-edit', $user);
 
         return view('pages.user.users.destroy', [
-            'user' => $user,
+            'user'           => $user,
+            'nextPaymentday' => $nextPaymentday,
         ]);
     }
 
