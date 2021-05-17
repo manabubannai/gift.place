@@ -22,7 +22,7 @@
             </form>
 
           </div> -->
-          <p style="margin-bottom: 16px;">
+          <p style="margin: 16px 0;">
             <a href="{{ route('user.subscriptions.card.change.form') }}">カード変更する</a>
           </p>
 
