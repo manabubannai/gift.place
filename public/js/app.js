@@ -2103,7 +2103,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   return _this.messages.push(data);
                 });
 
-                if (this.messages.length < response.total) {
+                if (this.messages.length < response.meta.total) {
                   this.page = this.page + 1;
                   $state.loaded();
                 } else {
