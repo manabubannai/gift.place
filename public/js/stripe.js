@@ -436,7 +436,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       this.loading = false;
     },
     validate: function validate() {
-      if (document.getElementById('card-check').checked === false) {
+      if (this.isShow && document.getElementById('card-check').checked === false) {
         this.$toasted.show('チ﻿ェ﻿ッ﻿クボ﻿ッ﻿ク﻿ス﻿をチ﻿ェ﻿ッ﻿クしてください', {
           type: 'error'
         });

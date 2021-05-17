@@ -162,7 +162,10 @@ export default {
         },
 
         validate() {
-            if (document.getElementById('card-check').checked === false) {
+            if (
+                this.isShow &&
+                document.getElementById('card-check').checked === false
+            ) {
                 this.$toasted.show(
                     'チ﻿ェ﻿ッ﻿クボ﻿ッ﻿ク﻿ス﻿をチ﻿ェ﻿ッ﻿クしてください',
                     { type: 'error' }
