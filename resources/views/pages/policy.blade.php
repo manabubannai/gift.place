@@ -58,7 +58,7 @@
           当社は、任意の時点で適宜本ポリシーを変更することができるものとし、本ポリシーを変更した場合には、当社が運営・管理するウェブサイト上での掲示、電子メールによる通知又はその他当社が別途定める方法により告知するものとします。</p>
         <p>9．お問い合わせ窓口<br />
           本サービスにおける個人情報の取扱いに関するお問い合わせは、以下のお問い合せ窓口までご連絡下さい。<br />
-          <a href="https://welcome.gift.place/contact/">https://welcome.gift.place/contact/</a></p>
+          <a href="https://twitter.com/messages/926630074010427392-1223403110023827457">運営者Twitter DM</a></p>
       </section>
     </div>
 @endsection
