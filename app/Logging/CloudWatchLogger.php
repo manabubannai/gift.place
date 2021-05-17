@@ -23,7 +23,7 @@ class CloudWatchLogger
         // Instantiate AWS SDK CloudWatch Logs Client
         $client = new CloudWatchLogsClient($sdkParams);
         // Log group name, will be created if none
-        $groupName = config('app.env');
+        $groupName = 'gift-place-'.config('app.env');
 
         // Log stream name, will be created if none
         $streamName = config('app.hostname', 'localhost');
