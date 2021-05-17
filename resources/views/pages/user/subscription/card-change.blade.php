@@ -7,6 +7,7 @@
         <h1 class="page_title">カードを変更する</h1>
         <!-- <p>{{ $paymentMethod->card->brand }}</p>
         <p>{{ $paymentMethod->card->last4 }}</p> -->
+
         @php
             $isShow = false;
         @endphp
