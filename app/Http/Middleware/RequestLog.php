@@ -60,7 +60,7 @@ class RequestLog
             'path'      => $request->path(),
             'header'    => $request->header(),
             'ip'        => $request->ip(),
-            'status'    => !is_null($response->status()) ? $response->status() : null,
+            'status'    => $response->status(),
             'timestamp' => $now->toIso8601ZuluString(),
         ];
 
