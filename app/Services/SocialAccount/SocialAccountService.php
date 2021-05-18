@@ -30,7 +30,7 @@ class SocialAccountService implements SocialAccountServiceInterface
 
         $user->fill([
             'name'      => $providerUser->name,
-            'cover_url' => $providerUser->avatar,
+            'cover_url' => $providerUser->avatar_original,
             'api_token' => Str::random(60),
         ])->save();
 
