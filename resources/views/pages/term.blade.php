@@ -136,15 +136,7 @@
         <tbody>
           <tr>
             <td style="background-color: #fafafa;">販売業者 / 代表責任者</td>
-            <td>坂内学</td>
-          </tr>
-          <tr>
-            <td style="background-color: #fafafa;">所在地</td>
-            <td>Unit 13A-05, Menara K1, Lorong 3/137C,Off Jalan Klang Lama,58200 Kuala Lumpur, Malaysia.</td>
-          </tr>
-          <tr>
-            <td style="background-color: #fafafa;">電話番号</td>
-            <td>+603-7772 6333</td>
+            <td>高島檀</td>
           </tr>
           <tr>
             <td style="background-color: #fafafa;">受付時間</td>
@@ -152,12 +144,7 @@
           </tr>
           <tr>
             <td style="background-color: #fafafa;">公開メールアドレス</td>
-            <td>mnbmnb0524@gmail.com</td>
-          </tr>
-          <tr>
-            <td style="background-color: #fafafa;">ホームページURL</td>
-            <td>https://manablog.org/<br />
-              https://manablog.shop/</td>
+            <td>dan08124@gmail.com</td>
           </tr>
           <tr>
             <td style="background-color: #fafafa;">販売価格</td>
@@ -169,7 +156,7 @@
           </tr>
           <tr>
             <td style="background-color: #fafafa;">引き渡し時期</td>
-            <td>ご注文から6日以内にお届け致します。</td>
+            <td>クレジットカード決済完了後よりサービス開始</td>
           </tr>
           <tr>
             <td style="background-color: #fafafa;">お支払方法</td>
@@ -177,15 +164,7 @@
           </tr>
           <tr>
             <td style="background-color: #fafafa;">返品・交換・キャンセル</td>
-            <td>購入から２週間以内なら可能。</td>
-          </tr>
-          <tr>
-            <td style="background-color: #fafafa;">返品期限</td>
-            <td>商品購入より２週間以内にご連絡下さい。</td>
-          </tr>
-          <tr>
-            <td style="background-color: #fafafa;">返品送料</td>
-            <td>お客様のご負担となります。</td>
+            <td>お客様のご都合による返品・キャンセル 商品の性質上、ご購入後の返金・返品はできかねます。 </td>
           </tr>
         </tbody>
       </table>
