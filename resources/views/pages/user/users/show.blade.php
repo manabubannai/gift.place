@@ -10,7 +10,7 @@
       <p class="mypage-id">@ {{ $user->slug }}</p>
 
       @if (Auth::user()->can('user-user-can-edit', $user))
-        <a href="{{ route('user.users.edit', $user->slug) }}">設定</a>
+        <a href="{{ route('user.users.edit', $user->slug) }}">設定・退会</a>
       @endif
     </div>
   </div>
