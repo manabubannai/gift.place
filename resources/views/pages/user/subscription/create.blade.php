@@ -12,7 +12,8 @@
 
                 <div class="settlement-check_container">
                     <label class="settlement-check">
-                        <input type="checkbox" name="payment_method" value="{{ $paymentMethod->id }}" required checked="checked">
+                        <input type="hidden" name="payment_method" value="{{ $paymentMethod->id }}">
+
                         <span class="brand mx-1">{{ $paymentMethod->card->brand }}</span>
                         <span class="number mx-1">**** **** **** {{ $paymentMethod->card->last4 }}</span>
                         <span class="exp mx-1">{{ $paymentMethod->card->exp_month }}<span
@@ -21,7 +22,7 @@
                 </div>
 
                 <p style="margin-top: 8px;">
-                    以﻿下﻿のチ﻿ェ﻿ッ﻿クボ﻿ッ﻿ク﻿ス﻿をチ﻿ェ﻿ッ﻿クす﻿るこ﻿と﻿によ﻿り﻿、<a href="{{ route('term') }}" target="__blank">利﻿用規﻿約</a>お﻿よ﻿び<a href="{{ route('policy') }}"target="__blank">プライバシーポリシー</a>﻿に同﻿意す﻿るも﻿の﻿とし﻿ま﻿す﻿。キ﻿ャ﻿ン﻿セ﻿ルす﻿る﻿ま﻿で月﻿額メ﻿ン﻿バ﻿ー﻿シ﻿ッ﻿プ料﻿金 (現﻿在￥390)﻿ ﻿は﻿、ご﻿指﻿定﻿のお﻿支﻿払﻿い方﻿法に﻿て自﻿動引﻿き落﻿と﻿しさ﻿れ﻿ま﻿す﻿。お﻿好﻿き﻿なと﻿き﻿にキ﻿ャ﻿ン﻿セ﻿ルし﻿てい﻿た﻿だ﻿け﻿れ﻿ば﻿、そ﻿れ以﻿降﻿は料﻿金﻿を請﻿求さ﻿れ﻿るこ﻿と﻿はあ﻿り﻿ま﻿せ﻿ん﻿。
+                    以下のチェックボックスをチェックすることにより、<a href="{{ route('term') }}" target="__blank">利用規約</a>および<a href="{{ route('policy') }}"target="__blank">プライバシーポリシー</a>に同意するものとします。キャンセルするまで月額メンバーシップ料金 (現在￥390) は、ご指定のお支払い方法にて自動引き落としされます。お好きなときにキャンセルしていただければ、それ以降は料金を請求されることはありません。
                 </p>
 
                 <div class="settlement-check_container">
